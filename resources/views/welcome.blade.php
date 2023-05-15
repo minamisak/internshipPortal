@@ -9,7 +9,7 @@
             <div class="carousel-item active">
                 <img src="{{ asset('assets/img/slide1.jpeg') }}" class="d-block w-100" alt="Slide 1">
                 <div class="carousel-caption">
-                    <span class="caption-title">Announcement</span>
+                    <span class="caption-title">Announcement is</span>
                     <p class="caption-para">INTERNSHIP PROGRAMS</p>
                 </div>
             </div>
