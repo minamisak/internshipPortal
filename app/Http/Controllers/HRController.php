@@ -37,4 +37,25 @@ class HRController extends Controller
         }
 
 
+        public function addNewUserAdmin(Request $request)
+                {
+                    $user = new User;
+                    $user->name = $request->name;
+                    $user->email = $request->email;
+                    $user->password = "12345";
+                    $user->type = $request->type;
+                    $user->industry = $request->industry;
+                    $user->save();
+
+                    return redirect()->back()->with('success', 'User added successfully!');
+                }
+
+        public function getAllSupervisors(Request $request)
+        {
+            $supervisors = User::where('type','supervisor')->get();
+
+            return view('allSupervisors',compact('supervisors'));
+        }
+
+
 }

@@ -42,7 +42,7 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
         <div class="position-sticky pt-3">
           <div class="logo">
-            <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="50" class="d-inline-block align-middle me-2">
+            <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -55,12 +55,6 @@
               <a class="nav-link" href="#">
                 <span data-feather="bar-chart-2"></span>
                 Feedback
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Print Certificate
               </a>
             </li>
             
@@ -86,6 +80,20 @@
             <div class="col-md-8">
                 <h1>{{ $user->name }}</h1>
             </div>
+            @foreach($supervisorData as $intern)
+  <div class="card mb-3">
+    <div class="card-body d-flex align-items-center">
+      <div style="margin-right: 42%;">
+        <h5 class="card-title">{{ $intern->full_name }}</h5>
+        <p class="card-text">{{ $intern->email }}</p>
+        <p class="card-text">{{ $intern->preferred_industry }}</p>
+      </div>
+      <div class="ml-auto">
+        <a href="" class="btn btn-primary float-right">Add Feedback</a>
+      </div>
+    </div>
+  </div>
+  @endforeach
         </div>
     </div>
         </div>

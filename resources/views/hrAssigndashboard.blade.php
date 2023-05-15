@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>HR Admin Panel</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <!-- Bootstrap 5 CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery and Bootstrap 5 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
   <style>
     /* set the height of the sidebar to the page height */
     .sidebar {
@@ -40,13 +46,13 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
         <div class="position-sticky pt-3">
           <div class="logo">
-            <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="50" class="d-inline-block align-middle me-2">
+            <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+              <a class="nav-link active" aria-current="page" href="{{ route('hrdashboard') }}">
                 <span data-feather="home"></span>
-                Dashboard
+                Student Dashboard
               </a>
             </li>
             <li class="nav-item">
@@ -56,29 +62,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Products
+              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
+                  <span data-feather="shopping-cart"></span>
+                  Add New HR/Supervisor
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Customers
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Reports
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="#">
                 
@@ -91,7 +80,54 @@
           </ul>
         </div>
       </nav>
+      <!-- Add Superviosrs -->
+      <div class="modal fade" id="addSupervisorModal" tabindex="-1" role="dialog" aria-labelledby="addSupervisorModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addSupervisorModalLabel">Add New HR/Supervisor</h5>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="{{ route('supervisors.store') }}">
+                  @csrf
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@@elswedey-ind.com" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="type">Type</label>
+                      <select name="type" class="form-control" id="type">
+                          <option value=""></option>
+                          <option value= "hr">HR</option>
+                          <option value="supervisor">Supervisor</option>
+                      </select>
+                  </div>
+                  <div class="form-group" id="industry-group" style="display:none;">
+                    <label for="industry">Industry:</label>
+                    <select name="industry" id="industry" class="form-select">
+                        <option value="technology">Lighting</option>
+                        <option value="finance">Panels</option>
+                        <option value="healthcare">Steel</option>
+                    </select>
+                </div>
+                  
+                  <div class="modal-footer">
+                    
+                    <button type="submit" class="btn btn-primary">Add User</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
+      <!-- Add SuperVisor -->
+      
       <!-- Main content -->
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top:20px;">
   <div class="container">
@@ -180,4 +216,23 @@
         });
     });
 });
+
+var loginBtn = document.querySelector('.modal-selector');
+        loginBtn.addEventListener('click', function() {
+            $('#addSupervisorModal').modal('show');
+        });
+
+    var typeDropdown = document.getElementById('type');
+
+    // Get the industry group element
+    var industryGroup = document.getElementById('industry-group');
+
+    // Show/hide the industry group based on the selected value of the type dropdown
+    typeDropdown.addEventListener('change', function() {
+    if (typeDropdown.value === 'supervisor') {
+        industryGroup.style.display = 'block';
+    } else {
+        industryGroup.style.display = 'none';
+    }
+    });
 </script>

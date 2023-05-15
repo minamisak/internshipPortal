@@ -49,12 +49,12 @@
             <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
           <ul class="nav flex-column">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ route('hrdashboard') }}">
-                    <span data-feather="home"></span>
-                    Student Dashboard
-                  </a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('hrdashboard') }}">
+                <span data-feather="home"></span>
+                Student Dashboard
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('assignpage') }}">
                 <span data-feather="file"></span>
@@ -129,62 +129,25 @@
       <!-- Main content -->
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="container"  style="overflow-x: scroll;">
-    <div class="row" style="padding:20px;">
+    <div class="row">
         <div class="col-md-12">
-            <h3>Student Records</h3>
+            <h1>Supervisors</h1>
             <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Full Name</th>
-                        <th>Birthdate</th>
-                        <th>Mobile</th>
                         <th>Email</th>
-                        <th>City</th>
-                        <th>Address</th>
-                        <th>University</th>
-                        <th>Bachelor Degree</th>
-                        <th>Graduation Year</th>
-                        <th>Major</th>
-                        <th>Certificate</th>
-                        <th>Preferred Industry</th>
-                        <th>Preferred Training Field</th>
-                        <th>Grade</th>
-                        <th>Training Info</th>
-                        <th>Source</th>
-                        <th>Referral Name</th>
-                        <th>IsAccepted</th>
+                        <th>Industry</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($students as $student)
+                <tbody> 
+                    @foreach ($supervisors as $supervisor)
                         <tr>
-                            <td>{{ $student->full_name }}</td>
-                            <td>{{ $student->birthdate }}</td>
-                            <td>{{ $student->mobile }}</td>
-                            <td>{{ $student->email }}</td>
-                            <td>{{ $student->city }}</td>
-                            <td>{{ $student->address }}</td>
-                            <td>{{ $student->university }}</td>
-                            <td>{{ $student->bachelor_degree }}</td>
-                            <td>{{ $student->graduation_year }}</td>
-                            <td>{{ $student->major }}</td>
-
-                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>
-                            <!-- {{ asset('path/to/file.pdf') }}" target="_blank" -->
-                            <td>{{ $student->preferred_industry }}</td>
-                            <td>{{ $student->preferred_training_field }}</td>
-                            <td>{{ $student->grade }}</td>
-                            <td>{{ $student->training_info }}</td>
-                            <td>{{ $student->source }}</td>
-                            <td>{{ $student->referral_name }}</td>
-                            <td>
-                                <div class="form-check">
-                                <input class="form-check-input is_accepted_checkbox" type="checkbox"
-                                    data-intern-id="{{ $student->id }}" 
-                                    @if($student->IsAccepted) checked @endif>
-                                </div>
-                            </td>
+                            <td>{{ $supervisor->name }}</td>
+                            <td>{{ $supervisor->email }}</td>
+                            <td>{{ $supervisor->industry }}</td>
+                            
                         </tr>
                     @endforeach
                 </tbody>
@@ -245,12 +208,6 @@ var loginBtn = document.querySelector('.modal-selector');
         loginBtn.addEventListener('click', function() {
             $('#addSupervisorModal').modal('show');
         });
-
-      
-// var loginBtn = document.querySelector('.modal-selector');
-//         loginBtn.addEventListener('click', function() {
-//             $('#addSupervisorModal').modal('show');
-//         });
 
     var typeDropdown = document.getElementById('type');
 

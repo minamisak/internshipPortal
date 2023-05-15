@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\SupervisorController;
+
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Intern;
@@ -11,6 +13,8 @@ use Illuminate\Http\Request;
 class InternController extends Controller
 {
     //
+    
+
     public function login()
     {
            
@@ -82,7 +86,11 @@ public function secondRegistration()
             {
 
                 session()->put('id', $user->id);
-                return view('supervisor',compact('user'));
+                $this->supervisorController = new SupervisorController();
+
+                $supervisorData = $this->supervisorController->getAllInternsForThisSuperVisor($user->id);
+
+                return view('supervisor',compact('user','supervisorData'));
             }
             else{
                 return redirect()->back()->with('error', 'Invalid email or password.');
