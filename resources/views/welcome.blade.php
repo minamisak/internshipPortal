@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('title', 'ELSweedy Internships')
 @section('content')
-
-
     <!-- Home Carousel -->
     <div id="home-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -43,7 +41,7 @@
     <!-- Body Section -->
 <div class="container my-5">
     <div class="row">
-            <div class="border rounded p-4 my-3" style="font-size:20px;margin-top:10px;margin-bottom:10px;">
+            <div class="border rounded p-4 my-3" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
                 <h2 class="text-center mb-4" style="font-size: 3em;margin-bottom:10px;">Who We Are</h2>
                 <p>El Sewedy Industries Group was established by Mr. Ahmed Sadek El Sewedy
                 in 1938 in Egypt and across the Middle East as one of the market leaders in
@@ -55,7 +53,7 @@
                 <p>The Internship Program is offered by the Industrial Sector covering 4 main
                 diversified industries of Lighting, Sheet Metal, Steel and Panels</p>
             </div>
-            <div class="border rounded p-3 my-4" style="font-size:20px;margin-top:10px;margin-bottom:10px;">
+            <div class="border rounded p-3 my-4" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
                 <h3 class="text-center mb-4" style="font-size: 2em;">Who can apply (eligibility criteria):</h3>
                 <ul>
                     <li>Class 2024 &amp; 2025 are only enrolled for the internship program</li>
@@ -64,7 +62,7 @@
                     <li>Extracurricular activities and previous internships are desirable</li>
                 </ul>
             </div>
-            <div class="border rounded p-3 mt-3 mb-3" style="font-size:20px;margin-top:10px;margin-bottom:10px;">
+            <div class="border rounded p-3 mt-3 mb-3" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
                 <h2 class="text-center fw-bold fs-4 mb-4">The selection process consists of four main steps:</h2>
                 <ol>
                     <li>Online Application: First, an online application form should be filled in. A link to the application form can be found below.</li>
@@ -73,7 +71,7 @@
                     <li>Internship Acceptance: those persons who are selected following the previous steps, will receive an e-mail / Call with their internship acceptance.</li>
                 </ol>
             </div>
-            <div class="rounded p-3 my-4" style="font-size:20px;margin-top:10px;margin-bottom:10px;">
+            <div class="rounded p-3 my-4" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
                 <h2 class="text-center fs-4 mb-4">Application form and the deadline:</h2>
                 < class="mb-0">All interested candidates are invited to submit their application by the following 
                     <a class="text-decoration-none fw-bold" href="{{ route('register.index') }}">Register link</a> before 10 June. Applications received after this deadline will not be considered.
@@ -110,7 +108,7 @@
         </div>
     </div>
 </div>
-@endsecsion
+
 <!-- Bootstrap 5 JS Bundle with Popper -->
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -127,16 +125,16 @@
     float:right;
 }
 .carousel-caption{
-    bottom: 15.25rem!important;
+    bottom: 12.25rem!important;
     right:50%!important;
 
 }
 .caption-title{
-    font-size: 3.1rem;
+    font-size: 2.1rem;
     color: #140d45;
 }
 .caption-para{
-    font-size: 3rem;
+    font-size: 1rem;
     color: #0dbfd6;
 }
 
