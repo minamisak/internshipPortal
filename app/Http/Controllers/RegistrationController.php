@@ -60,19 +60,19 @@ $intern->referral_name = $referral_name;
 $intern->password = $password;
 
 
-if(request()->hasfile('grade_certificate')){
-//     $file = $request->file('grade_certificate');
-//     $path = $file->store('public/assets/img');
-    $avatarName = time().'.'.request()->grade_certificate->getClientOriginalExtension();
-    request()->grade_certificate->move(public_path('assets'), $avatarName);
-    $intern->grade_certificate = $avatarName;
-}
-else{
-    return "ssss";
-}
+    if(request()->hasfile('grade_certificate')){
+    //     $file = $request->file('grade_certificate');
+    //     $path = $file->store('public/assets/img');
+        $avatarName = time().'.'.request()->grade_certificate->getClientOriginalExtension();
+        request()->grade_certificate->move(public_path('assets'), $avatarName);
+        $intern->grade_certificate = $avatarName;
+    }
+    else{
+        return redirect()->back()->with('error', 'File not uploaded.');
+    }
 
 
-$intern->save();
+    $intern->save();
 
     // Redirect to a confirmation page
     return redirect('/');
