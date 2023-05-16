@@ -9,6 +9,8 @@ use App\Models\Intern;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class InternController extends Controller
 {
@@ -23,8 +25,9 @@ class InternController extends Controller
     
     public function logout()
     {
-           
-        return redirect('/');
+        Session::forget('id');
+        return redirect('/')->with('success', 'Logged out successfully!');
+        
     }
     
     public function dashboard()
@@ -74,8 +77,13 @@ public function secondRegistration()
         $email = $request->input('email');
         $password = $request->input('password');
 
+        // login for interns 
+        $intern = Intern::where('email', $email)
+            ->where('password', $password)
+            ->first();
+
         //login for admins from elswedy
-        if(strpos($request->input('email'), '@elswedey-ind.com') !== false){
+        if(strpos($request->input('email'), '@elsewedy-ind.com') !== false){
             $user = User::where('email',$email)->where('password',$password)->first();
             if($user->type == 'hr')
             {
@@ -93,7 +101,7 @@ public function secondRegistration()
                 return view('supervisor',compact('user','supervisorData'));
             }
             else{
-                return redirect()->back()->with('error', 'Invalid email or password.');
+                return redirect()->back()->with('error', 'Invalid email or password.1');
             }
 
             // if ($user) {
@@ -102,16 +110,7 @@ public function secondRegistration()
             // } else {
             //     return redirect()->back()->with('error', 'Invalid email or password.');
             // }
-        }
-
-
-        // login for interns 
-        $intern = Intern::where('email', $email)
-            ->where('password', $password)
-            ->first();
-
-        
-        if ($intern) {
+        }elseif ($intern) {
             session()->put('intern_id', $intern->id);
             if($intern->IsAccepted == true)
             {
@@ -120,7 +119,7 @@ public function secondRegistration()
             }
             return redirect('dashboard');
         } else {
-            return redirect()->back()->with('error', 'Invalid email or password.');
+            return redirect()->back()->with('error', 'Invalid email or password');
         }
     }
 

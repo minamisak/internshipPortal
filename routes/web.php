@@ -30,12 +30,12 @@ Route::post('/register', [RegistrationController::class, 'store'])->name('regist
 Route::get('/dashboard', [InternController::class, 'dashboard'])->name('dashboard');
 // Route::get('/intern', [InternController::class, 'secondRegistration'])->name('secondRegistration');
 
-Route::get('/intern/profile/{id}', [InternController::class, 'showProfile'])->name('intern.profile');
+Route::get('/intern/profile/{id}', [InternController::class, 'showProfile'])->name('intern.profile')->middleware('check.session');
 
 Route::get('/adminDashboard', [InternController::class, 'adminDashboard'])->name('adminDashboard');
 Route::get('/interns/{id}/accept', [InternController::class, 'accept'])->name('interns.accept');
 
-Route::get('/hr', [InternController::class, 'hrDashBoard'])->name('hrdashboard');
+Route::get('/hr', [InternController::class, 'hrDashBoard'])->name('hrdashboard')->middleware('check.session');
 Route::get('/hr/assign', [HRController::class, 'assignPage'])->name('assignpage');
 Route::get('/assignStudent', [HRController::class, 'assign'])->name('assignStudent');
 Route::post('/supervisors', [HRController::class, 'addNewUserAdmin'])->name('supervisors.store');
