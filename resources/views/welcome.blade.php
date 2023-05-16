@@ -42,7 +42,7 @@
 
 <div class="container my-5">
     <div class="row">
-            <div class="border rounded p-4 my-3" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
+            <div class="border rounded p-4 my-3" id="whoweare" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
                 <h2 class="text-center mb-4" style="font-size: 3em;margin-bottom:10px;">Who We Are</h2>
                 <p>El Sewedy Industries Group was established by Mr. Ahmed Sadek El Sewedy
                 in 1938 in Egypt and across the Middle East as one of the market leaders in
