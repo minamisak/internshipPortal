@@ -44,6 +44,7 @@
           <div class="logo">
             <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
+          @if($intern->IsAccepted == true)
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
@@ -74,6 +75,19 @@
               </a>
             </li>
           </ul>
+          @else
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit"><span data-feather="layers">Logout</span></button>
+                </form>
+              </a>
+            </li>
+          </ul>
+          @endif
         </div>
       </nav>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -82,6 +96,7 @@
         <div class="col-md-12">
         <div class="container-fluid" style="padding:40px;">
         <div class="row">
+        @if($intern->IsAccepted == true)
         <div class="col-md-3">
                 @if($intern->image_path)
                     <img src="{{ asset($intern->image_path) }}" alt="{{ $intern->full_name }}" class="img-fluid rounded-circle">
@@ -102,6 +117,13 @@
                 <button class="btn btn-primary disabled float-right">Print Certificate</button>
             </div>
         </div>
+        @else
+            <div class="col-md-8">
+                <h4>Welcome {{ $intern->full_name }} We will contact you soon</h4>
+            </div>
+          @endif
+        </div>
+        
     </div>
         </div>
     </div>

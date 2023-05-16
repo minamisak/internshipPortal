@@ -32,6 +32,7 @@ class InternController extends Controller
     
     public function dashboard()
     {
+        
         return view('dashboard');
     }
 
@@ -117,7 +118,9 @@ public function secondRegistration()
                 $id = $intern->id;
                 return $this->showProfile($id);
             }
-            return redirect('dashboard');
+            else{
+                return view('internevalform', compact('intern'));   
+            }
         } else {
             return redirect()->back()->with('error', 'Invalid email or password');
         }
