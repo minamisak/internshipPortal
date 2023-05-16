@@ -42,7 +42,7 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
         <div class="position-sticky pt-3">
           <div class="logo">
-            <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="50" class="d-inline-block align-middle me-2">
+            <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -86,7 +86,9 @@
                 @if($intern->image_path)
                     <img src="{{ asset($intern->image_path) }}" alt="{{ $intern->full_name }}" class="img-fluid rounded-circle">
                 @else
-                    <div class="empty-image bg-primary rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="empty-image">
+                    <img src="{{ asset('assets/img/emptyImg.png') }}" alt="user" height="100" class="d-inline-block align-middle me-2">
+
                         <span class="text-white">{{ strtoupper(substr($intern->full_name, 0, 1)) }}</span>
                     </div>
                 @endif
