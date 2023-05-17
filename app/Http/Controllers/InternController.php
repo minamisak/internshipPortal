@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Intern;
 use App\Models\User;
 use App\Exports\InternExport;
+use App\Http\Models\StudentSupervisor;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -52,8 +54,15 @@ class InternController extends Controller
 
 public function showProfile($id)
 {
-    $intern = Intern::findOrFail($id);
-    return view('internevalform', compact('intern'));
+    // $intern = Intern::findOrFail($id);
+    $intern = DB::table('interns')
+  ->join('student_supervisor', 'interns.id', '=', 'student_supervisor.intern_id')
+  ->join('users', 'student_supervisor.supervisor_id', '=', 'users.id')
+  ->select('interns.IsAccepted as IsAccepted','interns.full_name','interns.preferred_industry', 'interns.email', 'users.name', 'users.email')
+  ->where('interns.id', $id)
+  ->first();
+
+return view('internevalform', compact('intern'));
 }
 
 

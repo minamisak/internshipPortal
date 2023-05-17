@@ -44,6 +44,7 @@
           <div class="logo">
             <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
+          
           @if($intern->IsAccepted == true)
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -98,22 +99,20 @@
         <div class="row">
         @if($intern->IsAccepted == true)
         <div class="col-md-3">
-                @if($intern->image_path)
-                    <img src="{{ asset($intern->image_path) }}" alt="{{ $intern->full_name }}" class="img-fluid rounded-circle">
-                @else
+               
                     <div class="empty-image">
                     <img src="{{ asset('assets/img/emptyImg.png') }}" alt="user" height="100" class="d-inline-block align-middle me-2">
 
                         <span class="text-white">{{ strtoupper(substr($intern->full_name, 0, 1)) }}</span>
                     </div>
-                @endif
+                
             </div>
             <div class="col-md-8">
                 <h1>{{ $intern->full_name }}</h1>
-                <p>Training Industry: {{ $intern->training_industry }}</p>
-                <p>Training Field: {{ $intern->training_field }}</p>
-                <p>Supervisor's Full Name: {{ $intern->supervisor_name }}</p>
-                <p>Supervisor's Title: {{ $intern->supervisor_title }}</p>
+                
+                <p>Training Field: {{ $intern->preferred_industry }}</p>
+                <p>Supervisor's Full Name: {{ $intern->name }}</p>
+                
                 <button class="btn btn-primary disabled float-right">Print Certificate</button>
             </div>
         </div>
