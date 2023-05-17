@@ -41,6 +41,9 @@ Route::get('/assignStudent', [HRController::class, 'assign'])->name('assignStude
 Route::post('/supervisors', [HRController::class, 'addNewUserAdmin'])->name('supervisors.store');
 Route::get('/hr/supervisors', [HRController::class, 'getAllSupervisors'])->name('supervisors.all');
 
+// Export Interns
+Route::get('/export/interns', [InternController::class, 'exportInterns'])->name('exportInterns');
+
 Route::post('/logout', [InternController::class, 'logout'])->name('logout');
 // Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');
 Route::match(['get', 'post'], '/login', [InternController::class, 'processLogin'])->name('processLogin');

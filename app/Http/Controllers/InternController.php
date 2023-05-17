@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Intern;
 use App\Models\User;
+use App\Exports\InternExport;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class InternController extends Controller
@@ -25,6 +28,7 @@ class InternController extends Controller
     
     public function logout()
     {
+        Session::forget('intern_id');
         Session::forget('id');
         return redirect('/')->with('success', 'Logged out successfully!');
         
@@ -51,6 +55,12 @@ public function showProfile($id)
     $intern = Intern::findOrFail($id);
     return view('internevalform', compact('intern'));
 }
+
+
+public function exportInterns()
+    {
+        return Excel::download(new InternExport, 'Interns.xlsx');
+    }
 
 public function secondRegistration()
 {

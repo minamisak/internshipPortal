@@ -132,6 +132,9 @@
     <div class="row" style="padding:20px;">
         <div class="col-md-12">
             <h3>Student Records</h3>
+            <!-- Add the button to your HTML page -->
+            <button onclick="location.href='/export/interns';" type="button">Download Excel</button>
+
             <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
             <table class="table table-striped table-bordered">
                 <thead>
