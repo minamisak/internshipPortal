@@ -68,7 +68,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">
                 
-                <form action="{{ route('logout') }}" method="GET">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit"><span data-feather="layers">Logout</span></button>
                 </form>
