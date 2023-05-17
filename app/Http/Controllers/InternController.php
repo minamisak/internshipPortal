@@ -44,10 +44,10 @@ class InternController extends Controller
     public function accept(Request $request, $id)
 {
     $intern = Intern::findOrFail($id);
-    $intern->IsAccepted = $request->input('is_accepted') ? true : false;
+    $intern->IsAccepted = $request->input('is_accepted' == true) ? true : false;
     $intern->save();
     
-    return response()->json(['success' => true]);
+    return response()->json(['success' => 'true']);
 }
 
 public function showProfile($id)
