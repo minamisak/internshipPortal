@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Intern;
 use Illuminate\Http\Request;
 
+
 class RegistrationController extends Controller
 {
     //
@@ -40,24 +41,24 @@ class RegistrationController extends Controller
     $password = $request->input('password');
     $intern = new Intern();
 
-$intern->full_name = $full_name;
-$intern->birthdate = $birthdate;
-$intern->mobile = $mobile;
-$intern->email = $email;
-$intern->city = $city;
-$intern->address = $address;
-$intern->university = $university;
-$intern->bachelor_degree = $bachelor_degree;
-$intern->graduation_year = $graduation_year;
-$intern->major = $major;
-$intern->preferred_industry = $preferred_industry;
-$intern->preferred_training_field = $preferred_training_field;
-$intern->grade = $grade;
+    $intern->full_name = $full_name;
+    $intern->birthdate = $birthdate;
+    $intern->mobile = $mobile;
+    $intern->email = $email;
+    $intern->city = $city;
+    $intern->address = $address;
+    $intern->university = $university;
+    $intern->bachelor_degree = $bachelor_degree;
+    $intern->graduation_year = $graduation_year;
+    $intern->major = $major;
+    $intern->preferred_industry = $preferred_industry;
+    $intern->preferred_training_field = $preferred_training_field;
+    $intern->grade = $grade;
 
-$intern->training_info = $training_info;
-$intern->source = $source;
-$intern->referral_name = $referral_name;
-$intern->password = $password;
+    $intern->training_info = $training_info;
+    $intern->source = $source;
+    $intern->referral_name = $referral_name;
+    $intern->password = $password;
 
 
     if(request()->hasfile('grade_certificate')){
@@ -72,10 +73,13 @@ $intern->password = $password;
     }
 
 
-    $intern->save();
-
-    // Redirect to a confirmation page
-    return redirect('/');
+    if ($intern->save()) {
+        session()->put('intern_id', $intern->id);
+        return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
+    } else {
+        return redirect()->back()->with('error', 'Registration failed. Please try again.');
+    }
+    
 }
 
 }

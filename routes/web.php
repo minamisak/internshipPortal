@@ -42,6 +42,8 @@ Route::post('/supervisors', [HRController::class, 'addNewUserAdmin'])->name('sup
 Route::get('/hr/supervisors', [HRController::class, 'getAllSupervisors'])->name('supervisors.all');
 
 Route::post('/logout', [InternController::class, 'logout'])->name('logout');
-Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');
+// Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');
+Route::match(['get', 'post'], '/login', [InternController::class, 'processLogin'])->name('processLogin');
+
 
 
