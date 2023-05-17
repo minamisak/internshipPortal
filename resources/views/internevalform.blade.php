@@ -118,8 +118,10 @@
             </div>
         </div>
         @else
-            <div class="col-md-8">
-                <h4>Welcome {{ $intern->full_name }} We will contact you soon</h4>
+            <div class="col-md-12">
+              <span style="color:red;font-size: 7px;">temporary Account</span>  
+              <h4>Welcome {{ $intern->full_name }} We will contact you soon</h4>
+
             </div>
           @endif
         </div>

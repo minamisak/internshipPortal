@@ -39,6 +39,8 @@
         </a>
     </div>
     <!-- Body Section -->
+    
+
 
 <div class="container my-5">
     <div class="row">
@@ -74,7 +76,7 @@
             </div>
             <div class="rounded p-3 my-4" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
                 <h2 class="text-center fs-4 mb-4">Application form and the deadline:</h2>
-                < class="mb-0">All interested candidates are invited to submit their application by the following 
+                <p class="mb-0">All interested candidates are invited to submit their application by the following 
                     <a class="text-decoration-none fw-bold" href="{{ route('register.index') }}">Register link</a> before 10 June. Applications received after this deadline will not be considered.
                 </p>
             </div>
@@ -116,7 +118,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
-    
+
+
+
 .card {
     height: 400px;
     background-color: #0dbfd6!important;
@@ -148,23 +152,61 @@
 
 
 
-</style>
-@if(session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: '{{ session('success') }}',
-            timer: 2000,
-            showConfirmButton: false
-        }).then(function() {
-            window.location.href = '{{ url()->previous() }}';
-        });
-    </script>
-@endif
 
-@if(session('error'))
+</style>
+
+<script>
+    function showSuccessAlert(type) {
+  // Get the alert div
+  const alertDiv = document.getElementById("alert");
+  
+  if(type == 'success'){
+    // Create the success alert element
+  const successAlert = document.createElement("div");
+  successAlert.className = "alert alert-success";
+  successAlert.role = "alert";
+  
+  // Add the message to the alert element
+  const textNode = document.createTextNode(message);
+  successAlert.appendChild(textNode);
+  
+  // Add the alert element to the alert div
+  alertDiv.appendChild(successAlert);
+  
+  // Hide the alert after 3 seconds
+  setTimeout(() => {
+    successAlert.style.display = "none";
+  }, 3000);
+  }
+  else{
+    // Create the success alert element
+  const errorAlter = document.createElement("div");
+  errorAlter.className = "alert alert-danger";
+  errorAlter.role = "alert";
+  
+  // Add the message to the alert element
+  const textNode = document.createTextNode(message);
+  errorAlter.appendChild(textNode);
+  
+  // Add the alert element to the alert div
+  alertDiv.appendChild(errorAlter);
+  
+  // Hide the alert after 3 seconds
+  setTimeout(() => {
+    errorAlter.style.display = "none";
+  }, 3000);
+  }
+}
+</script>
+
+@if (session('success'))
     <script>
-        console.log({{ session('error') }});
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session('success') }}'
+            });
+        });
     </script>
 @endif
