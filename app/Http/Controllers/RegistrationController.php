@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     //
-    public function sendEmail($intern)
+    public function sendEmail($intern,$name)
     {
         $mail = new PHPMailer(true); // create a PHPMailer instance
 
@@ -31,9 +31,9 @@ class RegistrationController extends Controller
 
         // configure the message
         $mail->setFrom('internships.elsewedy.ind@gmail.com', 'Internships Elsewedy-ind');
-        $mail->addAddress($intern, 'Recipient Name');
-        $mail->Subject = 'Test Email';
-        $mail->Body = 'This is a test email';
+        $mail->addAddress($intern, $name);
+        $mail->Subject = 'Welcome To ElSewedy Internship program';
+        $mail->Body = 'We get your data and will contact you soon for more information';
 
         // send the message
         try {
@@ -133,7 +133,7 @@ class RegistrationController extends Controller
             // Mail::to($request->input('email'))->send(new RegistrationMail($intern));
             // Mail::to($intern->email)->send(new RegistrationMail($intern));
             
-        $this->sendEmail($intern->email);
+        $this->sendEmail($intern->email,$intern->full_name);
 
 
             return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
