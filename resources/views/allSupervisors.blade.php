@@ -97,7 +97,7 @@
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="example@@elswedey-ind.com" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@elswedey-ind.com" required>
                   </div>
                   <div class="form-group">
                       <label for="type">Type</label>

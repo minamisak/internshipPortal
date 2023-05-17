@@ -13,7 +13,10 @@ class HRController extends Controller
     public function assignPage()
     {
         $supervisors = User::where('type','supervisor')->get();
-        $interns = Intern::where('IsAccepted','1')->get();
+        $interns = Intern::where('IsAccepted', 1)
+            ->whereNotIn('id', StudentSupervisor::pluck('intern_id'))
+            ->get();
+
         return view('hrAssigndashboard',compact('supervisors','interns'));
     }
     public function assign(Request $request)
@@ -33,7 +36,8 @@ class HRController extends Controller
             $studentSupervisor->save();
 
             // Return a success response
-            return response()->json(['message' => 'Intern assigned to supervisor successfully.']);
+            return redirect('/hr')->with('success', 'Intern assigned to supervisor successfully.');
+            
         }
 
 
