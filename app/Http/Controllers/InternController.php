@@ -12,6 +12,8 @@ use App\Http\Models\StudentSupervisor;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -92,77 +94,155 @@ public function secondRegistration()
 
 
     }
-    public function processLogin(Request $request)
-    {
-        if (session()->has('intern_id')) {
-            // Intern ID is present in the session
-            $internId = session('intern_id');
-            $intern = Intern::where('id',$internId)->first();
-            if($intern->IsAccepted == true)
-            {
-                $id = $intern->id;
-                return $this->showProfile($id);
-            }
-            else{
-                return view('internevalform', compact('intern'));   
-            }
+    // public function processLogin(Request $request)
+    // {
+    //     if (session()->has('intern_id')) {
+    //         // Intern ID is present in the session
+    //         $internId = session('intern_id');
+    //         $intern = Intern::where('id',$internId)->first();
+    //         if($intern->IsAccepted == true)
+    //         {
+    //             $id = $intern->id;
+    //             return $this->showProfile($id);
+    //         }
+    //         else{
+    //             return view('internevalform', compact('intern'));   
+    //         }
             
-            // Do something with the intern ID
-        } else {
-            // Intern ID is not present in the session
-            // Redirect or show an error message
+    //         // Do something with the intern ID
+    //     } else {
+    //         // Intern ID is not present in the session
+    //         // Redirect or show an error message
+    //         $validator = Validator::make($request->all(), [
+    //             'email' => 'required|email',
+    //             'password' => 'required',
+    //         ]);
+        
+    //         if ($validator->fails()) {
+    //             return response()->json(['error' => $validator->errors()], 400);
+    //         }
+        
+    
+    //         // login for interns 
+    //         $intern = Intern::where('email', $email)
+    //             ->where('password', $password)
+    //             ->first();
+            
+    
+    //             //login for admins from elswedy
+    //             if(strpos($request->input('email'), '@elsewedy-ind.com') !== false){
+    //                 $user = User::where('email',$email)->where('password',$password)->first();
+    //                 if($user->type == 'hr')
+    //                 {
+    //                     session()->put('id', $user->id);
+    //                     return redirect('hr');
+    //                 }
+    //                 elseif($user->type == 'supervisor')
+    //                 {
+        
+    //                     session()->put('id', $user->id);
+    //                     $this->supervisorController = new SupervisorController();
+        
+    //                     $supervisorData = $this->supervisorController->getAllInternsForThisSuperVisor($user->id);
+        
+    //                     return view('supervisor',compact('user','supervisorData'));
+    //                 }
+    //                 else{
+    //                     return redirect()->back()->with('error', 'Invalid email or password.1');
+    //                 }
+        
+    //                 // if ($user) {
+    //                 //     session()->put('id', $user->id);
+    //                 //     return redirect('adminDashboard');
+    //                 // } else {
+    //                 //     return redirect()->back()->with('error', 'Invalid email or password.');
+    //                 // }
+    //             }
+    //             elseif ($intern) {
+    //                 session()->put('intern_id', $intern->id);
+    //                 if($intern->IsAccepted == true)
+    //                 {
+    //                     $id = $intern->id;
+    //                     return $this->showProfile($id);
+    //                 }
+    //                 else{
+    //                     return view('internevalform', compact('intern'));   
+    //                 }
+    //         } 
+    //         else {
+    //             return redirect()->back()->with('error', 'Invalid email or password');
+    //         }
+    //     }
+        
+    // }
 
-            $email = $request->input('email');
-            $password = $request->input('password');
-    
-            // login for interns 
-            $intern = Intern::where('email', $email)
-                ->where('password', $password)
-                ->first();
-    
-            //login for admins from elswedy
-            if(strpos($request->input('email'), '@elsewedy-ind.com') !== false){
-                $user = User::where('email',$email)->where('password',$password)->first();
-                if($user->type == 'hr')
-                {
-                    session()->put('id', $user->id);
-                    return redirect('hr');
-                }
-                elseif($user->type == 'supervisor')
-                {
-    
-                    session()->put('id', $user->id);
-                    $this->supervisorController = new SupervisorController();
-    
-                    $supervisorData = $this->supervisorController->getAllInternsForThisSuperVisor($user->id);
-    
-                    return view('supervisor',compact('user','supervisorData'));
-                }
-                else{
-                    return redirect()->back()->with('error', 'Invalid email or password.1');
-                }
-    
-                // if ($user) {
-                //     session()->put('id', $user->id);
-                //     return redirect('adminDashboard');
-                // } else {
-                //     return redirect()->back()->with('error', 'Invalid email or password.');
-                // }
-            }elseif ($intern) {
-                session()->put('intern_id', $intern->id);
-                if($intern->IsAccepted == true)
-                {
-                    $id = $intern->id;
-                    return $this->showProfile($id);
-                }
-                else{
-                    return view('internevalform', compact('intern'));   
-                }
+    public function processLogin(Request $request)
+        {
+            if (session()->has('intern_id')) {
+                // Intern ID is present in the session
+                // ...
+                        $internId = session('intern_id');
+                        $intern = Intern::where('id',$internId)->first();
+                        if($intern->IsAccepted == true)
+                        {
+                            $id = $intern->id;
+                            return $this->showProfile($id);
+                        }
+                        else{
+                            return view('internevalform', compact('intern'));   
+                        }
             } else {
-                return redirect()->back()->with('error', 'Invalid email or password');
+                // Intern ID is not present in the session
+            
+
+                $validator = Validator::make($request->all(), [
+                    'email' => 'required|email',
+                    'password' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                $email = $request->input('email');
+                $password = $request->input('password');
+
+                // login for interns
+                $intern = Intern::where('email', $email)
+                    ->where('password', $password)
+                    ->first();
+
+                // login for admins from elsewedy
+                if (strpos($email, '@elsewedy-ind.com') !== false) {
+                    $user = User::where('email', $email)->where('password', $password)->first();
+                    if ($user) {
+                        if ($user->type == 'hr') {
+                            session()->put('id', $user->id);
+                            return redirect('hr');
+                        } elseif ($user->type == 'supervisor') {
+                            session()->put('id', $user->id);
+                            $this->supervisorController = new SupervisorController();
+                            $supervisorData = $this->supervisorController->getAllInternsForThisSuperVisor($user->id);
+                            return view('supervisor', compact('user', 'supervisorData'));
+                        } else {
+                            return redirect()->back()->with('error', 'Invalid email or password.1');
+                        }
+                    } else {
+                        return redirect()->back()->with('error', 'Invalid email or password.');
+                    }
+                } elseif ($intern) {
+                    session()->put('intern_id', $intern->id);
+                    if ($intern->IsAccepted == true) {
+                        $id = $intern->id;
+                        return $this->showProfile($id);
+                    } else {
+                        return view('internevalform', compact('intern'));
+                    }
+                } else {
+                    return redirect()->back()->with('error', 'Invalid email or password');
+                }
             }
         }
-        
-    }
+
 
 }

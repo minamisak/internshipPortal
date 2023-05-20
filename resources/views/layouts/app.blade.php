@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
+    
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <!-- jQuery and Bootstrap 5 JavaScript -->
@@ -13,6 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>@yield('title')</title>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -51,26 +57,29 @@
       </div>
       <div class="modal-body">
         <form method="POST" action="{{ route('processLogin') }}">
-          @csrf
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-          </div>
-          <button type="submit" class="login-btn btn btn-primary" style="background-color:#1f1759;">Login</button>
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <button type="submit" class="login-btn btn btn-primary" style="background-color:#1f1759;">Login</button>
         </form>
+
       </div>
     </div>
   </div>
 </div>
 
-    
-    <div class="container">
-        @yield('content')
-    </div>
     
     <!-- add your footer here -->
     <script>
@@ -79,6 +88,10 @@
             $('#loginModal').modal('show');
         });
     </script>
+    <div class="container">
+        @yield('content')
+    </div>
+    
 
 </body>
 </html>
@@ -97,3 +110,15 @@
         margin: 17px auto;
     }
 </style>
+
+@if (session('error'))
+    <script>
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'error!',
+                text: '{{ session('error') }}'
+            });
+        });
+    </script>
+@endif

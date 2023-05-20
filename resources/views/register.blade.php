@@ -1,8 +1,84 @@
-@extends('layouts.app')
-@section('title', 'Register')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- jQuery and Bootstrap 5 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@section('content')
 
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>El-Sewedy Industries</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #161f6e99; height: 100px;">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('assets/img/logo-1.png') }}" height="80" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#whoweare">Who We Are</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">What We Do</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex align-items-center">
+            <a href="#" class="btn btn-outline-light mr-2">Login</a>
+        </div>
+    </div>
+</nav>
+    <!-- add your navigation menu here -->
+    <!-- Login Modal -->
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="{{ asset('assets/img/logo-1.png') }}" style="display: block;width: 60%;margin: 0 auto;" height="80" alt="Logo">
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{ route('processLogin') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <button type="submit" class="login-btn btn btn-primary" style="display:block;background-color:#1f1759;">Login</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container" style="margin-top: 12%;">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -16,7 +92,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus required>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +106,7 @@
                             <label for="birthdate" class="col-md-4 col-form-label text-md-right">{{ __('Birthdate') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}"  autocomplete="birthdate">
+                                <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}"  autocomplete="birthdate" required>
 
                                 @error('birthdate')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +120,7 @@
                             <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}"  autocomplete="mobile">
+                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}"  autocomplete="mobile" required>
 
                                 @error('mobile')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +134,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" required>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -72,7 +148,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <select id="city" class="form-control select2 @error('city') is-invalid @enderror" name="city" >
+                                <select id="city" class="form-control select2 @error('city') is-invalid @enderror" name="city" required>
                                     <option value="" selected disabled>Select City</option>
                                     <option value="Cairo">Cairo</option>
                                     <option value="Giza">Giza</option>
@@ -105,7 +181,7 @@
                         <label for="university" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
 
                         <div class="col-md-6">
-                            <input id="university" type="text" class="form-control @error('university') is-invalid @enderror" name="university" value="{{ old('university') }}" autocomplete="university">
+                            <input id="university" type="text" class="form-control @error('university') is-invalid @enderror" name="university" value="{{ old('university') }}" autocomplete="university" required>
 
                             @error('university')
                                 <span class="invalid-feedback" role="alert">
@@ -119,7 +195,7 @@
                         <label for="bachelor_degree" class="col-md-4 col-form-label text-md-right">{{ __('Bachelor Degree') }}</label>
 
                         <div class="col-md-6">
-                            <select id="bachelor_degree" class="form-control select2 @error('bachelor_degree') is-invalid @enderror" name="bachelor_degree">
+                            <select id="bachelor_degree" class="form-control select2 @error('bachelor_degree') is-invalid @enderror" name="bachelor_degree" required>
                                 <option value="" selected disabled>Select Bachelor Degree</option>
                                 <option value="Engineering">Engineering</option>
                                 <option value="Commerce">Commerce</option>
@@ -139,7 +215,7 @@
                         <label for="major" class="col-md-4 col-form-label text-md-right">{{ __('Major') }}</label>
 
                         <div class="col-md-6">
-                            <input id="major" type="text" class="form-control @error('major') is-invalid @enderror" name="major" value="{{ old('major') }}">
+                            <input id="major" type="text" class="form-control @error('major') is-invalid @enderror" name="major" value="{{ old('major') }}" required>
 
                             @error('Major')
                                 <span class="invalid-feedback" role="alert">
@@ -151,7 +227,7 @@
                     <div class="form-group row">
                         <label for="graduation_year" class="col-md-4 col-form-label text-md-right">{{ __('Graduation Year') }}</label>
                         <div class="col-md-6">
-                            <select id="graduation_year" class="form-control @error('graduation_year') is-invalid @enderror" name="graduation_year"  autocomplete="graduation_year">
+                            <select id="graduation_year" class="form-control @error('graduation_year') is-invalid @enderror" name="graduation_year"  autocomplete="graduation_year" required>
                                 <option value="">-- Select Graduation Year --</option>
                                 <option value="2024"{{ old('graduation_year') == '2024' ? ' selected' : '' }}>Class of 2024</option>
                                 <option value="2025"{{ old('graduation_year') == '2025' ? ' selected' : '' }}>Class of 2025</option>
@@ -168,9 +244,8 @@
                     <div class="form-group row">
                         <label for="grade_certificate" class="col-md-4 col-form-label text-md-right">{{ __('File') }}</label>
                         <div class="col-md-6">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="grade_certificate" name="grade_certificate">
-                                <label class="custom-file-label" for="file">Choose file</label>
+                            <div class="mb-3">
+                                <input type="file" class="form-control form-control-sm" id="grade_certificate" name="grade_certificate" required>
                             </div>
 
                             @error('grade_certificate')
@@ -185,7 +260,7 @@
                     <div class="form-group row">
                         <label for="preferred_industry" class="col-md-4 col-form-label text-md-right">{{ __('Preferred Industry') }}</label>
                         <div class="col-md-6">
-                            <select id="preferred_industry" class="form-control @error('preferred_industry') is-invalid @enderror" name="preferred_industry">
+                            <select id="preferred_industry" class="form-control @error('preferred_industry') is-invalid @enderror" name="preferred_industry" required>
                                 <option value="" disabled selected>Select an option</option>
                                 <option value="Lighting" {{ old('preferred_industry') == 'Lighting' ? 'selected' : '' }}>Lighting</option>
                                 <option value="Panels" {{ old('preferred_industry') == 'Panels' ? 'selected' : '' }}>Panels</option>
@@ -204,7 +279,7 @@
                         <label for="training_field" class="col-md-4 col-form-label text-md-right">{{ __('Preferred Training Field') }}</label>
 
                         <div class="col-md-6">
-                            <select id="training_field" class="form-control @error('training_field') is-invalid @enderror" name="training_field">
+                            <select id="training_field" class="form-control @error('training_field') is-invalid @enderror" name="training_field" required>
                                 <option value="">-- Select Preferred Training Field --</option>
                                 <option value="Technical Office">Technical Office (Engineers only)</option>
                                 <option value="Commercial">Commercial (Engineers only)</option>
@@ -226,7 +301,7 @@
                         <label for="grade" class="col-md-4 col-form-label text-md-right">{{ __('Acumulative Grade') }}</label>
 
                         <div class="col-md-6">
-                            <select id="grade" class="form-control @error('grade') is-invalid @enderror" name="grade" autocomplete="grade">
+                            <select id="grade" class="form-control @error('grade') is-invalid @enderror" name="grade" autocomplete="grade" required>
                                 <option value="">-- Select Grade --</option>
                                 <option value="Fair" {{ old('grade') == 'Fair' ? 'selected' : '' }}>Fair</option>
                                 <option value="Good" {{ old('grade') == 'Good' ? 'selected' : '' }}>Good</option>
@@ -258,7 +333,7 @@
                         <label for="trainings" class="col-md-4 col-form-label">{{ __('Performed Trainings') }}</label>
 
                         <div class="col-md-6">
-                            <textarea id="trainings" class="form-control @error('trainings') is-invalid @enderror" name="trainings" rows="5">{{ old('trainings') }}</textarea>
+                            <textarea id="trainings" class="form-control @error('trainings') is-invalid @enderror" name="trainings" rows="5" required>{{ old('trainings') }}</textarea>
 
                             @error('trainings')
                                 <span class="invalid-feedback" role="alert">
@@ -272,7 +347,7 @@
                         <label for="source" class="col-md-4 col-form-label text-md-right">{{ __('How did you know about the Internship?') }}</label>
 
                         <div class="col-md-6">
-                            <select id="source" class="form-control @error('source') is-invalid @enderror" name="source">
+                            <select id="source" class="form-control @error('source') is-invalid @enderror" name="source" required>
                                 <option value="">--Select--</option>
                                 
                                 <option value="Company Website">Company's Website</option>
@@ -353,7 +428,8 @@
         {{ session('success') }}
     </div>
 @endif
-@endsection
+
+
 
 <style>
     .custom-file-input::-webkit-file-upload-button {
@@ -411,7 +487,40 @@
         color: #2a19a4!important;
         font-weight:700!important;
     }
+
+    .navbar-nav li a {
+    color: #fff;
+    font-weight: bold;
+}
+
+    .login-btn{
+        background-color: #1f1759;
+        margin-top: 20px;
+        width: 80%;
+        height: 57px;
+        display: block;
+        margin: 17px auto;
+    }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        var loginBtn = document.querySelector('.navbar .btn-outline-light');
+        loginBtn.addEventListener('click', function() {
+            $('#loginModal').modal('show');
+        });
+    </script>
 <script>
 
     $(document).on('ready',function(){
@@ -436,4 +545,16 @@
         });
     });
 </script>
+
+@if (session('error'))
+    <script>
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: '{{ session('error') }}'
+            });
+        });
+    </script>
+@endif
 
