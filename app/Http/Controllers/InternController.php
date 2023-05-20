@@ -44,12 +44,25 @@ class InternController extends Controller
         return view('dashboard');
     }
 
+    public function supervisorView()
+    {
+        if(session()->has('id')){
+        $this->supervisorController = new SupervisorController();
+        $user_id = session('id');
+        $user = User::where('id',$user_id)->first();
+        $supervisorData = $this->supervisorController->getAllInternsForThisSuperVisor($user_id);
+        return view('supervisor', compact('user', 'supervisorData'));
+        }
+    }
+
 
     public function accept(Request $request, $id)
 {
     $intern = Intern::findOrFail($id);
-    $intern->IsAccepted = $request->input('is_accepted' == true) ? true : false;
+    $intern->IsAccepted = $request->input('is_accepted') == 'true' ? true : false;
     $intern->save();
+    
+    
     
     return response()->json(['success' => 'true']);
 }
@@ -211,15 +224,17 @@ public function secondRegistration()
                 $intern = Intern::where('email', $email)
                     ->where('password', $password)
                     ->first();
-
+                
                 // login for admins from elsewedy
                 if (strpos($email, '@elsewedy-ind.com') !== false) {
+                    
                     $user = User::where('email', $email)->where('password', $password)->first();
                     if ($user) {
                         if ($user->type == 'hr') {
                             session()->put('id', $user->id);
                             return redirect('hr');
                         } elseif ($user->type == 'supervisor') {
+
                             session()->put('id', $user->id);
                             $this->supervisorController = new SupervisorController();
                             $supervisorData = $this->supervisorController->getAllInternsForThisSuperVisor($user->id);

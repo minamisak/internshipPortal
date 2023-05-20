@@ -238,6 +238,7 @@
             data: { is_accepted: isChecked },
             success: function(response) {
                 // handle success
+                console.log(response);
             },
             error: function(xhr) {
                 // handle error

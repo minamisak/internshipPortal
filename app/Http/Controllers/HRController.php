@@ -13,9 +13,7 @@ class HRController extends Controller
     public function assignPage()
     {
         $supervisors = User::where('type','supervisor')->get();
-        $interns = Intern::where('IsAccepted', 1)
-            ->whereNotIn('id', StudentSupervisor::pluck('intern_id'))
-            ->get();
+        $interns = Intern::where('IsAccepted', 1)->get();
 
         return view('hrAssigndashboard',compact('supervisors','interns'));
     }

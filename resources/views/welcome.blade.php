@@ -154,7 +154,6 @@
 
 
 </style>
-
 <script>
     function showSuccessAlert(type) {
   // Get the alert div

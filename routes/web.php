@@ -5,6 +5,8 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\HRController;
 
+use App\Http\Controllers\SupervisorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,10 @@ Route::get('/hr/assign', [HRController::class, 'assignPage'])->name('assignpage'
 Route::get('/assignStudent', [HRController::class, 'assign'])->name('assignStudent');
 Route::post('/supervisors', [HRController::class, 'addNewUserAdmin'])->name('supervisors.store');
 Route::get('/hr/supervisors', [HRController::class, 'getAllSupervisors'])->name('supervisors.all');
+
+Route::post('/reset-password/{userId}', [SupervisorController::class, 'resetPassword'])->name('resetPassword');
+Route::get('/supervisor', [InternController::class, 'supervisorView'])->name('supervisor');
+
 
 // Export Interns
 Route::get('/export/interns', [InternController::class, 'exportInterns'])->name('exportInterns');
