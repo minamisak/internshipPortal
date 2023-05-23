@@ -29,7 +29,7 @@ class InternExport implements FromCollection, WithHeadings, WithMapping
     public function map($intern): array
     {
         // return an array of values to be mapped to columns
-        $fileUrl = public_path('assets/'.$intern->grade_certificate);
+        $fileUrl = url('assets/'.$intern->grade_certificate);
         return [
             $intern->full_name,
             $intern->email,
