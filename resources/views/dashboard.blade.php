@@ -69,6 +69,18 @@
                   Add New HR/Supervisor
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
+                  <span data-feather="shopping-cart"></span>
+                  Upload users
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
+                  <span data-feather="shopping-cart"></span>
+                  Add Prev.
+              </a>
+            </li>
             
             <li class="nav-item">
               <a class="nav-link" href="#">
@@ -142,55 +154,80 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>IsAccepted</th>
                         <th>Full Name</th>
-                        <th>Birthdate</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th>City</th>
-                        <th>Address</th>
+                        
+                        <th>Preferred Industry</th>
+                        <th>Preferred Training Field</th>
+
+                        
                         <th>University</th>
                         <th>Bachelor Degree</th>
                         <th>Graduation Year</th>
+                        <th>Grade</th>
+                        <th>City</th>
+                        <th>Address</th>
                         <th>Major</th>
                         <th>Certificate</th>
-                        <th>Preferred Industry</th>
-                        <th>Preferred Training Field</th>
-                        <th>Grade</th>
+                        
                         <th>Training Info</th>
                         <th>Source</th>
                         <th>Referral Name</th>
-                        <th>IsAccepted</th>
+                        
+                        
+                        <th>Birthdate</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Language 1</th>
+                        <th>Rating</th>
+                        <th>Language 2</th>
+                        <th>Rating</th>
+                        <th>Opinion</th>
+                        
+                        
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($students as $student)
                         <tr>
-                            <td>{{ $student->full_name }}</td>
-                            <td>{{ $student->birthdate }}</td>
-                            <td>{{ $student->mobile }}</td>
-                            <td>{{ $student->email }}</td>
-                            <td>{{ $student->city }}</td>
-                            <td>{{ $student->address }}</td>
-                            <td>{{ $student->university }}</td>
-                            <td>{{ $student->bachelor_degree }}</td>
-                            <td>{{ $student->graduation_year }}</td>
-                            <td>{{ $student->major }}</td>
-
-                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>
-                            <!-- {{ asset('path/to/file.pdf') }}" target="_blank" -->
-                            <td>{{ $student->preferred_industry }}</td>
-                            <td>{{ $student->preferred_training_field }}</td>
-                            <td>{{ $student->grade }}</td>
-                            <td>{{ $student->training_info }}</td>
-                            <td>{{ $student->source }}</td>
-                            <td>{{ $student->referral_name }}</td>
                             <td>
-                                <div class="form-check">
+                                <div class="form-check" style="margin: 1.4em;">
                                 <input class="form-check-input is_accepted_checkbox" type="checkbox"
                                     data-intern-id="{{ $student->id }}" 
                                     @if($student->IsAccepted) checked @endif>
                                 </div>
                             </td>
+                            <td>{{ $student->full_name }}</td>
+                            
+                            <td>{{ $student->preferred_industry }}</td>
+                            <td>{{ $student->preferred_training_field }}</td>
+                            
+                            <td>{{ $student->university }}</td>
+                            <td>{{ $student->bachelor_degree }}</td>
+                            <td>{{ $student->graduation_year }}</td>
+                            <td>{{ $student->grade }}</td>
+                            <td>{{ $student->city }}</td>
+                            <td>{{ $student->address }}</td>
+                            <td>{{ $student->major }}</td>
+
+                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>
+                            <!-- {{ asset('path/to/file.pdf') }}" target="_blank" -->
+                            
+                            <td>{{ $student->training_info }}</td>
+                            <td>{{ $student->source }}</td>
+                            <td>{{ $student->referral_name }}</td>
+                            
+                            
+                            <td>{{ $student->birthdate }}</td>
+                            <td>{{ $student->mobile }}</td>
+                            <td>{{ $student->email }}</td>
+                            <td>{{ $student->language1 }}</td>
+                            <td>{{ $student->language1_rating }}</td>
+                            <td>{{ $student->language2 }}</td>
+                            <td>{{ $student->language2_rating }}</td>
+                            <td>{{ $student->intern_opinion }}</td>
+                            
+                           
                         </tr>
                     @endforeach
                 </tbody>

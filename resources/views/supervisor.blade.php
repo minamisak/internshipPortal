@@ -54,7 +54,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+            <!-- supervisor.feedback -->
+              <a class="nav-link" href="{{ route('supervisor.feedback', ['userId' => session('id')]) }}">
                 <span data-feather="bar-chart-2"></span>
                 Feedback
               </a>
@@ -187,3 +188,4 @@
         });
     </script>
 @endif
+<!-- Training Industry, Training Field,Training's Round, Objectively considered, Was receptive to supervision, Was punctual and dependable, Demonstrated initiative , Tasks were completed in an efficient manner, Quality of completed tasks, Able to learn new skills , Effectively solved problems, Was academically prepared -->

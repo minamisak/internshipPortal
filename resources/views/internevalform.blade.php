@@ -54,7 +54,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('feedback.form', ['internId' => session('intern_id')]) }}">
                 <span data-feather="bar-chart-2"></span>
                 Feedback
               </a>
@@ -93,7 +93,7 @@
       </nav>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="container">
-    <div class="row">
+       <div class="row">
         <div class="col-md-12">
         <div class="container-fluid" style="padding:40px;">
         <div class="row">

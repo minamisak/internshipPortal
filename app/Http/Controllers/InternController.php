@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Intern;
 use App\Models\User;
 use App\Exports\InternExport;
-use App\Http\Models\StudentSupervisor;
+use App\Models\StudentSupervisor;
+use App\Models\StudentProgramFeedback;
 
 
 use Illuminate\Http\Request;
@@ -44,6 +45,22 @@ class InternController extends Controller
         return view('dashboard');
     }
 
+    //check mail existance 
+
+    public function checkMail(Request $request)
+        {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:interns,email',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['message' => 'Email already exists'], 422);
+            }
+
+            return response()->json(['message' => 'Email is available'], 200);
+        }
+
+        
     public function supervisorView()
     {
         if(session()->has('id')){
@@ -196,6 +213,7 @@ public function secondRegistration()
                 // ...
                         $internId = session('intern_id');
                         $intern = Intern::where('id',$internId)->first();
+                        
                         if($intern->IsAccepted == true)
                         {
                             $id = $intern->id;
@@ -258,6 +276,60 @@ public function secondRegistration()
                 }
             }
         }
+
+
+        //intern feedback
+
+        public function showFeedbackForm(Request $request, $internId)
+            {
+                $intern = Intern::findOrFail($internId);
+
+                return view('studentFeedback', compact('intern'));
+            }
+
+        public function storeFeedback(Request $request)
+        {
+            // Validate the form data
+        
+            // Create a new instance of the feedback model
+            $feedback = new StudentProgramFeedback();
+        
+            // Assign the form data to the feedback model
+            $feedback->intern_id = 1;
+            $feedback->supervisor_id = 1;
+            $feedback->intern_full_name = $request->input('full_name');
+            $feedback->mobile_number = $request->input('mobile_number');
+            $feedback->training_industry = $request->input('training_industry');
+            $feedback->supervisor_full_name = $request->input('supervisor_full_name');
+            $feedback->supervisor_title = $request->input('supervisor_title');
+            $feedback->orientation_sufficient = $request->input('orientation_sufficient');
+            $feedback->oversee_work = $request->input('oversee_work');
+            $feedback->supervisor_available = $request->input('supervisor_available');
+            $feedback->challenging_internship = $request->input('challenging_internship');
+            $feedback->practical_skills = $request->input('practical_skills');
+            $feedback->positive_work_environment = $request->input('positive_work_environment');
+            $feedback->build_network = $request->input('build_network');
+            $feedback->recommend_internship = $request->input('recommend_internship');
+            $feedback->consider_working_organization= $request->input('consider_working_organization	');
+            $feedback->comments = $request->input('other_comments');
+        
+            // Save the feedback to the database
+            $feedback->save();
+
+            if($feedback->save()){
+
+                return redirect('login')->with('Sucess ', 'Thanks for your feedback. ');
+
+            }
+            else{
+                return redirect()->back()->with('error', 'Incorrect values');
+
+            }
+        
+            // Redirect or show a success message
+            
+        }
+        
 
 
 }

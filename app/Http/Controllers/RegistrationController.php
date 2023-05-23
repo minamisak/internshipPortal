@@ -68,7 +68,12 @@ class RegistrationController extends Controller
             'preferred_industry' => 'required',
             'training_field' => 'required',
             'grade' => 'required',
-            'grade_certificate' => 'required|file',
+            'grade_certificate' => 'required|file|mimes:pdf,jpeg,jpg',
+            'language1'=>'required',
+            'language1_rating'=>'required',
+            'language2'=>'nullable',
+            'language2_rating'=>'nullable',
+            'intern_opinion'=>'required',
             'trainings' => 'required',
             'source' => 'required',
             'password' => 'required',
@@ -92,6 +97,11 @@ class RegistrationController extends Controller
         $preferred_training_field = $request->input('training_field');
         $grade = $request->input('grade');
         $grade_certificate = $request->file('grade_certificate');
+        $language1 = $request->input('language1');
+        $language1_rating = $request->input('language1_rating');
+        $language2 = $request->input('language2');
+        $language2_rating = $request->input('language2_rating');
+        $intern_opinion = $request->input('intern_opinion');
         $training_info = $request->input('trainings');
         $source = $request->input('source');
         $referral_name = $request->input('referral');
@@ -110,9 +120,15 @@ class RegistrationController extends Controller
         $intern->major = $major;
         $intern->preferred_industry = $preferred_industry;
         $intern->preferred_training_field = $preferred_training_field;
+        $intern->language1= $language1;
+        $intern->language1_rating = $language1_rating;
+        $intern->language2 = $language2;
+        $intern->language2_rating = $language2_rating;
         $intern->grade = $grade;
         $intern->training_info = $training_info;
+        $intern->intern_opinion = $intern_opinion;
         $intern->source = $source;
+
         $intern->referral_name = $referral_name;
         $intern->password = $password;
     

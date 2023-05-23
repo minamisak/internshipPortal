@@ -37,6 +37,11 @@ Route::get('/intern/profile/{id}', [InternController::class, 'showProfile'])->na
 Route::get('/adminDashboard', [InternController::class, 'adminDashboard'])->name('adminDashboard');
 Route::get('/interns/{id}/accept', [InternController::class, 'accept'])->name('interns.accept');
 
+Route::get('/feedback/{internId}', [InternController::class, 'showFeedbackForm'])->name('feedback.form');
+Route::get('/feedbackstore', [InternController::class, 'storeFeedback'])->name('intern.feedbackstore');
+
+
+
 Route::get('/hr', [InternController::class, 'hrDashBoard'])->name('hrdashboard')->middleware('check.session');
 Route::get('/hr/assign', [HRController::class, 'assignPage'])->name('assignpage');
 Route::get('/assignStudent', [HRController::class, 'assign'])->name('assignStudent');
@@ -45,10 +50,13 @@ Route::get('/hr/supervisors', [HRController::class, 'getAllSupervisors'])->name(
 
 Route::post('/reset-password/{userId}', [SupervisorController::class, 'resetPassword'])->name('resetPassword');
 Route::get('/supervisor', [InternController::class, 'supervisorView'])->name('supervisor');
+Route::get('/supervisorfeedback/{userId}', [SupervisorController::class, 'supervisorfeedbackstoreView'])->name('supervisor.feedback');
+Route::post('/supervisorfeedback/store', [SupervisorController::class, 'supervisorfeedbackstore'])->name('feedback.store');
 
 
 // Export Interns
 Route::get('/export/interns', [InternController::class, 'exportInterns'])->name('exportInterns');
+Route::get('/check-email', [InternController::class, 'checkMail'])->name('check.email');
 
 Route::post('/logout', [InternController::class, 'logout'])->name('logout');
 // Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');
