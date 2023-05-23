@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Intern;
 use App\Models\User;
 use App\Exports\InternExport;
+use App\Exports\InternExportAccepted;
 use App\Models\StudentSupervisor;
 use App\Models\StudentProgramFeedback;
 
@@ -101,8 +102,12 @@ return view('internevalform', compact('intern'));
 public function exportInterns()
     {
         return Excel::download(new InternExport, 'Interns.xlsx');
-    }
 
+    }
+public function exportAcceptedInterns()
+{
+    return Excel::download(new InternExportAccepted, 'Accepted Interns.xlsx');
+}
 public function secondRegistration()
 {
     return view('internevalform');

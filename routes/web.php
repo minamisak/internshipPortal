@@ -56,6 +56,7 @@ Route::post('/supervisorfeedback/store', [SupervisorController::class, 'supervis
 
 // Export Interns
 Route::get('/export/interns', [InternController::class, 'exportInterns'])->name('exportInterns');
+Route::get('/export/acceptedinterns', [InternController::class, 'exportAcceptedInterns'])->name('exportAcceptedInterns');
 Route::get('/check-email', [InternController::class, 'checkMail'])->name('check.email');
 
 Route::post('/logout', [InternController::class, 'logout'])->name('logout');

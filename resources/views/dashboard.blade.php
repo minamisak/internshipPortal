@@ -148,7 +148,9 @@
         <div class="col-md-12">
           <div class="flex d-flex" style="margin-bottom: 2%;">
             <h3 class="col-md-9">Student Records</h3>
-            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/interns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Excel</button>
+            <!-- exportAcceptedInterns -->
+            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/interns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Interns</button>
+            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/acceptedinterns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Accepted Interns</button>
           </div>
             <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
             <table class="table table-striped table-bordered">

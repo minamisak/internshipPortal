@@ -7,14 +7,14 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class InternExport implements FromCollection, WithHeadings, WithMapping
+class InternExportAccepted implements FromCollection, WithHeadings, WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Intern::all();
+        return Intern::where('IsAccepted', 1)->get();
     }
 
     public function headings(): array
