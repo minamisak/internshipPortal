@@ -3,9 +3,12 @@
 namespace App\Exports;
 
 use App\Models\Intern;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Illuminate\Support\Facades\Storage;
+
 
 class InternExportAccepted implements FromCollection, WithHeadings, WithMapping
 {
@@ -26,6 +29,7 @@ class InternExportAccepted implements FromCollection, WithHeadings, WithMapping
     public function map($intern): array
     {
         // return an array of values to be mapped to columns
+        $fileUrl = Storage::url($intern->grade_certificate);
         return [
             $intern->full_name,
             $intern->email,
@@ -39,7 +43,7 @@ class InternExportAccepted implements FromCollection, WithHeadings, WithMapping
             $intern->preferred_industry,
             $intern->preferred_training_field,
             $intern->grade,
-            $intern->grade_certificate,
+            $fileUrl,
             $intern->training_info,
             $intern->source,
             $intern->referral_name,
