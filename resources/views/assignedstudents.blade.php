@@ -55,6 +55,14 @@
                 Student Dashboard
               </a>
             </li>
+            
+              <!-- supervisors.all -->
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ route('supervisors.all') }}">
+                    <span data-feather="home"></span>
+                    Mentors Dashboard
+                  </a>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('assignpage') }}">
                 <span data-feather="file"></span>

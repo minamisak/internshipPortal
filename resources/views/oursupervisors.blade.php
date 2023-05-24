@@ -11,8 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     /* set the height of the sidebar to the page height */
     .sidebar {
@@ -51,19 +49,12 @@
             <img src="{{ asset('assets/img/logo-1.png') }}" alt="Logo" height="40" class="d-inline-block align-middle me-2">
           </div>
           <ul class="nav flex-column">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ route('hrdashboard') }}">
-                    <span data-feather="home"></span>
-                    Student Dashboard
-                  </a>
-              </li>
-              <!-- supervisors.all -->
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ route('supervisors.all') }}">
-                    <span data-feather="home"></span>
-                    Mentors Dashboard
-                  </a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('hrdashboard') }}">
+                <span data-feather="home"></span>
+                Student Dashboard
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('assignpage') }}">
                 <span data-feather="file"></span>
@@ -80,18 +71,6 @@
               <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
                   <span data-feather="shopping-cart"></span>
                   Add New HR/Supervisor
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
-                  <span data-feather="shopping-cart"></span>
-                  Upload users
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
-                  <span data-feather="shopping-cart"></span>
-                  Add Prev.
               </a>
             </li>
             
@@ -143,7 +122,7 @@
                                 <option value="Steel" {{ old('preferred_industry') == 'Steel' ? 'selected' : '' }}>Steel</option>
                                 <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
                                 <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions (HR, ICT, SCM & Finance)</option>
-                    </select>
+                            </select>
                 </div>
                   
                   <div class="modal-footer">
@@ -156,110 +135,58 @@
           </div>
         </div>
 
+      <!-- Add SuperVisor -->
       
       <!-- Main content -->
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="container"  style="overflow-x: scroll;">
-    <div class="row" style="padding:20px;">
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top:20px;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
         <div class="card">
-          <div class="card-title">
-          <h3 class="col-md">Student Records</h3>
+          <div class="card-header">
+            <h1 class="text-center">{{ __('Assign Students') }}</h1>
           </div>
-        <div class="card-body" style="overflow-x: auto;">
-          <div class="flex d-flex" style="margin-bottom: 2%;">
+          <div class="card-body">
+          <table class="table table-bordered">
+    <thead>
+        <tr>
             
-            <!-- exportAcceptedInterns -->
-            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/interns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Interns</button>
-            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/acceptedinterns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Accepted Interns</button>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>User Industry</th>
+            
+            <th>Intern Full Name</th>
+            <th>Intern Email</th>
+            <th>Intern Industry</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($data as $row)
+        <tr>
+            
+            <td>{{ $row['user_name'] }}</td>
+            <td>{{ $row['user_email'] }}</td>
+            <td>{{ $row['user_industry'] }}</td>
+            
+            <td>{{ $row['intern_full_name'] }}</td>
+            <td>{{ $row['intern_email'] }}</td>
+            <td>{{ $row['intern_industry'] }}</td>
+            <td>
+                <button class="btn btn-danger remove-intern-btn" data-intern-id="{{ $row['intern_id'] }}">Remove</button>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
           </div>
-            <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>IsAccepted</th>
-                        <th>Full Name</th>
-                        
-                        <th>Preferred Industry</th>
-                        <th>Preferred Training Field</th>
-
-                        
-                        <th>University</th>
-                        <th>Bachelor Degree</th>
-                        <th>Graduation Year</th>
-                        <th>Grade</th>
-                        <th>City</th>
-                        <th>Address</th>
-                        <th>Major</th>
-                        <th>Certificate</th>
-                        
-                        <th>Training Info</th>
-                        <th>Source</th>
-                        <th>Referral Name</th>
-                        
-                        
-                        <th>Birthdate</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th>Language 1</th>
-                        <th>Rating</th>
-                        <th>Language 2</th>
-                        <th>Rating</th>
-                        <th>Opinion</th>
-                        
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($students as $student)
-                        <tr>
-                            <td>
-                                <div class="form-check" style="margin: 1.4em;">
-                                <input class="form-check-input is_accepted_checkbox" type="checkbox"
-                                    data-intern-id="{{ $student->id }}" 
-                                    @if($student->IsAccepted) checked @endif>
-                                </div>
-                            </td>
-                            <td>{{ $student->full_name }}</td>
-                            
-                            <td>{{ $student->preferred_industry }}</td>
-                            <td>{{ $student->preferred_training_field }}</td>
-                            
-                            <td>{{ $student->university }}</td>
-                            <td>{{ $student->bachelor_degree }}</td>
-                            <td>{{ $student->graduation_year }}</td>
-                            <td>{{ $student->grade }}</td>
-                            <td>{{ $student->city }}</td>
-                            <td>{{ $student->address }}</td>
-                            <td>{{ $student->major }}</td>
-
-                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>
-                            <!-- {{ asset('path/to/file.pdf') }}" target="_blank" -->
-                            
-                            <td>{{ $student->training_info }}</td>
-                            <td>{{ $student->source }}</td>
-                            <td>{{ $student->referral_name }}</td>
-                            
-                            
-                            <td>{{ $student->birthdate }}</td>
-                            <td>{{ $student->mobile }}</td>
-                            <td>{{ $student->email }}</td>
-                            <td>{{ $student->language1 }}</td>
-                            <td>{{ $student->language1_rating }}</td>
-                            <td>{{ $student->language2 }}</td>
-                            <td>{{ $student->language2_rating }}</td>
-                            <td>{{ $student->intern_opinion }}</td>
-                            
-                           
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
+</main>
 
-      </main>
     </div>
   </div>
 
@@ -298,7 +225,6 @@
             data: { is_accepted: isChecked },
             success: function(response) {
                 // handle success
-                console.log(response);
             },
             error: function(xhr) {
                 // handle error
@@ -308,16 +234,11 @@
         });
     });
 });
+
 var loginBtn = document.querySelector('.modal-selector');
         loginBtn.addEventListener('click', function() {
             $('#addSupervisorModal').modal('show');
         });
-
-      
-// var loginBtn = document.querySelector('.modal-selector');
-//         loginBtn.addEventListener('click', function() {
-//             $('#addSupervisorModal').modal('show');
-//         });
 
     var typeDropdown = document.getElementById('type');
 
@@ -332,17 +253,30 @@ var loginBtn = document.querySelector('.modal-selector');
         industryGroup.style.display = 'none';
     }
     });
+
+
+    $(document).ready(function() {
+        $('.remove-intern-btn').on('click', function() {
+    var internId = $(this).data('intern-id');
+    
+    $.ajax({
+        url: '/hr/reomve-interns/' + internId,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            // Display success message or perform any other actions
+            location.reload();
+
+        },
+        error: function(xhr, status, error) {
+            // Display error message or perform any other error handling
+            alert('An error occurred while removing the intern.');
+        }
+    });
+});
+
+});
+
+
+
 </script>
-
-
-@if (session('success'))
-    <script>
-        $(document).ready(function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: '{{ session('success') }}'
-            });
-        });
-    </script>
-@endif

@@ -52,12 +52,6 @@ class HRController extends Controller
                     return redirect()->back()->with('success', 'User added successfully!');
                 }
 
-        public function getAllSupervisors(Request $request)
-        {
-            $supervisors = User::where('type','supervisor')->get();
-
-            return view('allSupervisors',compact('supervisors'));
-        }
 
         public function getUsersAndInterns(Request $request)
         {
@@ -117,6 +111,24 @@ public function removeAssignedStudent($id)
     return response()->json(['message' => 'Intern removed successfully']);
 }
 
+public function removeSupervisors($id)
+{
+    // Find the intern
+    // Remove the associated row from the StudentSupervisor table
+    User::where('id', $id)->delete();
+    
+    // Return a response indicating success
+    return response()->json(['message' => 'Intern removed successfully']);
+}
+
+
+
+    public function getAllSupervisors(Request $request)
+    {
+        $supervisors = User::where('type','supervisor')->get();
+
+        return view('allSupervisors',compact('supervisors'));
+    }
 
 
 }
