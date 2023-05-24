@@ -62,7 +62,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('get-users-interns') }}">
+              <a class="nav-link" href="{{ route('assignedview') }}">
                 <span data-feather="file"></span>
                 Assigned Students
               </a>
@@ -103,7 +103,7 @@
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="example@@elswedey-ind.com" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@elswedey-ind.com" required>
                   </div>
                   <div class="form-group">
                       <label for="type">Type</label>
@@ -116,9 +116,12 @@
                   <div class="form-group" id="industry-group" style="display:none;">
                     <label for="industry">Industry:</label>
                     <select name="industry" id="industry" class="form-select">
-                        <option value="technology">Lighting</option>
-                        <option value="finance">Panels</option>
-                        <option value="healthcare">Steel</option>
+                    <option value="" disabled selected>Select an option</option>
+                                <option value="Lighting" {{ old('preferred_industry') == 'Lighting' ? 'selected' : '' }}>Lighting</option>
+                                <option value="Panels" {{ old('preferred_industry') == 'Panels' ? 'selected' : '' }}>Panels</option>
+                                <option value="Steel" {{ old('preferred_industry') == 'Steel' ? 'selected' : '' }}>Steel</option>
+                                <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
+                                <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions (HR, ICT, SCM & Finance)</option>                          
                     </select>
                 </div>
                   
