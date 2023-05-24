@@ -64,6 +64,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('get-users-interns') }}">
+                <span data-feather="file"></span>
+                Assigned Students
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
                   <span data-feather="shopping-cart"></span>
                   Add New HR/Supervisor
@@ -145,9 +151,13 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="container"  style="overflow-x: scroll;">
     <div class="row" style="padding:20px;">
-        <div class="col-md-12">
+        <div class="card">
+          <div class="card-title">
+          <h3 class="col-md">Student Records</h3>
+          </div>
+        <div class="card-body" style="overflow-x: auto;">
           <div class="flex d-flex" style="margin-bottom: 2%;">
-            <h3 class="col-md-9">Student Records</h3>
+            
             <!-- exportAcceptedInterns -->
             <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/interns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Interns</button>
             <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/acceptedinterns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Accepted Interns</button>
@@ -234,6 +244,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
     </div>

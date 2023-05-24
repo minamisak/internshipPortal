@@ -47,6 +47,10 @@ Route::get('/hr/assign', [HRController::class, 'assignPage'])->name('assignpage'
 Route::get('/assignStudent', [HRController::class, 'assign'])->name('assignStudent');
 Route::post('/supervisors', [HRController::class, 'addNewUserAdmin'])->name('supervisors.store');
 Route::get('/hr/supervisors', [HRController::class, 'getAllSupervisors'])->name('supervisors.all');
+//get-users-interns
+Route::get('/hr/getUsersInterns', [HRController::class, 'getUsersAndInterns'])->name('get-users-interns');
+Route::get('/hr/assignedview', [HRController::class, 'showAssignedStudent'])->name('assignedview');
+Route::get('/hr/reomve-interns/{id}', [HRController::class, 'removeAssignedStudent'])->name('interns.remove');
 
 Route::post('/reset-password/{userId}', [SupervisorController::class, 'resetPassword'])->name('resetPassword');
 Route::get('/supervisor', [InternController::class, 'supervisorView'])->name('supervisor');

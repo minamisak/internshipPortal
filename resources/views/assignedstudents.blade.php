@@ -144,37 +144,39 @@
             <h1 class="text-center">{{ __('Assign Students') }}</h1>
           </div>
           <div class="card-body">
-            <form method="GET" action="{{ route('assignStudent') }}" style="line-height:3;">
-              @csrf
-              <div class="form-group">
-                <label for="supervisor">{{ __('Industry') }}</label>
-                <select class="form-control" id="industry-dropdown" name="industry-dropdown">
-                  <option value="">Select Industry</option>
-                  <option value="" disabled selected>Select an option</option>
-                  <option value="Lighting" {{ old('preferred_industry') == 'Lighting' ? 'selected' : '' }}>Lighting</option>
-                  <option value="Panels" {{ old('preferred_industry') == 'Panels' ? 'selected' : '' }}>Panels</option>
-                  <option value="Steel" {{ old('preferred_industry') == 'Steel' ? 'selected' : '' }}>Steel</option>
-                  <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
-                  <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions (HR, ICT, SCM & Finance)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="supervisor">{{ __('Supervisor') }}</label>
-                <select class="form-control" id="supervisors" name="supervisor">
-                  <option value="">Select supervisor</option>
-                </select>
-              </div>
+          <table class="table table-bordered">
+    <thead>
+        <tr>
+            
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>User Industry</th>
+            
+            <th>Intern Full Name</th>
+            <th>Intern Email</th>
+            <th>Intern Industry</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($data as $row)
+        <tr>
+            
+            <td>{{ $row['user_name'] }}</td>
+            <td>{{ $row['user_email'] }}</td>
+            <td>{{ $row['user_industry'] }}</td>
+            
+            <td>{{ $row['intern_full_name'] }}</td>
+            <td>{{ $row['intern_email'] }}</td>
+            <td>{{ $row['intern_industry'] }}</td>
+            <td>
+                <button class="btn btn-danger remove-intern-btn" data-intern-id="{{ $row['intern_id'] }}">Remove</button>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
-              <div class="form-group">
-                <label for="intern">{{ __('Interns') }}</label>
-                <select class="form-control" id="interns" name="intern">
-                  <option value="">Select interns</option>
-                  
-                </select>
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="display: block;margin: 28px auto;width: 119px;">{{ __('Assign') }}</button>
-            </form>
           </div>
         </div>
       </div>
@@ -251,33 +253,25 @@ var loginBtn = document.querySelector('.modal-selector');
 
 
     $(document).ready(function() {
-    $('#industry-dropdown').change(function() {
-        var industry = $(this).val();
-        
-        $.ajax({
-            url: '{{ route("get-users-interns") }}',
-            type: 'GET',
-            data: { industry: industry },
-            success: function(response) {
-                var usersDropdown = $('#supervisors');
-                var internsDropdown = $('#interns');
-                
-                usersDropdown.empty();
-                internsDropdown.empty();
-                
-                $.each(response.data.users, function(index, user) {
-                    usersDropdown.append($('<option>').text(user.name).val(user.id));
-                });
-                
-                $.each(response.data.interns, function(index, intern) {
-                    internsDropdown.append($('<option>').text(intern.full_name).val(intern.id));
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
+        $('.remove-intern-btn').on('click', function() {
+    var internId = $(this).data('intern-id');
+    
+    $.ajax({
+        url: '/hr/reomve-interns/' + internId,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            // Display success message or perform any other actions
+            location.reload();
+
+        },
+        error: function(xhr, status, error) {
+            // Display error message or perform any other error handling
+            alert('An error occurred while removing the intern.');
+        }
     });
+});
+
 });
 
 

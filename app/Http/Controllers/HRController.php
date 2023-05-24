@@ -59,5 +59,64 @@ class HRController extends Controller
             return view('allSupervisors',compact('supervisors'));
         }
 
+        public function getUsersAndInterns(Request $request)
+        {
+            $industry = $request->input('industry');
+            
+            // Retrieve users with the specified industry
+            $users = User::where('industry', $industry)->get();
+            
+            // Retrieve interns with the preferred industry matching users
+            $interns = Intern::where(['preferred_industry'=> $industry, 'IsAccepted'=>1])->get();
+            
+            // Combine users and interns into a single array
+            $results = $users->concat($interns);
+            
+            return response()->json([
+                'data' => [
+                    'users' => $users,
+                    'interns' => $interns
+                ]
+            ]);
+        }
+
+public function getUserAndInternData()
+{
+    $studentSupervisors = StudentSupervisor::with('supervisor', 'intern')->get();
+
+    $data = $studentSupervisors->map(function ($studentSupervisor) {
+        return [
+            'user_id' => $studentSupervisor->supervisor->id,
+            'user_name' => $studentSupervisor->supervisor->name,
+            'user_email' => $studentSupervisor->supervisor->email,
+            'user_industry' => $studentSupervisor->supervisor->industry,
+            'intern_id' => $studentSupervisor->intern->id,
+            'intern_full_name' => $studentSupervisor->intern->full_name,
+            'intern_email' => $studentSupervisor->intern->email,
+            'intern_industry' => $studentSupervisor->intern->preferred_industry,
+        ];
+    });
+
+    return $data;
+}
+
+public function showAssignedStudent()
+{
+    $data = $this->getUserAndInternData();
+
+    return view('assignedstudents', compact('data'));
+}
+
+public function removeAssignedStudent($id)
+{
+    // Find the intern
+    // Remove the associated row from the StudentSupervisor table
+    StudentSupervisor::where('intern_id', $id)->delete();
+    
+    // Return a response indicating success
+    return response()->json(['message' => 'Intern removed successfully']);
+}
+
+
 
 }
