@@ -153,6 +153,7 @@
         <div class="card">
           <div class="card-header">
             <h1 class="text-center">{{ __('Assign Students') }}</h1>
+            <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
           </div>
           <div class="card-body">
           <table class="table table-bordered">
