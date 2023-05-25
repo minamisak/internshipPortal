@@ -125,7 +125,7 @@ public function removeSupervisors($id)
 
     public function getAllSupervisors(Request $request)
     {
-        $supervisors = User::where('type','supervisor')->get();
+        $supervisors = User::all();
 
         return view('allSupervisors',compact('supervisors'));
     }

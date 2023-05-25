@@ -139,7 +139,7 @@
       <div class="container"  style="overflow-x: scroll;">
     <div class="row">
         <div class="col-md-12">
-            <h1>Supervisors</h1>
+            <h1>El Seweedy Users</h1>
             <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -148,6 +148,7 @@
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Industry</th>
+                        <th>Type</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -158,6 +159,7 @@
                             <td>{{ $supervisor->name }}</td>
                             <td>{{ $supervisor->email }}</td>
                             <td>{{ $supervisor->industry }}</td>
+                            <td>{{ $supervisor -> type}}</td>
                             <td>
                                 <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $supervisor->id }}">Remove</button>
                             </td>
