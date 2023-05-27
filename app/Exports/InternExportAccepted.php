@@ -23,7 +23,7 @@ class InternExportAccepted implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         // return an array of headings
-        return ['Name', 'Email','Mobile','City','Address','University','Bachelor Degree','Graduation Year','Major','Preferred Industry','Preferred Training Field','Grade','Certificate','Training Info','Source','Referral','First Language', 'First language rating', 'Second Langaue', 'Second language rating','What makes you best candidate'];
+        return ['Name', 'Preferred Industry','Preferred Training Field','University','Bachelor Degree','Graduation Year','Major','Grade','Certificate','Email','Mobile','City','Address','Training Info','Source','Referral','First Language', 'First language rating', 'Second Langaue', 'Second language rating','What makes you best candidate'];
     }
 
     public function map($intern): array
@@ -32,18 +32,18 @@ class InternExportAccepted implements FromCollection, WithHeadings, WithMapping
         $fileUrl = url('assets/'.$intern->grade_certificate);
         return [
             $intern->full_name,
-            $intern->email,
-            $intern->mobile,
-            $intern->city,
-            $intern->address,
+            $intern->preferred_industry,
+            $intern->preferred_training_field,
             $intern->university,
             $intern->bachelor_degree,
             $intern->graduation_year,
             $intern->major,
-            $intern->preferred_industry,
-            $intern->preferred_training_field,
             $intern->grade,
             $fileUrl,
+            $intern->email,
+            $intern->mobile,
+            $intern->city,
+            $intern->address,
             $intern->training_info,
             $intern->source,
             $intern->referral_name,
