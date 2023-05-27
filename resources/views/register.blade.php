@@ -296,7 +296,7 @@
                                 <option value="Manufacturing">Manufacturing (Engineers only)</option>
                                 <option value="Human Resources">Human Resources</option>
                                 <option value="Finance">Finance</option>
-                                <option value="Supply Chain">Supply Chain</option>
+                                <option value="HSE">HSE</option>
                                 <option value="Information & Communications Technology">Information & Communications Technology</option>
                             </select>
 

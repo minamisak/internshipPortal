@@ -53,13 +53,6 @@
                 Dashboard
               </a>
             </li>
-            <li class="nav-item">
-            <!-- supervisor.feedback -->
-              <a class="nav-link" href="{{ route('supervisor.feedback', ['userId' => session('id')]) }}">
-                <span data-feather="bar-chart-2"></span>
-                Feedback
-              </a>
-            </li>
             
             <li class="nav-item">
             <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#resetPasswordModal">
@@ -89,7 +82,7 @@
               <img src="{{ asset('assets/img/logo-1.png') }}" style="display: block;width: 60%;margin: 0 auto;" height="80" alt="Logo">
             </div>
             <div class="modal-body">
-              <form method="POST" action="{{ route('resetPassword', ['userId' => $user->id]) }}">
+              <form method="POST" action="{{ route('resetPassword', ['userId' => $supervisor->id]) }}">
                   @csrf
 
                   <div class="mb-3">
@@ -133,24 +126,41 @@
 
                               <div class="mb-3">
                                 <label for="supervisor_full_name" class="form-label">Supervisor's Full Name</label>
-                                <input type="text" class="form-control" id="supervisor_full_name" name="supervisor_full_name" required>
+                                <br>
+                                <label for="supervisor_full_name" class="form-label" name="supervisor_full_name">{{$supervisor->name}}</label>
+                                <input type="hidden" class="form-control" id="supervisor_full_name" name="supervisor_full_name" value="{{ $supervisor->name }}" required>
+                                <input type="hidden" class="form-control" id="supervisor_id" name="supervisor_id" value="{{ $supervisor->id }}" required>
                               </div>
+                              
+                            @error('supervisor_full_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                              <div class="mb-3">
 
-                              <div class="mb-3">
-                                <label for="supervisor_title" class="form-label">Supervisor's Title</label>
-                                <input type="text" class="form-control" id="supervisor_title" name="supervisor_title" required>
-                              </div>
-                              
-                              
-                              <div class="mb-3">
-                              
                                 <label for="intern_full_name" class="form-label">Intern's Full Name (English)</label>
-                                <select name="intern_id">
+                                <select class="form-select" id="intern_full_name" name="intern_full_name" required>
                                     @foreach($interns as $intern)
                                         <option value="{{ $intern->id }}">{{ $intern->full_name }}</option>
                                     @endforeach
-                                </select>
-                                <input type="text" class="form-control" id="intern_full_name" name="intern_full_name" required>
+                                   
+
+                                    <input type="hidden" class="form-control" id="intern_id" name="intern_id" value="" required>
+                                    <script>
+                                      $(document).ready(function() {
+                                          var selectedValue = $('#intern_full_name').val();
+                                          $('#intern_id').val(selectedValue);
+                                      });
+                                  </script>
+                                  </select>
+                                
+                                
+                            @error('intern_full_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                               </div>
 
                               <div class="mb-3">
@@ -163,6 +173,12 @@
                                   <option value="Sheet Metal Fabrication">Sheet Metal Fabrication</option>
                                   <option value="Support Functions (HR, ICT, SCM & Finance)">Support Functions (HR, ICT, SCM & Finance)</option>
                                 </select>
+                                
+                            @error('training_industry')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                               </div>
 
                               <div class="mb-3">
@@ -177,6 +193,12 @@
                                   <option value="Finance">Finance</option>
                                   <option value="ICT">ICT</option>
                                 </select>
+                                
+                            @error('training_field')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                               </div>
 
                               <div class="mb-3">
@@ -187,6 +209,12 @@
                                   <option value="Round 2 August 2023">Round 2 August 2023</option>
                                   <option value="Other">Other</option>
                                 </select>
+                                
+                            @error('training_round')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                               </div>
 
                               <div class="mb-3">
@@ -199,6 +227,13 @@
                                   <option value="Disagree">Disagree</option>
                                 </option value="Strongly Disagree">Strongly Disagree</option>
                               </select>
+                              
+                            @error('considered_others')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                              
                               </div>
                               <div class="mb-3">
                               <label for="receptive" class="form-label">Was receptive to supervision?</label>
@@ -214,7 +249,7 @@
 
                             <div class="mb-3">
                               <label for="punctual_dependable" class="form-label">Was punctual and dependable?</label>
-                              <select class="form-select" id="punctual_dependable" name="punctual_dependable" required>
+                              <select class="form-select" id="punctual_and_dependable" name="punctual_and_dependable" required>
                                 <option value="">Select Option</option>
                                 <option value="Strongly Agree">Strongly Agree</option>
                                 <option value="Agree">Agree</option>
@@ -226,7 +261,7 @@
 
                             <div class="mb-3">
                               <label for="demonstrated_initiative" class="form-label">Demonstrated initiative?</label>
-                              <select class="form-select" id="demonstrated_initiative" name="demonstrated_initiative" required>
+                              <select class="form-select" id="demonstrated_completed_tasks" name="demonstrated_completed_tasks" required>
                                 <option value="">Select Option</option>
                                 <option value="Strongly Agree">Strongly Agree</option>
                                 <option value="Agree">Agree</option>
@@ -310,8 +345,8 @@
                               <label for="hire_intern" class="form-label">I would hire this intern as an employee (if an appropriate position were open).</label>
                               <select class="form-select" id="hire_intern" name="hire_intern" required>
                                 <option value="">Select Option</option>
-                                <option value="Agree">Agree</option>
-                                <option value="Disagree">Disagree</option>
+                                <option value="1">Agree</option>
+                                <option value="0">Disagree</option>
                               </select>
                             </div>
 
@@ -324,7 +359,8 @@
             </div>
       </main>
 
-      <style>
+     
+<style>
     .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
@@ -380,4 +416,6 @@
         color: #2a19a4!important;
         font-weight:700!important;
     }
+    </style>
+    
 

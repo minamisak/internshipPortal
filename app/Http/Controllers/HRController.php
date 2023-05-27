@@ -7,6 +7,9 @@ use App\Models\Intern;
 use App\Models\User;
 use App\Models\StudentSupervisor;
 
+use App\Imports\UserImporter;
+use Maatwebsite\Excel\Facades\Excel;
+
 class HRController extends Controller
 {
     //
@@ -129,6 +132,17 @@ public function removeSupervisors($id)
 
         return view('allSupervisors',compact('supervisors'));
     }
+
+
+    public function import(Request $request)
+        {
+            $file = $request->file('file');
+
+            Excel::import(new UserImporter, $file);
+            
+
+            return redirect()->back()->with('success', 'Data imported successfully.');
+        }
 
 
 }

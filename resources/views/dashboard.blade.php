@@ -85,12 +85,6 @@
             <li class="nav-item">
               <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
                   <span data-feather="shopping-cart"></span>
-                  Upload users
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
-                  <span data-feather="shopping-cart"></span>
                   Add Prev.
               </a>
             </li>
@@ -156,8 +150,12 @@
           </div>
         </div>
 
-      
+        <!-- Modal upload users with excel -->
+        <!--  -->
+        
+
       <!-- Main content -->
+      
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="container"  style="overflow-x: scroll;">
     <div class="row" style="padding:20px;">

@@ -53,13 +53,7 @@
                 Dashboard
               </a>
             </li>
-            <li class="nav-item">
-            <!-- supervisor.feedback -->
-              <a class="nav-link" href="{{ route('supervisor.feedback', ['userId' => session('id')]) }}">
-                <span data-feather="bar-chart-2"></span>
-                Feedback
-              </a>
-            </li>
+            
             
             <li class="nav-item">
             <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#resetPasswordModal">
@@ -89,7 +83,7 @@
               <img src="{{ asset('assets/img/logo-1.png') }}" style="display: block;width: 60%;margin: 0 auto;" height="80" alt="Logo">
             </div>
             <div class="modal-body">
-              <form method="POST" action="{{ route('resetPassword', ['userId' => $user->id]) }}">
+              <form method="POST" action="{{ route('resetPassword', ['userId' => session('id')]) }}">
                   @csrf
 
                   <div class="mb-3">
@@ -140,7 +134,7 @@
         <p class="card-text">{{ $intern->preferred_industry }}</p>
       </div>
       <div class="ml-auto">
-        <a href="" class="btn btn-primary float-right">Add Feedback</a>
+        <a href="{{ route('supervisor.feedback', ['userId' => session('id'), 'interid' => $intern->id]) }}" class="btn btn-primary float-right">Add Feedback</a>
       </div>
     </div>
   </div>

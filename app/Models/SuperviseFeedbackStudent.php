@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SuperviseFeedbackStudent extends Model
 {
     use HasFactory;
-    protected $table = 'supervise_feedback_students';
+    protected $table = 'supervise_feedback_student';
     protected $fillable = [
         'supervisor_full_name',
         'supervisor_id',
-        'supervisor_title',
         'intern_full_name',
         'intern_id',
         'training_industry',

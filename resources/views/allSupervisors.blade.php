@@ -141,6 +141,14 @@
         <div class="col-md-12">
             <h1>El Seweedy Users</h1>
             <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
+            <div style="margin:10px 0;">
+    <form action="{{ route('import.data') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" required style="border: 1px solid #ccc; padding: 5px; border-radius: 5px;">
+        <button type="submit" style="background-color: #140d45; color: #fff; padding: 10px; border: none; border-radius: 5px;">Import</button>
+    </form>
+</div>
+
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

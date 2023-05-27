@@ -56,8 +56,11 @@ Route::get('/hr/reomve-supervisor/{id}', [HRController::class, 'removeSupervisor
 
 Route::post('/reset-password/{userId}', [SupervisorController::class, 'resetPassword'])->name('resetPassword');
 Route::get('/supervisor', [InternController::class, 'supervisorView'])->name('supervisor');
-Route::get('/supervisorfeedback/{userId}', [SupervisorController::class, 'supervisorfeedbackstoreView'])->name('supervisor.feedback');
+Route::get('/supervisorfeedback/{userId}/{interid}', [SupervisorController::class, 'supervisorfeedbackstoreView'])->name('supervisor.feedback');
 Route::post('/supervisorfeedback/store', [SupervisorController::class, 'supervisorfeedbackstore'])->name('feedback.store');
+
+//Import users
+Route::post('/import', [HRController::class, 'import'])->name('import.data');
 
 
 // Export Interns
