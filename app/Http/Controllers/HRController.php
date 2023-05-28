@@ -114,6 +114,18 @@ public function removeAssignedStudent($id)
     return response()->json(['message' => 'Intern removed successfully']);
 }
 
+
+//remove student from system
+
+public function removeStudent($id)
+{
+    // Find the intern
+    // Remove the associated row from the StudentSupervisor table
+    Intern::where('id', $id)->delete();
+    
+    // Return a response indicating success
+    return response()->json(['message' => 'Intern removed successfully']);
+}
 public function removeSupervisors($id)
 {
     // Find the intern
@@ -121,7 +133,7 @@ public function removeSupervisors($id)
     User::where('id', $id)->delete();
     
     // Return a response indicating success
-    return response()->json(['message' => 'Intern removed successfully']);
+    return redirect()->back()->with('success', 'Student Removed successfully.');
 }
 
 

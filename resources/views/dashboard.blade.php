@@ -205,6 +205,7 @@
                         <th>Opinion</th>
                         
                         
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -246,7 +247,9 @@
                             <td>{{ $student->language2 }}</td>
                             <td>{{ $student->language2_rating }}</td>
                             <td>{{ $student->intern_opinion }}</td>
-                            
+                            <td>
+                                <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $student->id }}">Remove</button>
+                            </td>
                            
                         </tr>
                     @endforeach
@@ -330,6 +333,28 @@ var loginBtn = document.querySelector('.modal-selector');
         industryGroup.style.display = 'none';
     }
     });
+
+    $(document).ready(function() {
+        $('.remove-intern-btn').on('click', function() {
+    var supervisorId = $(this).data('supervisor-id');
+    
+    $.ajax({
+        url: '/hr/reomve-intern/' + supervisorId,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            // Display success message or perform any other actions
+            location.reload();
+
+        },
+        error: function(xhr, status, error) {
+            // Display error message or perform any other error handling
+            alert('An error occurred while removing the intern.');
+        }
+    });
+});
+
+});
 </script>
 
 
