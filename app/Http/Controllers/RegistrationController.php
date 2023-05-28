@@ -37,7 +37,7 @@ class RegistrationController extends Controller
         $mail->Port = 587; // set the SMTP port
         
         // configure the message
-        $mail->setFrom('your-email@gmail.com', 'Internships Elsewedy-ind');
+        $mail->setFrom('internships.elsewedy.ind@gmail.com', 'Internships Elsewedy-ind');
         $mail->addAddress($intern, $name);
         $mail->Subject = 'Welcome To ElSewedy Internship program';
         $mail->Body = 'We have received your data and will contact you soon for more information';
