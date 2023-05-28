@@ -88,12 +88,15 @@ class InternController extends Controller
 public function showProfile($id)
 {
     // $intern = Intern::findOrFail($id);
+    
     $intern = DB::table('interns')
   ->join('student_supervisor', 'interns.id', '=', 'student_supervisor.intern_id')
   ->join('users', 'student_supervisor.supervisor_id', '=', 'users.id')
   ->select('interns.IsAccepted as IsAccepted','interns.full_name','interns.preferred_industry', 'interns.email', 'users.name', 'users.email')
   ->where('interns.id', $id)
   ->first();
+  // if null return view without assignment
+  
 
 return view('internevalform', compact('intern'));
 }
@@ -213,6 +216,7 @@ public function secondRegistration()
 
     public function processLogin(Request $request)
         {
+
             if (session()->has('intern_id')) {
                 // Intern ID is present in the session
                 // ...

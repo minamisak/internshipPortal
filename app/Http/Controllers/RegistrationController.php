@@ -86,6 +86,7 @@ class RegistrationController extends Controller
             'intern_opinion'=>'required',
             'trainings' => 'required',
             'source' => 'required',
+            'other' => '',
             'password' => 'required',
         ]);
     
@@ -113,6 +114,7 @@ class RegistrationController extends Controller
         $intern_opinion = $request->input('intern_opinion');
         $training_info = $request->input('trainings');
         $source = $request->input('source');
+        $other = $request->input('other');
         $referral_name = $request->input('referral');
         $password = $request->input('password');
         $intern = new Intern();
@@ -135,6 +137,7 @@ class RegistrationController extends Controller
         $intern->training_info = $training_info;
         $intern->intern_opinion = $intern_opinion;
         $intern->source = $source;
+        $intern->other = $other;
 
         $intern->referral_name = $referral_name;
         $intern->password = $password;

@@ -73,7 +73,7 @@ Route::get('/export/interns', [InternController::class, 'exportInterns'])->name(
 Route::get('/export/acceptedinterns', [InternController::class, 'exportAcceptedInterns'])->name('exportAcceptedInterns');
 Route::get('/check-email', [InternController::class, 'checkMail'])->name('check.email');
 
-Route::post('/logout', [InternController::class, 'logout'])->name('logout');
+Route::match(['get', 'post'],'/logout', [InternController::class, 'logout'])->name('logout');
 // Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');
 Route::match(['get', 'post'], '/login', [InternController::class, 'processLogin'])->name('processLogin');
 
