@@ -16,33 +16,43 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     //
-    public function sendEmail($intern,$name)
+    
+    // $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
+    // $mail->Password = 'PleaseLetMeIn'; // your SMTP password
+    public function sendEmail($intern, $name)
     {
+        
         $mail = new PHPMailer(true); // create a PHPMailer instance
-
+        
         // configure the SMTP server settings
         $mail->isSMTP(); // use SMTP protocol
-        $mail->Host = 'smtp.gmail.com'; // set the SMTP server host
+        $mail->Host = 'smtp.gmail.com'; // set Gmail's SMTP server host
         $mail->SMTPAuth = true; // enable SMTP authentication
-        $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
-        $mail->Password = 'PleaseLetMeIn'; // your SMTP password
+        
+         $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
+         $mail->Password = 'yinxnjnzbshyyuvb'; // your SMTP password
+        // $mail->Username = 'your-email@gmail.com'; // your Gmail email address
+        // $mail->Password = 'your-password'; // your Gmail password
         $mail->SMTPSecure = 'tls'; // enable encryption, 'ssl' also accepted
         $mail->Port = 587; // set the SMTP port
-
+        
         // configure the message
-        $mail->setFrom('internships.elsewedy.ind@gmail.com', 'Internships Elsewedy-ind');
+        $mail->setFrom('your-email@gmail.com', 'Internships Elsewedy-ind');
         $mail->addAddress($intern, $name);
         $mail->Subject = 'Welcome To ElSewedy Internship program';
-        $mail->Body = 'We get your data and will contact you soon for more information';
-
+        $mail->Body = 'We have received your data and will contact you soon for more information';
+        
         // send the message
         try {
-            $mail->send();
+            
             return redirect()->back()->with('success', 'Email sent successfully');
+            
         } catch (Exception $e) {
+            
             return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
         }
     }
+    
     public function index()
     {
         $intern = new Intern();
@@ -150,11 +160,12 @@ class RegistrationController extends Controller
             // Mail::to($intern->email)->send(new RegistrationMail($intern));
             
         $this->sendEmail($intern->email,$intern->full_name);
-
+            
 
             return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
         } else {
             return redirect()->back()->with('error', 'Registration failed. Please try again.');
+            
         }
     }
     
