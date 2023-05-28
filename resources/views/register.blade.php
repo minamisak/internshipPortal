@@ -124,7 +124,7 @@
                             <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number') }}</label>
 
                             <div class="col-md-6">
-                            <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" autocomplete="mobile" pattern="01[0-9]{9}" required>
+                            <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" autocomplete="mobile" placeholder="01XXXXXXXXX" pattern="01[0-9]{9}" maxlength="11" required>
 
                                 @error('mobile')
                                     <span class="invalid-feedback" role="alert">
@@ -187,70 +187,69 @@
     <div class="col-md-6">
         <select id="university" class="form-control @error('university') is-invalid @enderror" name="university" autocomplete="university">
             <option value="">Select University</option>
-            <option value="Ain Shams University">Ain Shams University</option>
+            <option value="Ahram Canadian University">Ahram Canadian University</option>
             <option value="Al-Azhar University">Al-Azhar University</option>
+            <option value="AlAlamein International University">AlAlamein International University</option>
             <option value="Alexandria University">Alexandria University</option>
-            <option value="Assiut University">Assiut University</option>
+            <option value="Arab Academy for Science, Technology and Maritime Transport">Arab Academy for Science, Technology and Maritime Transport</option>
+            <option value="Arab Open University">Arab Open University</option>
             <option value="Aswan University">Aswan University</option>
+            <option value="Assiut University">Assiut University</option>
             <option value="Banha University">Banha University</option>
+            <option value="Badr University In Assiut">Badr University In Assiut</option>
+            <option value="Badr University In Cairo">Badr University In Cairo</option>
             <option value="Beni-Suef University">Beni-Suef University</option>
+            <option value="British University in Egypt">British University in Egypt</option>
             <option value="Cairo University">Cairo University</option>
-            <option value="Damanhour University">Damanhour University</option>
+            <option value="Canadian International College">Canadian International College</option>
             <option value="Damietta University">Damietta University</option>
+            <option value="Damanhour University">Damanhour University</option>
+            <option value="Delta University for Science and Technology">Delta University for Science and Technology</option>
             <option value="Egypt-Japan University of Science and Technology">Egypt-Japan University of Science and Technology</option>
+            <option value="Egyptian Chinese University">Egyptian Chinese University</option>
+            <option value="Egyptian e-Learning University">Egyptian e-Learning University</option>
+            <option value="Egyptian Russian University">Egyptian Russian University</option>
+            <option value="Egypt University Of Informatics">Egypt University Of Informatics</option>
+            <option value="El Shorouk Academy">El Shorouk Academy</option>
+            <option value="European Universities in Egypt (University of London, University of Central Lancashire)">European Universities in Egypt (University of London, University of Central Lancashire)</option>
             <option value="Fayoum University">Fayoum University</option>
+            <option value="French University of Egypt">French University of Egypt</option>
+            <option value="Future University in Egypt">Future University in Egypt</option>
+            <option value="Galala University">Galala University</option>
+            <option value="German International University">German International University</option>
+            <option value="German University in Cairo">German University in Cairo</option>
+            <option value="Heliopolis University">Heliopolis University</option>
             <option value="Helwan University">Helwan University</option>
+            <option value="Hertfordshire University In Egypt">Hertfordshire University In Egypt</option>
+            <option value="King Salman International University">King Salman International University</option>
             <option value="Kafrelsheikh University">Kafrelsheikh University</option>
             <option value="Mansoura University">Mansoura University</option>
             <option value="Military Technical College">Military Technical College</option>
             <option value="Minia University">Minia University</option>
             <option value="Minufiya University">Minufiya University</option>
-            <option value="New Valley University">New Valley University</option>
-            <option value="Port Said University">Port Said University</option>
-            <option value="Sadat Academy for Management Sciences">Sadat Academy for Management Sciences</option>
-            <option value="Sohag University">Sohag University</option>
-            <option value="South Valley University">South Valley University</option>
-            <option value="Suez Canal University">Suez Canal University</option>
-            <option value="Suez University">Suez University</option>
-            <option value="Tanta University">Tanta University</option>
-            <option value="University of Sadat City">University of Sadat City</option>
-            <option value="Zagazig University">Zagazig University</option>
-            <option value="Zewail City of Science, Technology and Innovation">Zewail City of Science, Technology and Innovation</option>
-            <option value="King Salman International University">King Salman International University</option>
-            <option value="Galala University">Galala University</option>
-            <option value="AlAlamein International University">AlAlamein International University</option>
-            <option value="New Mansoura University">New Mansoura University</option>
-            <option value="Egypt University Of Informatics">Egypt University Of Informatics</option>
-            <option value="Nile University">Nile University</option>
-            <option value="German International University">German International University</option>
-            <option value="German University in Cairo">German University in Cairo</option>
-            <option value="Ahram Canadian University">Ahram Canadian University</option>
-            <option value="The American University in Cairo">The American University in Cairo</option>
-            <option value="Arab Academy for Science, Technology and Maritime Transport">Arab Academy for Science, Technology and Maritime Transport</option>
-            <option value="Arab Open University">Arab Open University</option>
-            <option value="British University in Egypt">British University in Egypt</option>
-            <option value="Canadian International College">Canadian International College</option>
-            <option value="Delta University for Science and Technology">Delta University for Science and Technology</option>
-            <option value="Egyptian Chinese University">Egyptian Chinese University</option>
-            <option value="Egyptian e-Learning University">Egyptian e-Learning University</option>
-            <option value="Egyptian Russian University">Egyptian Russian University</option>
-            <option value="European Universities in Egypt (University of London, University of Central Lancashire)">European Universities in Egypt (University of London, University of Central Lancashire)</option>
-            <option value="Future University in Egypt">Future University in Egypt</option>
-            <option value="Heliopolis University">Heliopolis University</option>
             <option value="Misr International University">Misr International University</option>
             <option value="Misr University for Science and Technology">Misr University for Science and Technology</option>
-            <option value="Hertfordshire University In Egypt">Hertfordshire University In Egypt</option>
             <option value="Modern Sciences and Arts University">Modern Sciences and Arts University</option>
             <option value="MTI University">MTI University</option>
             <option value="Nahda University">Nahda University</option>
+            <option value="Nile University">Nile University</option>
+            <option value="New Giza University">New Giza University</option>
+            <option value="New Mansoura University">New Mansoura University</option>
+            <option value="New Valley University">New Valley University</option>
             <option value="October 6 University">October 6 University</option>
             <option value="Pharos University In Alexandria">Pharos University In Alexandria</option>
+            <option value="Port Said University">Port Said University</option>
+            <option value="Sadat Academy for Management Sciences">Sadat Academy for Management Sciences</option>
             <option value="Sinai University">Sinai University</option>
-            <option value="French University of Egypt">French University of Egypt</option>
-            <option value="Badr University In Cairo">Badr University In Cairo</option>
-            <option value="Badr University In Assiut">Badr University In Assiut</option>
-            <option value="New Giza University">New Giza University</option>
-            <option value="El Shorouk Academy">El Shorouk Academy</option>
+            <option value="South Valley University">South Valley University</option>
+            <option value="Suez Canal University">Suez Canal University</option>
+            <option value="Suez University">Suez University</option>
+            <option value="Sohag University">Sohag University</option>
+            <option value="Tanta University">Tanta University</option>
+            <option value="The American University in Cairo">The American University in Cairo</option>
+            <option value="University of Sadat City">University of Sadat City</option>
+            <option value="Zagazig University">Zagazig University</option>
+            <option value="Zewail City of Science, Technology and Innovation">Zewail City of Science, Technology and Innovation</option>
         </select>
         @error('university')
             <span class="invalid-feedback" role="alert">
