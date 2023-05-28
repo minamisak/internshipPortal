@@ -59,12 +59,6 @@
                 Feedback
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Print Certificate
-              </a>
-            </li>
             
             <li class="nav-item">
               <a class="nav-link" href="#">
@@ -113,7 +107,7 @@
                 <p>Training Field: {{ $intern->preferred_industry }}</p>
                 <p>Supervisor's Full Name: {{ $intern->name }}</p>
                 
-                <button class="btn btn-primary disabled float-right">Print Certificate</button>
+                <button class="btn btn-primary float-right" onclick="window.location.href='{{ route('generate.pdf', ['userId' => session('intern_id')]) }}'">Print Certificate</button>
             </div>
         </div>
         @else

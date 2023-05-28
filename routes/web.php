@@ -5,6 +5,8 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\HRController;
 
+use App\Http\Controllers\PdfController;
+
 use App\Http\Controllers\SupervisorController;
 
 
@@ -71,6 +73,11 @@ Route::get('/check-email', [InternController::class, 'checkMail'])->name('check.
 Route::post('/logout', [InternController::class, 'logout'])->name('logout');
 // Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');
 Route::match(['get', 'post'], '/login', [InternController::class, 'processLogin'])->name('processLogin');
+
+// generate certificate
+
+Route::get('/generatepdf/{userId}', [PdfController::class, 'generatePdf'])->name('generate.pdf');
+
 
 
 
