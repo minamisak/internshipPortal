@@ -37,21 +37,21 @@ class RegistrationController extends Controller
         $mail->Port = 587; // set the SMTP port
         
         // configure the message
-        $mail->setFrom('', 'Internships Elsewedy-ind');
+        $mail->setFrom('your-email@gmail.com', 'Internships Elsewedy-ind');
         $mail->addAddress($intern, $name);
         $mail->Subject = 'Welcome To ElSewedy Internship program';
         $mail->Body = 'We have received your data and will contact you soon for more information';
         
         // send the message
         try {
-            print("email sent");
-            // return redirect()->back()->with('success', 'Email sent successfully');
+            
+             return redirect()->back()->with('success', 'Email sent successfully');
             
         } catch (Exception $e) {
-            print("not sent");
-            print($mail->ErrorInfo);
+            // print("not sent");
+            // print($mail->ErrorInfo);
             
-            // return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
+             return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
         }
     }
     
@@ -81,9 +81,7 @@ class RegistrationController extends Controller
             'training_field' => 'required',
             'grade' => 'required',
             'grade_certificate' => 'required|file|mimes:pdf,jpeg,jpg',
-            'language1'=>'required',
             'language1_rating'=>'required',
-            'language2'=>'nullable',
             'language2_rating'=>'nullable',
             'intern_opinion'=>'required',
             'trainings' => 'required',
@@ -92,6 +90,7 @@ class RegistrationController extends Controller
         ]);
     
         if ($validator->fails()) {
+            
             return redirect()->back()->withErrors($validator)->withInput();
         }
     
@@ -109,9 +108,7 @@ class RegistrationController extends Controller
         $preferred_training_field = $request->input('training_field');
         $grade = $request->input('grade');
         $grade_certificate = $request->file('grade_certificate');
-        $language1 = $request->input('language1');
         $language1_rating = $request->input('language1_rating');
-        $language2 = $request->input('language2');
         $language2_rating = $request->input('language2_rating');
         $intern_opinion = $request->input('intern_opinion');
         $training_info = $request->input('trainings');
@@ -131,10 +128,8 @@ class RegistrationController extends Controller
         $intern->graduation_year = $graduation_year;
         $intern->major = $major;
         $intern->preferred_industry = $preferred_industry;
-        $intern->preferred_training_field = $preferred_training_field;
-        $intern->language1= $language1;
+        $intern->preferred_training_field = $preferred_training_field;        
         $intern->language1_rating = $language1_rating;
-        $intern->language2 = $language2;
         $intern->language2_rating = $language2_rating;
         $intern->grade = $grade;
         $intern->training_info = $training_info;
@@ -162,11 +157,11 @@ class RegistrationController extends Controller
             // Mail::to($intern->email)->send(new RegistrationMail($intern));
             
         $this->sendEmail($intern->email,$intern->full_name);
-            print("mail sent");
+            
 
-            // return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
+             return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
         } else {
-            // return redirect()->back()->with('error', 'Registration failed. Please try again.');
+             return redirect()->back()->with('error', 'Registration failed. Please try again.');
             
         }
     }
