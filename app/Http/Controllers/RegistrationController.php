@@ -44,12 +44,14 @@ class RegistrationController extends Controller
         
         // send the message
         try {
-            
-            return redirect()->back()->with('success', 'Email sent successfully');
+            print("email sent");
+            // return redirect()->back()->with('success', 'Email sent successfully');
             
         } catch (Exception $e) {
+            print("not sent");
+            print($mail->ErrorInfo);
             
-            return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
+            // return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
         }
     }
     
@@ -155,16 +157,16 @@ class RegistrationController extends Controller
             session()->put('intern_id', $intern->id);
             // Send registration email to the registered email address
             
-            
+            //
             // Mail::to($request->input('email'))->send(new RegistrationMail($intern));
             // Mail::to($intern->email)->send(new RegistrationMail($intern));
             
         $this->sendEmail($intern->email,$intern->full_name);
-            
+            print("mail sent");
 
-            return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
+            // return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
         } else {
-            return redirect()->back()->with('error', 'Registration failed. Please try again.');
+            // return redirect()->back()->with('error', 'Registration failed. Please try again.');
             
         }
     }
