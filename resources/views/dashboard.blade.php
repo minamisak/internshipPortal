@@ -228,7 +228,7 @@
                             <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>                            
                             <td>{{ $student->training_info }}</td>
                             <td>{{ $student->source }}</td>
-                            <td>{{ $student->source }}</td>
+                            <td>{{ $student->other }}</td>
                             <td>{{ $student->referral_name }}</td>
                             <td>{{ $student->solidwork }}</td>
                             <td>{{ $student->autocade }}</td>
