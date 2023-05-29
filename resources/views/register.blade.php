@@ -150,22 +150,48 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="city" class="form-control select2 @error('city') is-invalid @enderror" name="city">
-                                    <option value="" selected disabled>Select City</option>
-                                    <option value="Cairo">Cairo</option>
-                                    <option value="Giza">Giza</option>
-                                    <option value="Sharkia">Sharkia</option>
-                                </select>
-                                @error('city')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
+    <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+    <div class="col-md-6">
+        <select id="city" class="form-control select2 @error('city') is-invalid @enderror" name="city">
+            <option value="" selected disabled>Select City</option>
+            <option value="Cairo">Cairo</option>
+            <option value="Alexandria">Alexandria</option>
+            <option value="Giza">Giza</option>
+            <option value="Sharkia">Sharkia</option>
+            <option value="Luxor">Luxor</option>
+            <option value="Aswan">Aswan</option>
+            <option value="Port Said">Port Said</option>
+            <option value="Suez">Suez</option>
+            <option value="Mansoura">Mansoura</option>
+            <option value="Tanta">Tanta</option>
+            <option value="Damietta">Damietta</option>
+            <option value="Ismailia">Ismailia</option>
+            <option value="Fayoum">Fayoum</option>
+            <option value="Zagazig">Zagazig</option>
+            <option value="Asyut">Asyut</option>
+            <option value="Beni Suef">Beni Suef</option>
+            <option value="Sohag">Sohag</option>
+            <option value="Minya">Minya</option>
+            <option value="Qena">Qena</option>
+            <option value="Banha">Banha</option>
+            <option value="Damanhur">Damanhur</option>
+            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+            <option value="Mallawi">Mallawi</option>
+            <option value="Marsa Matruh">Marsa Matruh</option>
+            <option value="El Arish">El Arish</option>
+            <option value="Assiut">Assiut</option>
+            <option value="Hurghada">Hurghada</option>
+            <option value="El-Mahalla El-Kubra">El-Mahalla El-Kubra</option>
+            <option value="Bani Mazar">Bani Mazar</option>
+            <option value="Port Fuad">Port Fuad</option>
+        </select>
+        @error('city')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
 
 
                     <div class="form-group row">
@@ -260,25 +286,38 @@
 </div>
 
 
-                    <div class="form-group row">
-                        <label for="bachelor_degree" class="col-md-4 col-form-label text-md-right">{{ __('Bachelor Degree') }}</label>
+<div class="form-group row">
+    <label for="bachelor_degree" class="col-md-4 col-form-label text-md-right">{{ __('Bachelor Degree') }}</label>
+    <div class="col-md-6">
+        <select id="bachelor_degree" class="form-control select2 @error('bachelor_degree') is-invalid @enderror" name="bachelor_degree">
+            <option value="" selected disabled>Select Bachelor Degree</option>
+            <option value="Bachelor of Architecture (B.Arch.)">Bachelor of Architecture (B.Arch.)</option>
+            <option value="Bachelor of Engineering (B.E./B.Eng.)">Bachelor of Engineering (B.E./B.Eng.)</option>
+            <option value="Bachelor of Science in Agricultural Engineering (B.S.A.E.)">Bachelor of Science in Agricultural Engineering (B.S.A.E.)</option>
+            <option value="Bachelor of Science in Chemical Engineering (B.S.Ch.E.)">Bachelor of Science in Chemical Engineering (B.S.Ch.E.)</option>
+            <option value="Bachelor of Arts (B.A.)">Bachelor of Arts (B.A.)</option>
+            <option value="Bachelor of Biomedical Engineering (B.B.m.E.)">Bachelor of Biomedical Engineering (B.B.m.E.)</option>
+            <option value="Bachelor of Business Administration (B.B.A.)">Bachelor of Business Administration (B.B.A.)</option>
+            <option value="Bachelor of Commerce (B.C.)">Bachelor of Commerce (B.C.)</option>
+            <option value="Bachelor of Computer Science (B.C.S.)">Bachelor of Computer Science (B.C.S.)</option>
+            <option value="Bachelor of Electrical Engineering (B.E.E.)">Bachelor of Electrical Engineering (B.E.E.)</option>
+            <option value="Bachelor of Fine Arts (B.F.A.)">Bachelor of Fine Arts (B.F.A.)</option>
+            <option value="Bachelor of Laws (LL.B.)">Bachelor of Laws (LL.B.)</option>
+            <option value="Bachelor of Literature (B.Lit.)">Bachelor of Literature (B.Lit.)</option>
+            <option value="Bachelor of Pharmacy (B.Pharm.)">Bachelor of Pharmacy (B.Pharm.)</option>
+            <option value="Bachelor of Philosophy (B.Phil.)">Bachelor of Philosophy (B.Phil.)</option>
+            <option value="Bachelor of Science in Biomedical Engineering (B.S.B.E./B.S.B.M.E.)">Bachelor of Science in Biomedical Engineering (B.S.B.E./B.S.B.M.E.)</option>
+            <option value="Bachelor of Science (B.S.)">Bachelor of Science (B.S.)</option>
+            <option value="Other">Other</option>
+        </select>
+        @error('bachelor_degree')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
 
-                        <div class="col-md-6">
-                            <select id="bachelor_degree" class="form-control select2 @error('bachelor_degree') is-invalid @enderror" name="bachelor_degree">
-                                <option value="" selected disabled>Select Bachelor Degree</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="Commerce">Commerce</option>
-                                <option value="Business Administration">Business Administration</option>
-                                <option value="other">Other</option>
-                            </select>
-
-                            @error('bachelor_degree')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
 
                     <div class="form-group row">
                         <label for="major" class="col-md-4 col-form-label text-md-right">{{ __('Major') }}</label>
@@ -364,6 +403,66 @@
     </div>
 </div>
 
+
+<div class="form-group row" id="solidworks_rating" style="display:none;">
+    <label for="solidworks_rating" class="col-md-4 col-form-label text-md-right">How would you rate yourself in SOLIDWORKS?</label>
+    <div class="col-md-6">
+        <select id="solidworks_rating" class="form-control @error('solidworks_rating') is-invalid @enderror" name="solidworks_rating">
+            <option value="">-- Select Rating --</option>
+            <option value="5"{{ old('solidworks_rating') == '5' ? ' selected' : '' }}>5</option>
+            <option value="4"{{ old('solidworks_rating') == '4' ? ' selected' : '' }}>4</option>
+            <option value="3"{{ old('solidworks_rating') == '3' ? ' selected' : '' }}>3</option>
+            <option value="2"{{ old('solidworks_rating') == '2' ? ' selected' : '' }}>2</option>
+            <option value="1"{{ old('solidworks_rating') == '1' ? ' selected' : '' }}>1</option>
+        </select>
+        @error('solidworks_rating')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+
+<div class="form-group row" id="autocad_rating" style="display:none;">
+    <label for="autocad_rating" class="col-md-4 col-form-label text-md-right">How would you rate yourself in AutoCAD?</label>
+    <div class="col-md-6">
+        <select id="autocad_rating" class="form-control @error('autocad_rating') is-invalid @enderror" name="autocad_rating">
+            <option value="">-- Select Rating --</option>
+            <option value="5"{{ old('autocad_rating') == '5' ? ' selected' : '' }}>5</option>
+            <option value="4"{{ old('autocad_rating') == '4' ? ' selected' : '' }}>4</option>
+            <option value="3"{{ old('autocad_rating') == '3' ? ' selected' : '' }}>3</option>
+            <option value="2"{{ old('autocad_rating') == '2' ? ' selected' : '' }}>2</option>
+            <option value="1"{{ old('autocad_rating') == '1' ? ' selected' : '' }}>1</option>
+        </select>
+        @error('autocad_rating')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+<script>
+    // Get references to the elements
+    var preferredIndustrySelect = document.getElementById('preferred_industry');
+    var solidworks_rating = document.getElementById('solidworks_rating');
+    var autocad_rating = document.getElementById('autocad_rating');
+
+    // Add event listener for the change event
+    preferredIndustrySelect.addEventListener('change', function() {
+        var selectedValue = preferredIndustrySelect.value;
+
+        // Check if the selected industry is eligible for rating fields
+        if (selectedValue === 'Lighting' || selectedValue === 'Sheet Metal Fabrication' || selectedValue === 'Steel' || selectedValue === 'Panels') {
+            solidworks_rating.style.display = 'flex'; // Show the rating fields
+            autocad_rating.style.display = 'flex'; // Show the rating fields
+        } else {
+            solidworks_rating.style.display = 'none'; // Hide the rating fields
+            autocad_rating.style.display = 'none'; // Hide the rating fields
+
+        }
+    });
+</script>
 <script>
     function updateTrainingFields() {
         var preferredIndustry = document.getElementById("preferred_industry").value;
@@ -374,7 +473,7 @@
 
         if (preferredIndustry === "Lighting" || preferredIndustry === "Sheet Metal Fabrication" || preferredIndustry === "Steel" || preferredIndustry === "Panels") {
             var trainingFields = ["Technical Office (Engineers only)", "Commercial (Engineers only)", "Manufacturing (Engineers only)"];
-
+            
             // Add new options
             trainingFields.forEach(function(trainingField) {
                 var option = document.createElement("option");

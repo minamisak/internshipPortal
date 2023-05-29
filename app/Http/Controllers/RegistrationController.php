@@ -83,6 +83,8 @@ class RegistrationController extends Controller
             'grade_certificate' => 'required|file|mimes:pdf,jpeg,jpg',
             'language1_rating'=>'required',
             'language2_rating'=>'nullable',
+            'solidworks_rating'=>'nullable',
+            'autocad_rating'=>'nullable',
             'intern_opinion'=>'required',
             'trainings' => 'required',
             'source' => 'required',
@@ -114,8 +116,13 @@ class RegistrationController extends Controller
         $intern_opinion = $request->input('intern_opinion');
         $training_info = $request->input('trainings');
         $source = $request->input('source');
-        $other = $request->input('other');
+        
+        // 'autocad_rating'=>'nullable',
+        
+        $autocad_rating = $request->input('autocad_rating');
+        $solidworks_rating = $request->input('solidworks_rating');
         $referral_name = $request->input('referral');
+        $other = $request->input('other');
         $password = $request->input('password');
         $intern = new Intern();
     
@@ -138,6 +145,11 @@ class RegistrationController extends Controller
         $intern->intern_opinion = $intern_opinion;
         $intern->source = $source;
         $intern->other = $other;
+        
+        // $autocad_rating = $request->input('autocad_rating');
+        // $solidworks_rating = $request->input('solidworks_rating');
+        $intern->solidwork = $solidworks_rating;
+        $intern->autocade = $autocad_rating;
 
         $intern->referral_name = $referral_name;
         $intern->password = $password;
