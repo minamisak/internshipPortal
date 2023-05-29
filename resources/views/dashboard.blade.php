@@ -235,7 +235,7 @@
                             <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->mobile }}</td>
                             <td>{{ $student->email }}</td>
-                            <td>{{ $student->language1_rateing }}</td>                            
+                            <td>{{ $student->language1_rating }}</td>                            
                             <td>{{ $student->language2_rating }}</td>
                             <td>{{ $student->intern_opinion }}</td>
                             <td>
