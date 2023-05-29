@@ -197,7 +197,7 @@
                         <th>Email</th>
                         <th>English Language</th>
                         <th>French Language</th>
-                        <th>Rating</th>
+                        
                         <th>Opinion</th>
                         <th>Action</th>
                         
