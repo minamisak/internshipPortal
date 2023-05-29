@@ -191,7 +191,7 @@
                         <th>Certificate</th>
                         
                         <th>Training Info</th>
-                        <th>How Did you know about us</th>
+                        <th>know about us</th>
                         <other>Other Source </other>
                         <th>Referral Name</th>
                         <th>Solid Work Rating</th>
@@ -240,8 +240,9 @@
                             
                             <td>{{ $student->training_info }}</td>
                             <td>{{ $student->source }}</td>
-                            
+
                             <td>{{ $student->source }}</td>
+                            <td>{{ $student->other }}</td>
                             <td>{{ $student->referral_name }}</td>
                             <td>{{ $student->solidwork }}</td>
                             <td>{{ $student->autocade }}</td>
