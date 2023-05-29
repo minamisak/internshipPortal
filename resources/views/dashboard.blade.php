@@ -191,7 +191,8 @@
                         <th>Certificate</th>
                         
                         <th>Training Info</th>
-                        <th>Source</th>
+                        <th>How Did you know about us</th>
+                        <other>Other Source </other>
                         <th>Referral Name</th>
                         <th>Solid Work Rating</th>
                         <th>AutoCAD Rating</th>
@@ -200,9 +201,9 @@
                         <th>Birthdate</th>
                         <th>Mobile</th>
                         <th>Email</th>
-                        <th>Language 1</th>
-                        <th>Rating</th>
-                        <th>Language 2</th>
+                        
+                        <th>English Language</th>
+                        <th>French Language</th>
                         <th>Rating</th>
                         <th>Opinion</th>
                         <th>Action</th>
@@ -239,6 +240,8 @@
                             
                             <td>{{ $student->training_info }}</td>
                             <td>{{ $student->source }}</td>
+                            
+                            <td>{{ $student->source }}</td>
                             <td>{{ $student->referral_name }}</td>
                             <td>{{ $student->solidwork }}</td>
                             <td>{{ $student->autocade }}</td>
@@ -246,10 +249,8 @@
                             <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->mobile }}</td>
                             <td>{{ $student->email }}</td>
-                            <td>{{ $student->language1 }}</td>
-                            <td>{{ $student->language1_rating }}</td>
+                            <td>{{ $student->language1 }}</td>                            
                             <td>{{ $student->language2 }}</td>
-                            <td>{{ $student->language2_rating }}</td>
                             <td>{{ $student->intern_opinion }}</td>
                             <td>
                                 <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $student->id }}">Remove</button>
