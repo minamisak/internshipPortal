@@ -176,11 +176,8 @@
                     <tr>
                         <th>IsAccepted</th>
                         <th>Full Name</th>
-                        
                         <th>Preferred Industry</th>
                         <th>Preferred Training Field</th>
-
-                        
                         <th>University</th>
                         <th>Bachelor Degree</th>
                         <th>Graduation Year</th>
@@ -189,19 +186,14 @@
                         <th>Address</th>
                         <th>Major</th>
                         <th>Certificate</th>
-                        
                         <th>Training Info</th>
                         <th>know about us</th>
-                        <th>Other Source </th>
                         <th>Referral Name</th>
                         <th>Solid Work Rating</th>
                         <th>AutoCAD Rating</th>
-                        
-                        
                         <th>Birthdate</th>
                         <th>Mobile</th>
                         <th>Email</th>
-                        
                         <th>English Language</th>
                         <th>French Language</th>
                         <th>Rating</th>
@@ -223,10 +215,8 @@
                                 </div>
                             </td>
                             <td>{{ $student->full_name }}</td>
-                            
                             <td>{{ $student->preferred_industry }}</td>
                             <td>{{ $student->preferred_training_field }}</td>
-                            
                             <td>{{ $student->university }}</td>
                             <td>{{ $student->bachelor_degree }}</td>
                             <td>{{ $student->graduation_year }}</td>
@@ -234,19 +224,13 @@
                             <td>{{ $student->city }}</td>
                             <td>{{ $student->address }}</td>
                             <td>{{ $student->major }}</td>
-
-                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>
-                            <!-- {{ asset('path/to/file.pdf') }}" target="_blank" -->
-                            
+                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>                            
                             <td>{{ $student->training_info }}</td>
                             <td>{{ $student->source }}</td>
-
                             <td>{{ $student->source }}</td>
-                            <td>{{ $student->other }}</td>
                             <td>{{ $student->referral_name }}</td>
                             <td>{{ $student->solidwork }}</td>
                             <td>{{ $student->autocade }}</td>
-                            
                             <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->mobile }}</td>
                             <td>{{ $student->email }}</td>
