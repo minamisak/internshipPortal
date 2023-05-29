@@ -188,6 +188,7 @@
                         <th>Certificate</th>
                         <th>Training Info</th>
                         <th>know about us</th>
+                        <th>Other Source </th>
                         <th>Referral Name</th>
                         <th>Solid Work Rating</th>
                         <th>AutoCAD Rating</th>
@@ -234,8 +235,8 @@
                             <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->mobile }}</td>
                             <td>{{ $student->email }}</td>
-                            <td>{{ $student->language1 }}</td>                            
-                            <td>{{ $student->language2 }}</td>
+                            <td>{{ $student->language1_rateing }}</td>                            
+                            <td>{{ $student->language2_rating }}</td>
                             <td>{{ $student->intern_opinion }}</td>
                             <td>
                                 <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $student->id }}">Remove</button>
