@@ -240,8 +240,8 @@
                             <td>{{ $student->training_info }}</td>
                             <td>{{ $student->source }}</td>
                             <td>{{ $student->referral_name }}</td>
-                            <td>{{$tudent->solidwork}}</td>
-                            <td>{{$tudent->autocade}}</td>
+                            <td>{{ $tudent->solidwork }}</td>
+                            <td>{{ $student->autocade }}</td>
                             
                             <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->mobile }}</td>
