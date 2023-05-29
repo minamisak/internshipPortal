@@ -192,7 +192,7 @@
                         
                         <th>Training Info</th>
                         <th>know about us</th>
-                        <other>Other Source </other>
+                        <th>Other Source </th>
                         <th>Referral Name</th>
                         <th>Solid Work Rating</th>
                         <th>AutoCAD Rating</th>
