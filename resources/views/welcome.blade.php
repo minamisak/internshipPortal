@@ -73,7 +73,7 @@
                         <h2 class="title">Structure of the Internship Program</h2>
                     </div>
                     <div class="content">
-                        <p>Designed to offer students the opportunity for career exploration, professional development, and capability building.</p>
+                        
                         <p>The internship will last up to one month. Interns will be involved in one of the following areas:</p>
                         <div class="streams">
                         <div class="stream">
@@ -90,7 +90,7 @@
                             <li>Finance</li>
                             <li>Human resources</li>
                             <li>Information &amp; Communication Technology (ICT)</li>
-                            <li>Supply Chain</li>
+                            <li>Health and Safety</li>
                             </ul>
                         </div>
                         </div>
@@ -104,7 +104,7 @@
                             <div class="content">
                                     <ul>
                                         <li>Class 2024 & 2025 are only enrolled for the internship program </li>
-                                        <li>Student’s last year Grad with minimum Good (Minimum GPA is 2.0) </li>
+                                        <li>Student’s last year Grad with minimum Good </li>
                                         <li>One month is the minimum period for the program enrollment </li>
                                         <li>Extracurricular activities and previous internships are desirable</li>
                                     </ul>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="content">
                         <ol>
-                            <li>Online Application: First, an online application form should be filled in. A link to the application form can be found below.</li>
+                            <li><strong>Online Application:</strong> First, an online application form should be filled in. A link to the application form can be found below.</li>
                             <li>S<strong>creening:</strong> All applications are screened by the Human Resources Team.</li>
                             <li><strong>Interview:</strong> Only semi-finalists will be invited to brief interviews with the Selection Panel lasting up to 20 minutes. </li>
                             <li><strong>Internship Acceptance:</strong> those persons who are selected following the previous steps, will receive an e-mail / Call with their internship acceptance.</li>
@@ -138,7 +138,6 @@
                     </div>
                     <div class="content">
                         <p>All interested candidates are invited to submit their application by the following link <strong>before 10 June 2023.</strong> </p>
-                        <p>Applications received after this deadline will not be considered.</p>
                         <a href="{{ route('register.index') }}" class="button">Apply for the Internship</a>
                     </div>
                     

@@ -50,6 +50,7 @@ class HRController extends Controller
                     $user->password = "12345";
                     $user->type = $request->type;
                     $user->industry = $request->industry;
+                    $user->training_field = $request->training_field_assign;
                     $user->save();
 
                     return redirect()->back()->with('success', 'User added successfully!');

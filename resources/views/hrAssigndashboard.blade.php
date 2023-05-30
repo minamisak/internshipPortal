@@ -121,17 +121,26 @@
                           <option value="supervisor">Supervisor</option>
                       </select>
                   </div>
-                  <!-- <div class="form-group" id="industry-group" style="display:none;">
+                  <div class="form-group" id="industry-group" style="display:none;">
                     <label for="industry">Industry:</label>
-                    <select name="industry" id="industry" class="form-select">
-                    <option value="" disabled selected>Select an option</option>
-                                <option value="Lighting" {{ old('preferred_industry') == 'Lighting' ? 'selected' : '' }}>Lighting</option>
-                                <option value="Panels" {{ old('preferred_industry') == 'Panels' ? 'selected' : '' }}>Panels</option>
-                                <option value="Steel" {{ old('preferred_industry') == 'Steel' ? 'selected' : '' }}>Steel</option>
-                                <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
-                                <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions (HR, ICT, SCM & Finance)</option>                          
+                    <select name="industry" id="industry" class="form-select" onchange="updateTrainingFieldsforAssign()">
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="Lighting" {{ old('preferred_industry') == 'Lighting' ? 'selected' : '' }}>Lighting</option>
+                      <option value="Panels" {{ old('preferred_industry') == 'Panels' ? 'selected' : '' }}>Panels</option>
+                      <option value="Steel" {{ old('preferred_industry') == 'Steel' ? 'selected' : '' }}>Steel</option>
+                      <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
+                      <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions</option>
                     </select>
-                </div> -->
+                </div>
+                
+                <div class="form-group" id="training_field_assign_id" style="display:none;">
+                      <label for="training_field_assign">{{ __('Training Field') }}</label>
+                      <select class="form-control" id="training_field_assign" name="training_field_assign">
+                        <option value="">Select Training field</option>
+                      </select>
+                    </div>
+                
                   
                   <div class="modal-footer">
                     
@@ -283,6 +292,79 @@ function updateTrainingFields() {
         });
     });
 });
+function updateTrainingFieldsforAssign() {
+        var preferredIndustryAssign = document.getElementById("industry").value;
+        var trainingFieldSelectAssign = document.getElementById("training_field_assign");
+
+        // Clear existing options
+        trainingFieldSelectAssign.innerHTML = '<option value="">-- Select Preferred Training Field --</option>';
+
+        if (preferredIndustryAssign === "Lighting" || preferredIndustryAssign === "Sheet Metal Fabrication" || preferredIndustryAssign === "Steel" || preferredIndustryAssign === "Panels") {
+            var trainingFieldsAssign = ["Technical Office (Engineers only)", "Commercial (Engineers only)", "Manufacturing (Engineers only)"];
+            
+            // Add new options
+            trainingFieldsAssign.forEach(function(trainingField) {
+                var option = document.createElement("option");
+                option.value = trainingField;
+                option.text = trainingField;
+                trainingFieldSelectAssign.appendChild(option);
+            });
+
+            // Show the container
+            
+        } else {
+            var trainingFieldsAssign = ["Human Resources", "Health and Safty","Finance","Information Technology"];
+            // Add new options
+            trainingFieldsAssign.forEach(function(trainingField) {
+                var option = document.createElement("option");
+                option.value = trainingField;
+                option.text = trainingField;
+                trainingFieldSelectAssign.appendChild(option);
+            });
+            // Hide the container
+            
+        }
+    }
+    $(document).ready(function(){
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    //check box 
+    $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('input[type="checkbox"]').on('change', function() {
+        var internId = $(this).attr('data-intern-id');
+        var isChecked = $(this).is(':checked');
+        console.log(internId);
+        console.log(isChecked);
+        
+
+        $.ajax({
+            url: '/interns/' + internId + '/accept',
+            type: 'GET',
+            dataType: 'json',
+            data: { is_accepted: isChecked },
+            success: function(response) {
+                // handle success
+            },
+            error: function(xhr) {
+                // handle error
+                console.log(xhr.response);
+
+            }
+        });
+    });
+});
 
 var loginBtn = document.querySelector('.modal-selector');
         loginBtn.addEventListener('click', function() {
@@ -293,13 +375,16 @@ var loginBtn = document.querySelector('.modal-selector');
 
     // Get the industry group element
     var industryGroup = document.getElementById('industry-group');
+    var training_field_assign_id = document.getElementById('training_field_assign_id');
 
     // Show/hide the industry group based on the selected value of the type dropdown
     typeDropdown.addEventListener('change', function() {
     if (typeDropdown.value === 'supervisor') {
         industryGroup.style.display = 'block';
+        training_field_assign_id.style.display = 'block';
     } else {
         industryGroup.style.display = 'none';
+        training_field_assign_id.style.display = 'none';
     }
     });
 
