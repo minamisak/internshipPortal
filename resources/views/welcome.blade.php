@@ -126,7 +126,7 @@
                     <div class="content">
                         <ol>
                             <li><strong>Online Application:</strong> First, an online application form should be filled in. A link to the application form can be found below.</li>
-                            <li>S<strong>creening:</strong> All applications are screened by the Human Resources Team.</li>
+                            <li><strong>Screening:</strong> All applications are screened by the Human Resources Team.</li>
                             <li><strong>Interview:</strong> Only semi-finalists will be invited to brief interviews with the Selection Panel lasting up to 20 minutes. </li>
                             <li><strong>Internship Acceptance:</strong> those persons who are selected following the previous steps, will receive an e-mail / Call with their internship acceptance.</li>
                         </ol>
