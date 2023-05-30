@@ -44,73 +44,111 @@
 
 <div class="container my-5">
     <div class="row">
-            <div class="border rounded p-4 my-3" id="whoweare" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
-                <h2 class="text-center mb-4" style="font-size: 3em;margin-bottom:10px;">Who We Are</h2>
-                <p>El Sewedy Industries Group was established by Mr. Ahmed Sadek El Sewedy
-                in 1938 in Egypt and across the Middle East as one of the market leaders in
-                multiple competitive industries today.</p>
-                <p>Over the past 80 years, The Group has succeeded in influencing the local
-                market in various operational scopes; Energy Solutions, Manufacturing,
-                Lighting systems &amp; Fixtures, Building Materials, Retail and Real Estate
-                Development.</p>
-                <p>The Internship Program is offered by the Industrial Sector covering 4 main
-                diversified industries of Lighting, Sheet Metal, Steel and Panels</p>
-            </div>
-            <div class="border rounded p-3 my-4" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
-                <h3 class="text-center mb-4" style="font-size: 2em;">Who can apply (eligibility criteria):</h3>
-                <ul>
-                    <li>Class 2024 &amp; 2025 are only enrolled for the internship program</li>
-                    <li>Student’s last year Grad with minimum Good (Minimum GPA is 2.0)</li>
-                    <li>One month is the minimum period for the program enrollment</li>
-                    <li>Extracurricular activities and previous internships are desirable</li>
-                </ul>
-            </div>
-            <div class="border rounded p-3 mt-3 mb-3" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
-                <h2 class="text-center fw-bold fs-4 mb-4">The selection process consists of four main steps:</h2>
-                <ol>
-                    <li>Online Application: First, an online application form should be filled in. A link to the application form can be found below.</li>
-                    <li>Screening: All applications are screened by the Human Resources Team.</li>
-                    <li>Interview: Only semi-finalists will be invited to brief interviews with the Selection Panel lasting up to 20 minutes.</li>
-                    <li>Internship Acceptance: those persons who are selected following the previous steps, will receive an e-mail / Call with their internship acceptance.</li>
-                </ol>
-            </div>
-            <div class="rounded p-3 my-4" style="font-size:14px;margin-top:10px;margin-bottom:10px;">
-                <h2 class="text-center fs-4 mb-4">Application form and the deadline:</h2>
-                <p class="mb-0">All interested candidates are invited to submit their application by the following 
-                    <a class="text-decoration-none fw-bold" href="{{ route('register.index') }}">Register link</a> before 10 June. Applications received after this deadline will not be considered.
-                </p>
-            </div>
+    <div class="container">
+        
+                <div class="image">
+                    <img src="{{ asset('assets/img/who.jpg') }}" alt="Image">
+                </div>
+                <div class="content">
+                    <h2 class="text-center mb-4" style="font-size=40px!important;font-weight:700;">Who We Are</h2>
+                    <p>
+                    <strong>El Sewedy Industries Group</strong> was established by Mr. Ahmed Sadek El Sewedy in 1938 in Egypt and across the Middle East as one of the market leaders in multiple competitive industries today.<br><br>
+                    Over the past 80 years, The Group has succeeded in influencing the local market in various operational scopes; Energy Solutions, Manufacturing, Lighting systems & Fixtures, Building Materials, Retail and Real Estate Development.<br><br><br>
+                    The Internship Program is offered by the <strong>Industrial Sector</strong> covering 4 main diversified industries of Lighting, Sheet Metal, Steel and Panels.
+                    </p>
+                </div>
+                </div>
 
-
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Electric Engineer</h5>
-                    <p class="card-text">orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                <div class="big-div">
+                    <div class="title-div">
+                        <h2 class="title">Purpose of the Internship Program</h2>
+                    </div>
+                    <div class="content">
+                        <p>Designed to offer students the opportunity for career exploration, professional development and capability building.</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Finance specialist</h5>
-                    <p class="card-text">orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                <div class="big-div">
+                    
+                <div class="title-div">
+                        <h2 class="title">Structure of the Internship Program</h2>
+                    </div>
+                    <div class="content">
+                        <p>Designed to offer students the opportunity for career exploration, professional development, and capability building.</p>
+                        <p>The internship will last up to one month. Interns will be involved in one of the following areas:</p>
+                        <div class="streams">
+                        <div class="stream">
+                            <h4>Stream 1 (Technical):</h4>
+                            <ul>
+                            <li>Manufacturing</li>
+                            <li>Technical Office</li>
+                            <li>Commercial</li>
+                            </ul>
+                        </div>
+                        <div class="stream">
+                            <h4>Stream 2 (Non-Technical):</h4>
+                            <ul>
+                            <li>Finance</li>
+                            <li>Human resources</li>
+                            <li>Information &amp; Communication Technology (ICT)</li>
+                            <li>Supply Chain</li>
+                            </ul>
+                        </div>
+                        </div>
+                        <p>Each applicant should choose one of the two streams. Depending on this choice, the intern will be assigned mentors accordingly.</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">HR specialist</h5>
-                    <p class="card-text">orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                <div class="big-div">
+                        <div class="title-div">
+                                <h2 class="title">Who can apply (eligibility criteria)</h2>
+                            </div>
+                            <div class="content">
+                                    <ul>
+                                        <li>Class 2024 & 2025 are only enrolled for the internship program </li>
+                                        <li>Student’s last year Grad with minimum Good (Minimum GPA is 2.0) </li>
+                                        <li>One month is the minimum period for the program enrollment </li>
+                                        <li>Extracurricular activities and previous internships are desirable</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
+<div class="separator"></div>
+<div class="container my-5">
+    
+<div class="row">
+    
+            <div class="big-div">
+                    <div class="title-div">
+                        <h2 class="title">Selection process </h2>
+                    </div>
+                    <div class="content">
+                        <ol>
+                            <li>Online Application: First, an online application form should be filled in. A link to the application form can be found below.</li>
+                            <li>S<strong>creening:</strong> All applications are screened by the Human Resources Team.</li>
+                            <li><strong>Interview:</strong> Only semi-finalists will be invited to brief interviews with the Selection Panel lasting up to 20 minutes. </li>
+                            <li><strong>Internship Acceptance:</strong> those persons who are selected following the previous steps, will receive an e-mail / Call with their internship acceptance.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="big-div">
+                    <div class="title-div">
+                        <h2 class="title">Application form and the deadline</h2>
+                    </div>
+                    <div class="content">
+                        <p>All interested candidates are invited to submit their application by the following link <strong>before 10 June 2023.</strong> </p>
+                        <p>Applications received after this deadline will not be considered.</p>
+                        <a href="{{ route('register.index') }}" class="button">Apply for the Internship</a>
+                    </div>
+                    
+                </div>
+          
+                
+    
+</div>
+</div>
+
 
 <!-- Bootstrap 5 JS Bundle with Popper -->
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
@@ -118,9 +156,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
+.button {
+  display: inline-block;
+  background-color: #252A68;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 90%;
+margin: 0 auto;
+text-align: center;
+}
+
+.button:hover {
+  background-color: #1E224F;
+}
 
 
-
+.separator {
+    background-image: url('{{ asset("assets/img/selection.jpg") }}');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 800px;
+}
 .card {
     height: 400px;
     background-color: #0dbfd6!important;
@@ -151,6 +210,94 @@
 }
 
 
+/* Home page styles */
+.container {
+  display: flex;
+  font-family: "DM Sans", sans-serif;
+
+}
+
+.content {
+  flex: 1;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.image {
+  margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+    .big-div {
+    flex-direction: column;
+  }
+
+  .content {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  .container {
+    flex-direction: column;
+  }
+
+  .image {
+    margin: 0 auto;
+    order: 2;
+  }
+}
+.big-div {
+  display: flex;
+  padding: 8%;
+  margin-top: 2%!important;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+.big-div:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.title-div {
+  flex: 1;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.title {
+  font-size: 24px;
+  text-align:center
+}
+
+.content {
+  flex: 1;
+  margin-left: 20px;
+}
+.streams {
+  display: flex;
+  margin-top: 10px;
+}
+
+.stream {
+  flex: 1;
+}
+
+.stream h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stream ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+}
 
 
 </style>
