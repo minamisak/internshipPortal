@@ -49,7 +49,7 @@
                 <div class="image">
                     <img src="{{ asset('assets/img/who.jpg') }}" alt="Image">
                 </div>
-                <div class="content">
+                <div class="content" id="whoweare">
                     <h2 class="text-center mb-4" style="font-size=40px!important;font-weight:700;">Who We Are</h2>
                     <p>
                     <strong>El Sewedy Industries Group</strong> was established by Mr. Ahmed Sadek El Sewedy in 1938 in Egypt and across the Middle East as one of the market leaders in multiple competitive industries today.<br><br>
@@ -97,7 +97,7 @@
                         <p>Each applicant should choose one of the two streams. Depending on this choice, the intern will be assigned mentors accordingly.</p>
                     </div>
                 </div>
-                <div class="big-div">
+                <div class="big-div" id="canapplay">
                         <div class="title-div">
                                 <h2 class="title">Who can apply (eligibility criteria)</h2>
                             </div>

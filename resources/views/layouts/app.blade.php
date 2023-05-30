@@ -24,7 +24,7 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #161f6e99; height: 100px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e8ebe9a6; height: 100px;">
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="{{ asset('assets/img/logo-1.png') }}" height="80" alt="Logo">
@@ -35,15 +35,15 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#whoweare">Who We Are</a>
+                    <a class="nav-link" href="#whoweare" style="color:darkblue;" >Who We Are</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">What We Do</a>
+                    <a class="nav-link" href="#canapplay" style="color:darkblue;" >Who Can Apply</a>
                 </li>
             </ul>
         </div>
         <div class="d-flex align-items-center">
-            <a href="#" class="btn btn-outline-light mr-2">Login</a>
+            <a href="#" class="btn btn-outline-light mr-2" style="background-color: #0dbfd6;width: 123px;height: 45px;padding: 11px;">Login</a>
         </div>
     </div>
 </nav>
