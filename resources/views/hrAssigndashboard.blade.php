@@ -55,6 +55,14 @@
                 Student Dashboard
               </a>
             </li>
+            
+              <!-- supervisors.all -->
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ route('supervisors.all') }}">
+                    <span data-feather="home"></span>
+                    Mentors Dashboard
+                  </a>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('assignpage') }}">
                 <span data-feather="file"></span>
@@ -113,7 +121,7 @@
                           <option value="supervisor">Supervisor</option>
                       </select>
                   </div>
-                  <div class="form-group" id="industry-group" style="display:none;">
+                  <!-- <div class="form-group" id="industry-group" style="display:none;">
                     <label for="industry">Industry:</label>
                     <select name="industry" id="industry" class="form-select">
                     <option value="" disabled selected>Select an option</option>
@@ -123,7 +131,7 @@
                                 <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
                                 <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions (HR, ICT, SCM & Finance)</option>                          
                     </select>
-                </div>
+                </div> -->
                   
                   <div class="modal-footer">
                     
@@ -150,23 +158,32 @@
             <form method="GET" action="{{ route('assignStudent') }}" style="line-height:3;">
               @csrf
               <div class="form-group">
-                <label for="supervisor">{{ __('Industry') }}</label>
-                <select class="form-control" id="industry-dropdown" name="industry-dropdown">
-                  <option value="">Select Industry</option>
+                <label for="supervisor">{{ __('Industry') }}</label>    
+                <select id="industry-dropdown" class="form-control " name="industry-dropdown" onchange="updateTrainingFields()">
                   <option value="" disabled selected>Select an option</option>
                   <option value="Lighting" {{ old('preferred_industry') == 'Lighting' ? 'selected' : '' }}>Lighting</option>
                   <option value="Panels" {{ old('preferred_industry') == 'Panels' ? 'selected' : '' }}>Panels</option>
                   <option value="Steel" {{ old('preferred_industry') == 'Steel' ? 'selected' : '' }}>Steel</option>
                   <option value="Sheet Metal Fabrication" {{ old('preferred_industry') == 'Sheet Metal Fabrication' ? 'selected' : '' }}>Sheet Metal Fabrication</option>
-                  <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions (HR, ICT, SCM & Finance)</option>
+                  <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions</option>
+              </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="training_field">{{ __('Training Field') }}</label>
+                <select class="form-control" id="training_field" name="training_field">
+                  <option value="">Select Training field</option>
                 </select>
               </div>
+
               <div class="form-group">
                 <label for="supervisor">{{ __('Supervisor') }}</label>
                 <select class="form-control" id="supervisors" name="supervisor">
                   <option value="">Select supervisor</option>
                 </select>
               </div>
+
+              
 
               <div class="form-group">
                 <label for="intern">{{ __('Interns') }}</label>
@@ -192,6 +209,40 @@
 </body>
 </html>
 <script>
+
+function updateTrainingFields() {
+        var preferredIndustry = document.getElementById("industry-dropdown").value;
+        var trainingFieldSelect = document.getElementById("training_field");
+
+        // Clear existing options
+        trainingFieldSelect.innerHTML = '<option value="">-- Select Preferred Training Field --</option>';
+
+        if (preferredIndustry === "Lighting" || preferredIndustry === "Sheet Metal Fabrication" || preferredIndustry === "Steel" || preferredIndustry === "Panels") {
+            var trainingFields = ["Technical Office (Engineers only)", "Commercial (Engineers only)", "Manufacturing (Engineers only)"];
+            
+            // Add new options
+            trainingFields.forEach(function(trainingField) {
+                var option = document.createElement("option");
+                option.value = trainingField;
+                option.text = trainingField;
+                trainingFieldSelect.appendChild(option);
+            });
+
+            // Show the container
+            
+        } else {
+            var trainingFields = ["Human Resources", "Health and Safty","Finance","Information Technology"];
+            // Add new options
+            trainingFields.forEach(function(trainingField) {
+                var option = document.createElement("option");
+                option.value = trainingField;
+                option.text = trainingField;
+                trainingFieldSelect.appendChild(option);
+            });
+            // Hide the container
+            
+        }
+    }
     $(document).ready(function(){
         $("#search").on("keyup", function() {
             var value = $(this).val().toLowerCase();
@@ -254,13 +305,14 @@ var loginBtn = document.querySelector('.modal-selector');
 
 
     $(document).ready(function() {
-    $('#industry-dropdown').change(function() {
-        var industry = $(this).val();
+    $('#training_field').change(function() {
+        var industry = $('#industry-dropdown').val();
+        var training_field = $(this).val();
         
         $.ajax({
             url: '{{ route("get-users-interns") }}',
             type: 'GET',
-            data: { industry: industry },
+            data: { industry: industry, training_field:training_field },
             success: function(response) {
                 var usersDropdown = $('#supervisors');
                 var internsDropdown = $('#interns');

@@ -157,101 +157,95 @@
       <!-- Main content -->
       
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="container"  style="overflow-x: scroll;">
-    <div class="row" style="padding:20px;">
-        <div class="card">
-          <div class="card-title">
-          <h3 class="col-md">Student Records</h3>
-          </div>
-        <div class="card-body" style="overflow-x: auto;">
-          <div class="flex d-flex" style="margin-bottom: 2%;">
-            
-            <!-- exportAcceptedInterns -->
-            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/interns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Interns</button>
-            <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/acceptedinterns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Accepted Interns</button>
-          </div>
-            <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>IsAccepted</th>
-                        <th>Full Name</th>
-                        <th>Preferred Industry</th>
-                        <th>Preferred Training Field</th>
-                        <th>University</th>
-                        <th>Bachelor Degree</th>
-                        <th>Graduation Year</th>
-                        <th>Grade</th>
-                        <th>City</th>
-                        <th>Address</th>
-                        <th>Major</th>
-                        <th>Certificate</th>
-                        <th>Training Info</th>
-                        <th>know about us</th>
-                        <th>Other Source </th>
-                        <th>Referral Name</th>
-                        <th>Solid Work Rating</th>
-                        <th>AutoCAD Rating</th>
-                        <th>Birthdate</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th>English Language</th>
-                        <th>French Language</th>
-                        
-                        <th>Opinion</th>
-                        <th>Action</th>
-                        
-                        
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($students as $student)
-                        <tr>
-                            <td>
-                                <div class="form-check" style="margin: 1.4em;">
-                                <input class="form-check-input is_accepted_checkbox" type="checkbox"
-                                    data-intern-id="{{ $student->id }}" 
-                                    @if($student->IsAccepted) checked @endif>
-                                </div>
-                            </td>
-                            <td>{{ $student->full_name }}</td>
-                            <td>{{ $student->preferred_industry }}</td>
-                            <td>{{ $student->preferred_training_field }}</td>
-                            <td>{{ $student->university }}</td>
-                            <td>{{ $student->bachelor_degree }}</td>
-                            <td>{{ $student->graduation_year }}</td>
-                            <td>{{ $student->grade }}</td>
-                            <td>{{ $student->city }}</td>
-                            <td>{{ $student->address }}</td>
-                            <td>{{ $student->major }}</td>
-                            <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>                            
-                            <td>{{ $student->training_info }}</td>
-                            <td>{{ $student->source }}</td>
-                            <td>{{ $student->other }}</td>
-                            <td>{{ $student->referral_name }}</td>
-                            <td>{{ $student->solidwork }}</td>
-                            <td>{{ $student->autocade }}</td>
-                            <td>{{ $student->birthdate }}</td>
-                            <td>{{ $student->mobile }}</td>
-                            <td>{{ $student->email }}</td>
-                            <td>{{ $student->language1_rating }}</td>                            
-                            <td>{{ $student->language2_rating }}</td>
-                            <td>{{ $student->intern_opinion }}</td>
-                            <td>
-                                <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $student->id }}">Remove</button>
-                            </td>
-                           
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    <div class="container" >
+        <div class="row" style="padding:20px;">
+            <div class="card">
+                <div class="card-title">
+                    <h3 class="col-md">Student Records</h3>
+                </div>
+                <div class="card-body" style="overflow-x: auto;">
+                    <div class="flex d-flex" style="margin-bottom: 2%;">
+                        <!-- exportAcceptedInterns -->
+                        <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/interns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Interns</button>
+                        <button class="btn btn-primary col-md-3 float-right" onclick="location.href='/export/acceptedinterns';" type="button" style="background: #140d45;color: whitesmoke;border-radius: 11px;">Download Accepted Interns</button>
+                    </div>
+                    <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" style="max-height: 800px; overflow-y: auto;">
+                            <thead>
+                                <tr>
+                                    <th>IsAccepted</th>
+                                    <th>Full Name</th>
+                                    <th>Preferred Industry</th>
+                                    <th>Preferred Training Field</th>
+                                    <th>University</th>
+                                    <th>Bachelor Degree</th>
+                                    <th>Graduation Year</th>
+                                    <th>Grade</th>
+                                    <th>City</th>
+                                    <th>Address</th>
+                                    <th>Major</th>
+                                    <th>Certificate</th>
+                                    <th>Training Info</th>
+                                    <th>know about us</th>
+                                    <th>Other Source </th>
+                                    <th>Referral Name</th>
+                                    <th>Solid Work Rating</th>
+                                    <th>AutoCAD Rating</th>
+                                    <th>Birthdate</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>English Language</th>
+                                    <th>French Language</th>
+                                    <th>Opinion</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($students as $student)
+                                <tr>
+                                    <td>
+                                        <div class="form-check" style="margin: 1.4em;">
+                                            <input class="form-check-input is_accepted_checkbox" type="checkbox" data-intern-id="{{ $student->id }}" @if($student->IsAccepted) checked @endif>
+                                        </div>
+                                    </td>
+                                    <td>{{ $student->full_name }}</td>
+                                    <td>{{ $student->preferred_industry }}</td>
+                                    <td>{{ $student->preferred_training_field }}</td>
+                                    <td>{{ $student->university }}</td>
+                                    <td>{{ $student->bachelor_degree }}</td>
+                                    <td>{{ $student->graduation_year }}</td>
+                                    <td>{{ $student->grade }}</td>
+                                    <td>{{ $student->city }}</td>
+                                    <td>{{ $student->address }}</td>
+                                    <td>{{ $student->major }}</td>
+                                    <td><a href="{{ asset('assets/'.$student->grade_certificate) }}">File uploaded</a></td>
+                                    <td>{{ $student->training_info }}</td>
+                                    <td>{{ $student->source }}</td>
+                                    <td>{{ $student->other }}</td>
+                                    <td>{{ $student->referral_name }}</td>
+                                    <td>{{ $student->solidwork }}</td>
+                                    <td>{{ $student->autocade }}</td>
+                                    <td>{{ $student->birthdate }}</td>
+                                    <td>{{ $student->mobile }}</td>
+                                    <td>{{ $student->email }}</td>
+                                    <td>{{ $student->language1_rating }}</td>
+                                    <td>{{ $student->language2_rating }}</td>
+                                    <td>{{ $student->intern_opinion }}</td>
+                                    <td>
+                                        <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $student->id }}">Remove</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+</main>
 
-      </main>
     </div>
   </div>
 

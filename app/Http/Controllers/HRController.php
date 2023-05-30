@@ -59,12 +59,13 @@ class HRController extends Controller
         public function getUsersAndInterns(Request $request)
         {
             $industry = $request->input('industry');
+            $training_field = $request->input('training_field');
             
             // Retrieve users with the specified industry
-            $users = User::where('industry', $industry)->get();
+            $users = User::where(['industry'=> $industry, 'training_field'=>$training_field])->get();
             
             // Retrieve interns with the preferred industry matching users
-            $interns = Intern::where(['preferred_industry'=> $industry, 'IsAccepted'=>1])->get();
+            $interns = Intern::where(['preferred_industry'=> $industry,'preferred_training_field' => $training_field,'IsAccepted'=>1])->get();
             
             // Combine users and interns into a single array
             $results = $users->concat($interns);
