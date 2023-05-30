@@ -23,7 +23,7 @@ use App\Http\Controllers\SupervisorController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
 Route::get('/register', [RegistrationController::class, 'index'])->name('register.index');

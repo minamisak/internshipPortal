@@ -40,6 +40,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#canapplay" style="color:darkblue;" >Who Can Apply</a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#register" style="color:darkblue;" >Register Now</a>
+                </li>
             </ul>
         </div>
         <div class="d-flex align-items-center">

@@ -7,8 +7,8 @@
             <div class="carousel-item active">
                 <img src="{{ asset('assets/img/slide1.jpeg') }}" class="d-block w-100" alt="Slide 1">
                 <div class="carousel-caption">
-                    <span class="caption-title">Announcement</span>
-                    <p class="caption-para">INTERNSHIP PROGRAMS</p>
+                    <span class="caption-title">Summer Internship <br>Program 2023</span>
+                    
                 </div>
             </div>
             <div class="carousel-item">
@@ -132,7 +132,7 @@
                         </ol>
                     </div>
                 </div>
-                <div class="big-div">
+                <div class="big-div" id="register">
                     <div class="title-div">
                         <h2 class="title">Application form and the deadline</h2>
                     </div>
@@ -190,17 +190,21 @@ text-align: center;
     float:right;
 }
 .carousel-caption{
+    background-color: #e8ebe9a6;
     bottom: 12.25rem!important;
     right:50%!important;
+    border-radius:29px;
 
 }
 .caption-title{
     font-size: 2.1rem;
+    font-weight: 700;
+
     color: #140d45;
 }
 .caption-para{
-    font-size: 1rem;
-    color: #0dbfd6;
+    font-size: 2rem;
+    color: #140d45;
 }
 
 .carousel-item img {
