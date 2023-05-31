@@ -143,7 +143,7 @@ public function removeSupervisors($id)
     public function getAllSupervisors(Request $request)
     {
         $supervisors = User::all();
-
+        
         return view('allSupervisors',compact('supervisors'));
     }
 

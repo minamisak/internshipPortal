@@ -74,6 +74,7 @@
                 @error('password')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                <span class="form-text text-muted">Create your own password for el sewedy internship profile</span>
             </div>
             <button type="submit" class="login-btn btn btn-primary" style="display:block;background-color:#1f1759;">Login</button>
         </form>
@@ -530,6 +531,7 @@
 
                     <div class="form-group row">
     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+    <span>Create your own password for el sewedy internship profile</span>
 
     <div class="col-md-6">
         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
