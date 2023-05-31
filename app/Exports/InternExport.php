@@ -23,7 +23,7 @@ class InternExport implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         // return an array of headings
-        return ['Name', 'Preferred Industry','Preferred Training Field','University','Bachelor Degree','Graduation Year','Major','Grade','Certificate','Email','Mobile','City','Address','Training Info','Source','Referral','First Language', 'First language rating', 'Second Langaue', 'Second language rating','What makes you best candidate'];
+        return ['Name', 'Preferred Industry','Preferred Training Field','University','Bachelor Degree','Graduation Year','Major','Grade','AutoCAD Rating','Solid Rating','Certificate','Email','Mobile','City','Address','Training Info','Source','Referral','First Language', 'First language rating', 'Second Langaue', 'Second language rating','What makes you best candidate'];
     }
 
     public function map($intern): array
@@ -39,6 +39,8 @@ class InternExport implements FromCollection, WithHeadings, WithMapping
             $intern->graduation_year,
             $intern->major,
             $intern->grade,
+            $student->autocade,
+            $student->solidwork,
             $fileUrl,
             $intern->email,
             $intern->mobile,

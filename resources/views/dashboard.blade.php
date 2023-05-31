@@ -18,6 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>IsAccepted</th>
+                                    <th>Round</th>
                                     <th>Full Name</th>
                                     <th>Preferred Industry</th>
                                     <th>Preferred Training Field</th>
@@ -52,6 +53,11 @@
                                             <input class="form-check-input is_accepted_checkbox" type="checkbox" data-intern-id="{{ $student->id }}" @if($student->IsAccepted) checked @endif>
                                         </div>
                                     </td>
+                                    <td><select data-intern-id="{{ $student->id }}" id="roundmyDropdown">
+                                    <option value="">-- Choose Round --</option>
+                                      <option value="Round 1 - July 2023">Round 1 - July 2023</option>
+                                      <option value="Round 2 - Augest 2023">Round 2 - Augest 2023</option>
+                                    </select></td>
                                     <td>{{ $student->full_name }}</td>
                                     <td>{{ $student->preferred_industry }}</td>
                                     <td>{{ $student->preferred_training_field }}</td>
@@ -105,6 +111,27 @@
         }
     });
 
+    $('#roundmyDropdown').on('change',function(){
+      var internId = $(this).attr('data-intern-id');
+      var round = $(this).val();
+      
+      $.ajax({
+            url: '/hr/saveRound/',
+            type: 'GET',
+            dataType: 'json',
+            data: { round: round, internId: internId },
+            success: function(response) {
+                // handle success
+                console.log(response);
+            },
+            error: function(xhr) {
+                // handle error
+                console.log(xhr.response);
+
+            }
+        });
+
+    });
     $('input[type="checkbox"]').on('change', function() {
         var internId = $(this).attr('data-intern-id');
         var isChecked = $(this).is(':checked');

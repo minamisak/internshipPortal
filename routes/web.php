@@ -49,6 +49,7 @@ Route::get('/hr/assign', [HRController::class, 'assignPage'])->name('assignpage'
 Route::get('/assignStudent', [HRController::class, 'assign'])->name('assignStudent');
 Route::post('/supervisors', [HRController::class, 'addNewUserAdmin'])->name('supervisors.store');
 Route::get('/hr/supervisors', [HRController::class, 'getAllSupervisors'])->name('supervisors.all');
+Route::get('/hr/mentorfeedbacks', [HRController::class, 'showMentorFeedbackOnStudent'])->name('mentorfeedbacks.all');
 //get-users-interns
 Route::get('/hr/getUsersInterns', [HRController::class, 'getUsersAndInterns'])->name('get-users-interns');
 Route::get('/hr/assignedview', [HRController::class, 'showAssignedStudent'])->name('assignedview');
@@ -56,6 +57,8 @@ Route::get('/hr/reomve-interns/{id}', [HRController::class, 'removeAssignedStude
 Route::get('/hr/reomve-supervisor/{id}', [HRController::class, 'removeSupervisors'])->name('supervisors.remove');
 //remove student from system
 Route::get('/hr/reomve-intern/{id}', [HRController::class, 'removeStudent'])->name('intern.remove');
+Route::get('/hr/saveRound/', [HRController::class, 'saveRound'])->name('saveRound');
+
 
 //supervisorsDashboard
 
@@ -72,6 +75,10 @@ Route::post('/import', [HRController::class, 'import'])->name('import.data');
 Route::get('/export/interns', [InternController::class, 'exportInterns'])->name('exportInterns');
 Route::get('/export/acceptedinterns', [InternController::class, 'exportAcceptedInterns'])->name('exportAcceptedInterns');
 Route::get('/check-email', [InternController::class, 'checkMail'])->name('check.email');
+
+//export feedbacks
+Route::get('/export/mentorfeedback', [HRController::class, 'exportMentorFeedback'])->name('mentorfeedback');
+
 
 Route::match(['get', 'post'],'/logout', [InternController::class, 'logout'])->name('logout');
 // Route::post('/login', [InternController::class, 'processLogin'])->name('processLogin');

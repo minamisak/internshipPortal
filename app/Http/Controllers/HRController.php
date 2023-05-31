@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Intern;
 use App\Models\User;
 use App\Models\StudentSupervisor;
-
+use App\Models\SuperviseFeedbackStudent;
+use App\Exports\MentorFeedbacksExport;
 use App\Imports\UserImporter;
 use Maatwebsite\Excel\Facades\Excel;
+
+use Illuminate\Support\Facades\Session;
+
 
 class HRController extends Controller
 {
@@ -157,6 +161,41 @@ public function removeSupervisors($id)
 
             return redirect()->back()->with('success', 'Data imported successfully.');
         }
+    
+    public function showMentorFeedbackOnStudent(Request $request)
+    {
+        //supervise_feedback_student
+        $all_feedbacks = SuperviseFeedbackStudent::all();
+
+        return view('mentoruserfeedback',compact('all_feedbacks'));
+    }
+
+    //export mentors feedback
+
+    public function exportMentorFeedback()
+    {
+        return Excel::download(new MentorFeedbacksExport, 'MentorFeedbacks.xlsx');
+
+    }
+
+    public function saveRound(Request $request)
+    {
+        $round = $request->input('round');
+        $id = $request->input('internId');
+        
+
+        // Update the "round" column in the "interns" table
+        $add = Intern::where('id', $id)->update(['round' => $round]);
+        
+        if($add){
+            return response()->json(['success' => true]);
+        }
+        else{
+            return response()->json(['Error' => false]);
+        }
+
+        
+    }
 
     
 }

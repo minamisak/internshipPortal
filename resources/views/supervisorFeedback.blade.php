@@ -142,7 +142,7 @@
                                 <label for="intern_full_name" class="form-label">Intern's Full Name (English)</label>
                                 <select class="form-select" id="intern_full_name" name="intern_full_name" required>
                                     @foreach($interns as $intern)
-                                        <option value="{{ $intern->id }}">{{ $intern->full_name }}</option>
+                                        <option value="{{ $intern->full_name }}">{{ $intern->full_name }}</option>
                                     @endforeach
                                    
 

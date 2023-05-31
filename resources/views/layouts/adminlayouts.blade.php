@@ -83,9 +83,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link modal-selector" href="#" data-toggle="modal" data-target="#addSupervisorModal">
+              <a class="nav-link modal-selector" href="{{ route('mentorfeedbacks.all') }}" data-toggle="modal" data-target="#addSupervisorModal">
                   <span data-feather="shopping-cart"></span>
-                  Add Prev.
+                  Show Mentor Feedbacks
               </a>
             </li>
             

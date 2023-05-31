@@ -73,27 +73,27 @@
   </div>
 </div>
 <div class="container" style="margin-top: 12%;">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('El-Sewedy Industries Internship Program 2023') }}</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register.store') }}" enctype="multipart/form-data">
-                        @csrf
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-header">{{ __('El-Sewedy Industries Internship Program 2023') }}</div>
+                                <div class="card-body">
+                                    <form method="POST" action="{{ route('register.store') }}" enctype="multipart/form-data">
+                                        @csrf
 
-                        <div class="form-group row">
-    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
+                                        <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
 
-    <div class="col-md-6">
-        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                    <div class="col-md-6">
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
-        @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
 
 
                         <div class="form-group row">
@@ -327,8 +327,12 @@
                         <div class="col-md-6">
                             <select id="graduation_year" class="form-control @error('graduation_year') is-invalid @enderror" name="graduation_year"  autocomplete="graduation_year">
                                 <option value="">-- Select Graduation Year --</option>
+                                <option value="2024"{{ old('graduation_year') == '2020' ? ' selected' : '' }}>Class of 2020</option>
+                                <option value="2024"{{ old('graduation_year') == '2021' ? ' selected' : '' }}>Class of 2021</option>
+                                <option value="2024"{{ old('graduation_year') == '2022' ? ' selected' : '' }}>Class of 2023</option>
                                 <option value="2024"{{ old('graduation_year') == '2024' ? ' selected' : '' }}>Class of 2024</option>
                                 <option value="2025"{{ old('graduation_year') == '2025' ? ' selected' : '' }}>Class of 2025</option>
+                                <option value="2025"{{ old('graduation_year') == '2026' ? ' selected' : '' }}>Class of 2026</option>
                                 <option value="other"{{ old('graduation_year') && !in_array(old('graduation_year'), ['2024', '2025']) ? ' selected' : '' }}>Other</option>
                             </select>
 
@@ -475,7 +479,7 @@
             // Show the container
             
         } else {
-            var trainingFields = ["Human Resources", "Health and Safty","Finance","Information Technology"];
+            var trainingFields = ["Human Resources", "Health and Safety","Finance","Information Technology"];
             // Add new options
             trainingFields.forEach(function(trainingField) {
                 var option = document.createElement("option");
@@ -715,11 +719,12 @@
 
     <div class="col-md-6">
         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-
+        <span> Create your own password for el sewedy internship profile</span>
         @error('password')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
+            
         @enderror
     </div>
 </div>
