@@ -26,14 +26,16 @@ class RegistrationController extends Controller
         
         // configure the SMTP server settings
         $mail->isSMTP(); // use SMTP protocol
-        $mail->Host = 'smtp.gmail.com'; // set Gmail's SMTP server host
+        $mail->Host = 'smtp.office365.com'; // set Gmail's SMTP server host
         $mail->SMTPAuth = true; // enable SMTP authentication
         
-         $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
-         $mail->Password = 'yinxnjnzbshyyuvb'; // your SMTP password
+        // $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
+        // $mail->Password = 'yinxnjnzbshyyuvb'; // your SMTP password
+         $mail->Username = 'internships@elsewedy-ind.com'; // your SMTP username
+         $mail->Password = 'yygccqczbyttrdjq'; // your SMTP password
         // $mail->Username = 'your-email@gmail.com'; // your Gmail email address
         // $mail->Password = 'your-password'; // your Gmail password
-        $mail->SMTPSecure = 'tls'; // enable encryption, 'ssl' also accepted
+        $mail->SMTPSecure = 'STARTTLS'; // enable encryption, 'ssl' also accepted
         $mail->Port = 587; // set the SMTP port
         
         // configure the message
