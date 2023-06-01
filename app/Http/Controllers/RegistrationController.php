@@ -17,8 +17,6 @@ class RegistrationController extends Controller
 {
     //
     
-    // $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
-    // $mail->Password = 'PleaseLetMeIn'; // your SMTP password
     public function sendEmail($intern, $name)
     {
         
@@ -29,8 +27,6 @@ class RegistrationController extends Controller
         $mail->Host = 'smtp.office365.com'; // set Gmail's SMTP server host
         $mail->SMTPAuth = true; // enable SMTP authentication
         
-        // $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
-        // $mail->Password = 'yinxnjnzbshyyuvb'; // your SMTP password
          $mail->Username = env('MAIL_USERNAME'); // your SMTP username
          $mail->Password = env('MAIL_PASSWORD'); // your SMTP password
         // $mail->Username = 'your-email@gmail.com'; // your Gmail email address
