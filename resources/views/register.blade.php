@@ -203,6 +203,7 @@
     <div class="col-md-6">
         <select id="university" class="form-control @error('university') is-invalid @enderror" name="university" autocomplete="university">
             <option value="">Select University</option>
+            <option value="Ain Shams University">Ain Shams University</option>
             <option value="Ahram Canadian University">Ahram Canadian University</option>
             <option value="Al-Azhar University">Al-Azhar University</option>
             <option value="AlAlamein International University">AlAlamein International University</option>
