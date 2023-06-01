@@ -61,7 +61,7 @@
               <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{{ route('supervisors.all') }}">
                     <span data-feather="home"></span>
-                    Mentors Dashboard
+                    Mentors & HR Dashboard
                   </a>
               </li>
             <li class="nav-item">

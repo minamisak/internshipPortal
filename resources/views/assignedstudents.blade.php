@@ -5,7 +5,7 @@
       <div class="col-md-10">
         <div class="card">
           <div class="card-header">
-            <h1 class="text-center">{{ __('Assign Students') }}</h1>
+            <h1 class="text-center">{{ __('Assigned Students') }}</h1>
             <input type="text" id="search" class="form-control mb-3" placeholder="Search...">
           </div>
           <div class="card-body">
@@ -13,27 +13,22 @@
     <thead>
         <tr>
             
-            <th>User Name</th>
-            <th>User Email</th>
-            <th>User Industry</th>
-            
             <th>Intern Full Name</th>
             <th>Intern Email</th>
-            <th>Intern Industry</th>
+            <th>Mentor Name</th>
+            <th>Mentor Email</th>
+            <th>Industry</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($data as $row)
         <tr>
-            
+            <td>{{ $row['intern_full_name'] }}</td>
+            <td>{{ $row['intern_email'] }}</td>
             <td>{{ $row['user_name'] }}</td>
             <td>{{ $row['user_email'] }}</td>
             <td>{{ $row['user_industry'] }}</td>
-            
-            <td>{{ $row['intern_full_name'] }}</td>
-            <td>{{ $row['intern_email'] }}</td>
-            <td>{{ $row['intern_industry'] }}</td>
             <td>
                 <button class="btn btn-danger remove-intern-btn" data-intern-id="{{ $row['intern_id'] }}">Remove</button>
             </td>

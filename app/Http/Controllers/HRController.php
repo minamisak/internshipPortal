@@ -136,10 +136,11 @@ public function removeSupervisors($id)
 {
     // Find the intern
     // Remove the associated row from the StudentSupervisor table
-    User::where('id', $id)->delete();
+    $user = User::where('id', $id)->delete();
+    
     
     // Return a response indicating success
-    return redirect()->back()->with('success', 'Student Removed successfully.');
+    return $user;
 }
 
 
