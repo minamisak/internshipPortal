@@ -31,8 +31,8 @@ class RegistrationController extends Controller
         
         // $mail->Username = 'internships.elsewedy.ind@gmail.com'; // your SMTP username
         // $mail->Password = 'yinxnjnzbshyyuvb'; // your SMTP password
-         $mail->Username = env('USER_MAIL'); // your SMTP username
-         $mail->Password = env('USER_PASSWORD'); // your SMTP password
+         $mail->Username = env('MAIL_USERNAME'); // your SMTP username
+         $mail->Password = env('MAIL_PASSWORD'); // your SMTP password
         // $mail->Username = 'your-email@gmail.com'; // your Gmail email address
         // $mail->Password = 'your-password'; // your Gmail password
         $mail->SMTPSecure = 'STARTTLS'; // enable encryption, 'ssl' also accepted
