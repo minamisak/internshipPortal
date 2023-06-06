@@ -107,7 +107,7 @@
                 <p>Training Field: {{ $intern->preferred_industry }}</p>
                 <p>Supervisor's Full Name: {{ $intern->name }}</p>
                 
-                <button class="btn btn-primary float-right" onclick="window.location.href='{{ route('generate.pdf', ['userId' => session('intern_id')]) }}'">Print Certificate</button>
+                <button class="btn btn-primary float-right" disable onclick="window.location.href='{{ route('generate.pdf', ['userId' => session('intern_id')]) }}'">Print Certificate</button>
             </div>
         </div>
         @else
