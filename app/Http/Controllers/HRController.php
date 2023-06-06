@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+
+
 use Illuminate\Http\Request;
 use App\Models\Intern;
 use App\Models\User;
@@ -51,7 +54,7 @@ class HRController extends Controller
                     $user = new User;
                     $user->name = $request->name;
                     $user->email = $request->email;
-                    $user->password = "12345";
+                    $user->password = Hash::make("12345");
                     $user->type = $request->type;
                     $user->industry = $request->industry;
                     $user->training_field = $request->training_field_assign;
@@ -162,7 +165,7 @@ public function removeSupervisors($id)
 
             return redirect()->back()->with('success', 'Data imported successfully.');
         }
-    
+    //mentor
     public function showMentorFeedbackOnStudent(Request $request)
     {
         //supervise_feedback_student
