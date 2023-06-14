@@ -54,7 +54,7 @@ class HRController extends Controller
                     $user = new User;
                     $user->name = $request->name;
                     $user->email = $request->email;
-                    $user->password = Hash::make("12345");
+                    $user->password = "12345";
                     $user->type = $request->type;
                     $user->industry = $request->industry;
                     $user->training_field = $request->training_field_assign;
