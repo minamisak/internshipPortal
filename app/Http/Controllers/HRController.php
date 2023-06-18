@@ -13,6 +13,7 @@ use App\Models\SuperviseFeedbackStudent;
 use App\Exports\MentorFeedbacksExport;
 use App\Imports\UserImporter;
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
 
 use Illuminate\Support\Facades\Session;
 
@@ -72,9 +73,17 @@ class HRController extends Controller
             // Retrieve users with the specified industry
             $users = User::where(['industry'=> $industry, 'training_field'=>$training_field])->get();
             
+            $words = explode(" ", $training_field);
             // Retrieve interns with the preferred industry matching users
-            $interns = Intern::where(['preferred_industry'=> $industry,'preferred_training_field' => $training_field,'IsAccepted'=>1])->get();
             
+            // $interns = Intern::where(['preferred_industry'=> $industry,'preferred_training_field' => $words[0],'IsAccepted'=>1])->get();
+            $interns = DB::table('interns')
+            ->where('preferred_industry', '=', $industry)
+            ->where(function ($query) use ($words) {
+                $query->where('preferred_training_field', 'like', '%' . $words[0] . '%')
+                      ->orWhere('preferred_training_field', 'like', '%' . $words[0] . ' ' . $words[1] . '%');
+            })
+            ->get();
             // Combine users and interns into a single array
             $results = $users->concat($interns);
             
@@ -89,17 +98,18 @@ class HRController extends Controller
 public function getUserAndInternData()
 {
     $studentSupervisors = StudentSupervisor::with('supervisor', 'intern')->get();
-
+    
     $data = $studentSupervisors->map(function ($studentSupervisor) {
         return [
-            'user_id' => $studentSupervisor->supervisor->id,
-            'user_name' => $studentSupervisor->supervisor->name,
-            'user_email' => $studentSupervisor->supervisor->email,
-            'user_industry' => $studentSupervisor->supervisor->industry,
-            'intern_id' => $studentSupervisor->intern->id,
-            'intern_full_name' => $studentSupervisor->intern->full_name,
-            'intern_email' => $studentSupervisor->intern->email,
-            'intern_industry' => $studentSupervisor->intern->preferred_industry,
+            'user_id' => $studentSupervisor->supervisor['id'],
+            'user_name' => $studentSupervisor->supervisor['name'],
+            'user_email' => $studentSupervisor->supervisor['email'],
+            'user_industry' => $studentSupervisor->supervisor['industry'],
+            'intern_id' => $studentSupervisor->intern['id'],
+            'intern_full_name' => $studentSupervisor->intern['full_name'],
+            'intern_email' => $studentSupervisor->intern['email'],
+            'intern_industry' => $studentSupervisor->intern['preferred_industry'],
+            'training_field' => $studentSupervisor->supervisor['training_field'],
         ];
     });
 

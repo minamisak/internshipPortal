@@ -18,6 +18,7 @@
             <th>Mentor Name</th>
             <th>Mentor Email</th>
             <th>Industry</th>
+            <th>Training Field</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -29,6 +30,7 @@
             <td>{{ $row['user_name'] }}</td>
             <td>{{ $row['user_email'] }}</td>
             <td>{{ $row['user_industry'] }}</td>
+            <td>{{ $row['training_field'] }}</td>
             <td>
                 <button class="btn btn-danger remove-intern-btn" data-intern-id="{{ $row['intern_id'] }}">Remove</button>
             </td>

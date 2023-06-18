@@ -23,6 +23,7 @@
                         <th>Email</th>
                         <th>Industry</th>
                         <th>Type</th>
+                        <th>Training field</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -34,6 +35,7 @@
                             <td>{{ $supervisor->email }}</td>
                             <td>{{ $supervisor->industry }}</td>
                             <td>{{ $supervisor -> type}}</td>
+                            <td>{{ $supervisor -> training_field}}</td>
                             <td>
                                 <button class="btn btn-danger remove-intern-btn" data-supervisor-id="{{ $supervisor->id }}">Remove</button>
                             </td>
