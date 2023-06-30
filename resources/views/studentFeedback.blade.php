@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Welcome to Elsweedy</title>
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" crossorigin="anonymous">
+  <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <style>
+    
     /* set the height of the sidebar to the page height */
     .sidebar {
       min-height:100vh;
@@ -116,6 +119,8 @@
                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Intern's Full Name (English)</label>
                     <input type="text" class="form-control" id="full_name" name="full_name" value="{{ $intern->full_name }}" required>
                 </div>
+
+                <input type="hidden" class="form-control" id="student_id" name="intern_id" value="{{ $intern->id }}">
 
                 <div class="mb-3">
                     <label for="mobile_number" class="col-md-4 col-form-label text-md-right">Mobile Number</label>

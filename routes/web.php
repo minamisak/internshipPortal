@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 
 Route::get('/register', [RegistrationController::class, 'index'])->name('register.index');
+
 Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
 
 

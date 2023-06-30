@@ -59,16 +59,16 @@
                 Feedback
               </a>
             </li>
-            
             <li class="nav-item">
               <a class="nav-link" href="#">
                 
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit"><span data-feather="layers">Logout</span></button>
+                    <button class="btn btn-danger" type="submit"><span data-feather="layers">Logout</span></button>
                 </form>
               </a>
             </li>
+            
           </ul>
           @else
           <ul class="nav flex-column">
@@ -107,7 +107,12 @@
                 <p>Training Field: {{ $intern->preferred_industry }}</p>
                 <p>Supervisor's Full Name: {{ $intern->name }}</p>
                 
-                <button class="btn btn-primary float-right" disable onclick="window.location.href='{{ route('generate.pdf', ['userId' => session('intern_id')]) }}'">Print Certificate</button>
+                @if($intern->feedback == 0)
+                  
+                <button class="btn btn-primary float-right"  onclick="window.location.href='{{ route('feedback.form', ['internId' => session('intern_id')]) }}'">Add Feedback</button>
+                @else
+                <button class="btn btn-primary float-right"  onclick="window.location.href='{{ route('generate.pdf', ['userId' => session('intern_id')]) }}'">Print Certificate</button>
+                @endif
             </div>
         </div>
         @else

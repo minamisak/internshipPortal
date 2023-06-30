@@ -137,9 +137,9 @@
                         <h2 class="title">Application form and the deadline</h2>
                     </div>
                     <div class="content">
-                        <p>All interested candidates are invited to submit their application by the following link <strong>before 10 June 2023.</strong> </p>
-                        <a href="{{ route('register.index') }}" class="button">Apply for the Internship</a>
-                    </div>
+    <p>All interested candidates are invited to submit their application by the following link <strong>before 10 June 2023.</strong> </p>
+    <a href="{{ route('register.index') }}" class="button" id="applyButton" onclick="return false;">Apply for the Internship</a>
+</div>
                     
                 </div>
           

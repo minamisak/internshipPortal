@@ -309,9 +309,9 @@ public function secondRegistration()
         
             // Create a new instance of the feedback model
             $feedback = new StudentProgramFeedback();
-        
+            $get_the_intern = Intern::where('id',$request->input('intern_id'))->get();
             // Assign the form data to the feedback model
-            $feedback->intern_id = 1;
+            $feedback->intern_id = $request->input('intern_id');
             $feedback->supervisor_id = 1;
             $feedback->intern_full_name = $request->input('full_name');
             $feedback->mobile_number = $request->input('mobile_number');
@@ -333,6 +333,8 @@ public function secondRegistration()
             $feedback->save();
 
             if($feedback->save()){
+
+                
 
                 return redirect('login')->with('Sucess ', 'Thanks for your feedback. ');
 

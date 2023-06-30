@@ -54,10 +54,10 @@
                                         </div>
                                     </td>
                                     <td><select data-intern-id="{{ $student->id }}" id="roundmyDropdown">
-                                    <option value="">-- Choose Round --</option>
-                                      <option value="{{ old('Round 1 - July 2023') }}">Round 1 - July 2023</option>
-                                      <option value="{{ old('Round 2 - Augest 2023') }}">Round 2 - August 2023</option>
-                                    </select></td>
+    <option value="">-- Choose Round --</option>
+    <option value="Round 1 - July 2023" {{ old('$round') == 'Round 1 - July 2023' || $student->round == 'Round 1 - July 2023' ? 'selected' : '' }}>Round 1 - July 2023</option>
+    <option value="Round 2 - Augest 2023" {{ old('$round') == 'Round 2 - Augest 2023' || $student->round == 'Round 2 - Augest 2023' ? 'selected' : '' }}>Round 2 - August 2023</option>
+</select></td>
                                     <td>{{ $student->full_name }}</td>
                                     <td>{{ $student->preferred_industry }}</td>
                                     <td>{{ $student->preferred_training_field }}</td>
