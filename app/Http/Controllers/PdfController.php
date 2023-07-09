@@ -15,7 +15,7 @@ class PdfController extends Controller
            // Load the image
            
             $user = Intern::find($userId)->first();
-    $imagePath = public_path('assets/img/IC.jpg');
+    $imagePath = public_path('assets/img/IC.png');
     $image = Image::make($imagePath);
 
     // Replace the text
@@ -32,7 +32,26 @@ class PdfController extends Controller
         $font->valign('middle');
     });
 
-    $image->text($user->preferred_industry,991,420, function ($font) {
+    $userRound = $user->round;
+    $image->text($userRound,700,555, function ($font) {
+        // Use the default font
+        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+        $font->size(100);
+        $font->color('#000000');
+        $font->align('center');
+        $font->valign('middle');
+    });
+
+    $image->text($user->preferred_industry,1181,507, function ($font) {
+        // Use the default font
+        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+        $font->size(50);
+        $font->color('#000000');
+        $font->align('center');
+        $font->valign('middle');
+    });
+
+    $image->text($user->training_field,1271,507, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
         $font->size(50);
