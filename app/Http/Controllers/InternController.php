@@ -98,7 +98,7 @@ public function showProfile($id)
   ->first();
   // if null return view without assignment
      
-    return view('internevalform', compact('intern','feedback'));
+    return view('internevalform', compact('intern'));
   
 
 
