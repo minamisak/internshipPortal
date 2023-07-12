@@ -23,7 +23,7 @@ class PdfController extends Controller
     
     
     $userName = $user->full_name;
-    $image->text($userName,600,330, function ($font) {
+    $image->text($userName,845,360, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
         $font->size(100);
@@ -51,7 +51,18 @@ class PdfController extends Controller
         $font->valign('middle');
     });
 
-    $image->text($user->preferred_training_field,1319,507, function ($font) {
+    $image->text($user->preferred_training_field,1331,517, function ($font) {
+        // Use the default font
+        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+        $font->size(50);
+        $font->color('#000000');
+        $font->align('center');
+        $font->valign('middle');
+    });
+
+    //todays date
+    $today = date('d-m-y');
+    $image->text($today,434,757, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
         $font->size(50);
