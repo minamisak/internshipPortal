@@ -87,18 +87,18 @@ class InternController extends Controller
 
 public function showProfile($id)
 {
-    // $intern = Intern::findOrFail($id);
+    $intern = Intern::findOrFail($id);
     
     
-    $intern = DB::table('interns')
-  ->join('student_supervisor', 'interns.id', '=', 'student_supervisor.intern_id')
-  ->join('users', 'student_supervisor.supervisor_id', '=', 'users.id')
-  ->select('interns.IsAccepted as IsAccepted','interns.full_name','interns.preferred_industry', 'interns.email', 'users.name', 'users.email')
-  ->where('interns.id', $id)
-  ->first();
+//     $intern = DB::table('interns')
+//   ->join('student_supervisor', 'interns.id', '=', 'student_supervisor.intern_id')
+//   ->join('users', 'student_supervisor.supervisor_id', '=', 'users.id')
+//   ->select('interns.IsAccepted as IsAccepted','interns.full_name','interns.preferred_industry', 'interns.email', 'users.name', 'users.email')
+//   ->where('interns.id', $id)
+//   ->first();
   // if null return view without assignment
-     
-    return view('internevalform', compact('intern'));
+    $feedback = StudentProgramFeedback::where('intern_id',$id)->get();
+    return view('internevalform', compact('intern','feedback'));
   
 
 
@@ -231,14 +231,14 @@ public function secondRegistration()
                                         ->select('interns.IsAccepted as IsAccepted','interns.full_name','interns.preferred_industry', 'interns.email', 'users.name', 'users.email')
                                         ->where('interns.id', $internId)
                                         ->first();
-                        $feedback = StudentProgramFeedback::where('intern_id',$internId)->get();
+                        
                         if($intern->IsAccepted == true && $internAssigned)
                         {
                             $id = $intern->id;
                             return $this->showProfile($id);
                         }
                         else{
-                            return view('internevalform', compact('intern','feedback'));   
+                            return view('internevalform', compact('intern'));   
                         }
             } else {
                 // Intern ID is not present in the session
@@ -281,7 +281,7 @@ public function secondRegistration()
                     } else {
                         return redirect()->back()->with('error', 'Invalid email or password.');
                     }
-                } elseif ($intern) {
+                } elseif (isset($intern)) {
                     session()->put('intern_id', $intern->id);
                     if ($intern->IsAccepted == true) {
                         $id = $intern->id;
