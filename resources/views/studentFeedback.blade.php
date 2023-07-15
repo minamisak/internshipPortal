@@ -129,12 +129,12 @@
 
                 <div class="mb-3">
                     <label for="training_industry" class="col-md-4 col-form-label text-md-right">Training Industry</label>
-                    <input type="text" class="form-control" id="training_industry" name="training_industry" value="{{ $intern->training_industry }}" required>
+                    <input type="text" class="form-control" id="training_industry" name="training_industry" value="{{ $intern->preferred_industry }}" required>
                 </div>
 
-                <div class="mb-3">training_field
+                <div class="mb-3">
                     <label for="training_field" class="col-md-4 col-form-label text-md-right">Training Field</label>
-                    <input type="text" class="form-control" id="training_field" name="training_field" value="{{ $intern->training_field }}" required>
+                    <input type="text" class="form-control" id="training_field" name="training_field" value="{{ $intern->preferred_industry_field }}" required>
                 </div>
 
                 <div class="mb-3">
