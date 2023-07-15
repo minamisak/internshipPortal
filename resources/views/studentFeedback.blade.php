@@ -139,7 +139,7 @@
 
                 <div class="mb-3">
                     <label for="supervisor_full_name" class="col-md-4 col-form-label text-md-right">Supervisor's Full Name</label>
-                    <input type="text" class="form-control" id="supervisor_full_name" name="supervisor_full_name" required>
+                    <input type="text" class="form-control" id="supervisor_full_name" name="supervisor_full_name" value="{{$super->name}}" required>
                 </div>
 
                 <div class="mb-3">

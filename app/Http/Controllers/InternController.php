@@ -89,6 +89,9 @@ public function showProfile($id)
 {
     $intern = Intern::findOrFail($id);
     
+    $supervisorData = StudentSupervisor::where('intern_id',$id)->get('supervisor_id');
+    $superId = $supervisorData[0]->supervisor_id;
+    $super = User::where('id',$superId)->first();
     
 //     $intern = DB::table('interns')
 //   ->join('student_supervisor', 'interns.id', '=', 'student_supervisor.intern_id')
@@ -98,7 +101,7 @@ public function showProfile($id)
 //   ->first();
   // if null return view without assignment
     $feedback = StudentProgramFeedback::where('intern_id',$id)->get();
-    return view('internevalform', compact('intern','feedback'));
+    return view('internevalform', compact('intern','feedback','super'));
   
 
 
@@ -231,14 +234,16 @@ public function secondRegistration()
                                         ->select('interns.IsAccepted as IsAccepted','interns.full_name','interns.preferred_industry', 'interns.email', 'users.name', 'users.email')
                                         ->where('interns.id', $internId)
                                         ->first();
-                        
+                        $supervisorData = StudentSupervisor::where('intern_id',$internId)->get('supervisor_id');
+                        $superId = $supervisorData[0]->supervisor_id;
+                        $super = User::where('id',$superId)->first();
                         if($intern->IsAccepted == true && $internAssigned)
                         {
                             $id = $intern->id;
                             return $this->showProfile($id);
                         }
                         else{
-                            return view('internevalform', compact('intern'));   
+                            return view('internevalform', compact('intern','super'));   
                         }
             } else {
                 // Intern ID is not present in the session
@@ -301,8 +306,13 @@ public function secondRegistration()
         public function showFeedbackForm(Request $request, $internId)
             {
                 $intern = Intern::findOrFail($internId);
+                $supervisorData = StudentSupervisor::where('intern_id',$internId)->get('supervisor_id');
+                $superId = $supervisorData[0]->supervisor_id;
+                $super = User::where('id',$superId)->first();
 
-                return view('studentFeedback', compact('intern'));
+                
+
+                return view('studentFeedback', compact('intern','super'));
             }
 
         public function storeFeedback(Request $request)
