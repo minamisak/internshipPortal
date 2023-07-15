@@ -129,26 +129,12 @@
 
                 <div class="mb-3">
                     <label for="training_industry" class="col-md-4 col-form-label text-md-right">Training Industry</label>
-                    <select class="form-select" id="training_industry" name="training_industry" required>
-                    <option value="Lighting">Lighting</option>
-                    <option value="Panels">Panels</option>
-                    <option value="Steel">Steel</option>
-                    <option value="Sheet Metal Fabrication">Sheet Metal Fabrication</option>
-                    <option value="Support Functions">Support Functions (HR, ICT, SCM & Finance)</option>
-                    </select>
+                    <input type="text" class="form-control" id="training_industry" name="training_industry" value="{{ $intern->training_industry }}" required>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">training_field
                     <label for="training_field" class="col-md-4 col-form-label text-md-right">Training Field</label>
-                    <select class="form-select" id="training_field" name="training_field" required>
-                    <option value="Technical Office">Technical Office (Engineers only)</option>
-                    <option value="Commercial">Commercial (Engineers only)</option>
-                    <option value="Manufacturing">Manufacturing (Engineers only)</option>
-                    <option value="Human Resources">Human Resources</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Supply Chain">Supply Chain</option>
-                    <option value="Information & Communications Technology">Information & Communications Technology</option>
-                    </select>
+                    <input type="text" class="form-control" id="training_field" name="training_field" value="{{ $intern->training_field }}" required>
                 </div>
 
                 <div class="mb-3">
