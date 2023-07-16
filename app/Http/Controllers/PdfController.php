@@ -50,7 +50,7 @@ class PdfController extends Controller
     $startPointTraining = 1331;
     
     if($width>100){
-        $startPointIndustry=$startPointIndustry+20;
+        $startPointIndustry=$startPointIndustry+30;
         $startPointTraining=$startPointTraining+($width/3)+10;
         
         $image->text($user[0]->preferred_industry,$startPointIndustry,507, function ($font) {
