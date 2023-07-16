@@ -101,6 +101,7 @@ public function getUserAndInternData()
     
     $data = $studentSupervisors->map(function ($studentSupervisor) {
         return [
+            
             'user_id' => $studentSupervisor->supervisor['id'],
             'user_name' => $studentSupervisor->supervisor['name'],
             'user_email' => $studentSupervisor->supervisor['email'],
@@ -110,6 +111,7 @@ public function getUserAndInternData()
             'intern_email' => $studentSupervisor->intern['email'],
             'intern_industry' => $studentSupervisor->intern['preferred_industry'],
             'training_field' => $studentSupervisor->supervisor['training_field'],
+            'round' => $studentSupervisor->intern['round'],
         ];
     });
 

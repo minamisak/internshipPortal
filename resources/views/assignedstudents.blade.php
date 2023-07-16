@@ -12,7 +12,7 @@
           <table class="table table-bordered">
     <thead>
         <tr>
-            
+            <th>Round</th>
             <th>Intern Full Name</th>
             <th>Intern Email</th>
             <th>Mentor Name</th>
@@ -25,6 +25,7 @@
     <tbody>
         @foreach ($data as $row)
         <tr>
+            <td>{{ $row['round'] }}</td>
             <td>{{ $row['intern_full_name'] }}</td>
             <td>{{ $row['intern_email'] }}</td>
             <td>{{ $row['user_name'] }}</td>
