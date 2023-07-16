@@ -14,7 +14,8 @@ class PdfController extends Controller
     {
            // Load the image
            
-            $user = Intern::find($userId)->get();
+            $user = Intern::where('id',$userId)->get();
+            
     $imagePath = public_path('assets/img/IC.png');
     $image = Image::make($imagePath);
 
