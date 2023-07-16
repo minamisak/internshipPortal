@@ -41,25 +41,58 @@ class PdfController extends Controller
         $font->align('center');
         $font->valign('middle');
     });
+    $fontFile = public_path('assets/fonts/FontleroyBrown.ttf');
+    
+    $lengthInPixel = imagettfbbox(50, 0, $fontFile, $user->preferred_industry);
+    $width = $lengthInPixel[2] - $lengthInPixel[0];
+    $startPointIndustry = 1210;
+    $startPointTraining = 1331;
+    
+    if($width>100){
+        $startPointIndustry=$startPointIndustry+20;
+        $startPointTraining=$startPointTraining+($width/3)+10;
+        
+        $image->text($user->preferred_industry,$startPointIndustry,507, function ($font) {
+            // Use the default font
+            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+            $font->size(35);
+            $font->color('#000000');
+            $font->align('center');
+            $font->valign('middle');
+        });
+    
+        $image->text($user->preferred_training_field,$startPointTraining,507, function ($font) {
+            // Use the default font
+            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+            $font->size(35);
+            $font->color('#000000');
+            $font->align('center');
+            $font->valign('middle');
+        });
+    
+    }
+    else{
+        $image->text($user->preferred_industry,$startPointIndustry,507, function ($font) {
+            // Use the default font
+            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+            $font->size(50);
+            $font->color('#000000');
+            $font->align('center');
+            $font->valign('middle');
+        });
+    
+        $image->text($user->preferred_training_field,$startPointTraining,507, function ($font) {
+            // Use the default font
+            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+            $font->size(50);
+            $font->color('#000000');
+            $font->align('center');
+            $font->valign('middle');
+        });
+    
+    }
 
-    $image->text($user->preferred_industry,1210,507, function ($font) {
-        // Use the default font
-        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-        $font->size(50);
-        $font->color('#000000');
-        $font->align('center');
-        $font->valign('middle');
-    });
-
-    $image->text($user->preferred_training_field,1331,517, function ($font) {
-        // Use the default font
-        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-        $font->size(50);
-        $font->color('#000000');
-        $font->align('center');
-        $font->valign('middle');
-    });
-
+    
     //todays date
     $today = date('d-m-y');
     $image->text($today,434,757, function ($font) {
