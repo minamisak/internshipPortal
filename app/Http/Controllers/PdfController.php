@@ -50,10 +50,10 @@ class PdfController extends Controller
     $startPointTraining = 1331;
     
     if($width>100){
-        $startPointIndustry=$startPointIndustry+30;
+        $startPointIndustry=$startPointIndustry+20;
         $startPointTraining=$startPointTraining+($width/3)+10;
         
-        $image->text($user[0]->preferred_industry,$startPointIndustry,507, function ($font) {
+        $image->text($user[0]->preferred_industry,$startPointIndustry,505, function ($font) {
             // Use the default font
             $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
             $font->size(35);
