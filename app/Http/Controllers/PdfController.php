@@ -14,7 +14,7 @@ class PdfController extends Controller
     {
            // Load the image
            
-            $user = Intern::find($userId)->first();
+            $user = Intern::find($userId)->get();
     $imagePath = public_path('assets/img/IC.png');
     $image = Image::make($imagePath);
 
@@ -22,7 +22,7 @@ class PdfController extends Controller
 
     
     
-    $userName = $user->full_name;
+    $userName = $user[0]->full_name;
     $image->text($userName,845,360, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
@@ -32,7 +32,7 @@ class PdfController extends Controller
         $font->valign('middle');
     });
 
-    $userRound = $user->round;
+    $userRound = $user[0]->round;
     $image->text($userRound,800,560, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
@@ -43,7 +43,7 @@ class PdfController extends Controller
     });
     $fontFile = public_path('assets/fonts/FontleroyBrown.ttf');
     
-    $lengthInPixel = imagettfbbox(50, 0, $fontFile, $user->preferred_industry);
+    $lengthInPixel = imagettfbbox(50, 0, $fontFile, $user[0]->preferred_industry);
     $width = $lengthInPixel[2] - $lengthInPixel[0];
     $startPointIndustry = 1210;
     $startPointTraining = 1331;
@@ -52,7 +52,7 @@ class PdfController extends Controller
         $startPointIndustry=$startPointIndustry+20;
         $startPointTraining=$startPointTraining+($width/3)+10;
         
-        $image->text($user->preferred_industry,$startPointIndustry,507, function ($font) {
+        $image->text($user[0]->preferred_industry,$startPointIndustry,507, function ($font) {
             // Use the default font
             $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
             $font->size(35);
@@ -61,7 +61,7 @@ class PdfController extends Controller
             $font->valign('middle');
         });
     
-        $image->text($user->preferred_training_field,$startPointTraining,507, function ($font) {
+        $image->text($user[0]->preferred_training_field,$startPointTraining,507, function ($font) {
             // Use the default font
             $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
             $font->size(35);
@@ -72,7 +72,7 @@ class PdfController extends Controller
     
     }
     else{
-        $image->text($user->preferred_industry,$startPointIndustry,507, function ($font) {
+        $image->text($user[0]->preferred_industry,$startPointIndustry,507, function ($font) {
             // Use the default font
             $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
             $font->size(50);
@@ -81,7 +81,7 @@ class PdfController extends Controller
             $font->valign('middle');
         });
     
-        $image->text($user->preferred_training_field,$startPointTraining,507, function ($font) {
+        $image->text($user[0]->preferred_training_field,$startPointTraining,507, function ($font) {
             // Use the default font
             $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
             $font->size(50);
