@@ -16,7 +16,7 @@ class PdfController extends Controller
            
             $user = Intern::where('id',$userId)->get();
             
-    $imagePath = public_path('assets/img/IC.png');
+    $imagePath = public_path('assets/img/IC-3.png');
     $image = Image::make($imagePath);
 
     // Replace the text
@@ -26,80 +26,48 @@ class PdfController extends Controller
     $userName = $user[0]->full_name;
     $image->text($userName,845,360, function ($font) {
         // Use the default font
-        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-        $font->size(100);
+        $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
+        $font->size(40);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
     });
 
     $userRound = $user[0]->round;
-    $image->text($userRound,800,560, function ($font) {
+    $image->text($userRound,805,562, function ($font) {
         // Use the default font
-        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-        $font->size(40);
+        $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
+        $font->size(22);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
     });
-    $fontFile = public_path('assets/fonts/FontleroyBrown.ttf');
+    $fontFile = public_path('assets/fonts/OpenSans-Bold.ttf');
+    $type = str_pad($user[0]->preferred_industry."\n( ".$user[0]->preferred_training_field." )", 75, " ", STR_PAD_BOTH);
     
-    $lengthInPixel = imagettfbbox(50, 0, $fontFile, $user[0]->preferred_industry);
-    $width = $lengthInPixel[2] - $lengthInPixel[0];
-    $startPointIndustry = 1210;
-    $startPointTraining = 1331;
-    
-    if($width>100){
-        $startPointIndustry=$startPointIndustry+20;
-        $startPointTraining=$startPointTraining+($width/3)+10;
-        
-        $image->text($user[0]->preferred_industry,$startPointIndustry,505, function ($font) {
-            // Use the default font
-            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-            $font->size(35);
-            $font->color('#000000');
-            $font->align('center');
-            $font->valign('middle');
-        });
-    
-        $image->text($user[0]->preferred_training_field,$startPointTraining,507, function ($font) {
-            // Use the default font
-            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-            $font->size(35);
-            $font->color('#000000');
-            $font->align('center');
-            $font->valign('middle');
-        });
-    
-    }
-    else{
-        $image->text($user[0]->preferred_industry,$startPointIndustry,507, function ($font) {
-            // Use the default font
-            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-            $font->size(50);
-            $font->color('#000000');
-            $font->align('center');
-            $font->valign('middle');
-        });
-    
-        $image->text($user[0]->preferred_training_field,$startPointTraining,507, function ($font) {
-            // Use the default font
-            $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-            $font->size(50);
-            $font->color('#000000');
-            $font->align('center');
-            $font->valign('middle');
-        });
-    
-    }
+    $image->text($type,1365,515, function ($font) {
+        // Use the default font
+        $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
+        $font->size(19);
+        $font->color('#000000');
+        $font->align('center');
+        $font->valign('middle');
+    });
 
-    
+    // $image->text($user[0]->preferred_training_field,$startPointTraining,507, function ($font) {
+    //     // Use the default font
+    //     $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
+    //     $font->size(35);
+    //     $font->color('#000000');
+    //     $font->align('center');
+    //     $font->valign('middle');
+    // });
     //todays date
     $today = date('d-m-y');
     $image->text($today,434,757, function ($font) {
         // Use the default font
-        $font->file(public_path('assets/fonts/FontleroyBrown.ttf'));
-        $font->size(50);
+        $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
+        $font->size(25);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
