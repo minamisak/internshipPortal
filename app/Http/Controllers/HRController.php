@@ -10,7 +10,9 @@ use App\Models\Intern;
 use App\Models\User;
 use App\Models\StudentSupervisor;
 use App\Models\SuperviseFeedbackStudent;
+use App\Models\StudentProgramFeedback;
 use App\Exports\MentorFeedbacksExport;
+use App\Exports\StudentFeedbacksExport;
 use App\Imports\UserImporter;
 use Maatwebsite\Excel\Facades\Excel;
 use DB;
@@ -195,6 +197,21 @@ public function removeSupervisors($id)
 
     }
 
+    public function exportStudentFeedback()
+    {
+        return Excel::download(new StudentFeedbacksExport, 'StudentFeedbacksExport.xlsx');
+
+    }
+
+    //student feedback
+        public function showStudentFeedbackOnprogram(Request $request)
+        {
+            //supervise_feedback_student
+            $all_student_feedbacks = StudentProgramFeedback::all();
+    
+            return view('studentuserfeedbacks',compact('all_student_feedbacks'));
+        }
+    
     public function saveRound(Request $request)
     {
         $round = $request->input('round');

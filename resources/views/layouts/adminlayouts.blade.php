@@ -88,7 +88,13 @@
                   Show Mentor Feedbacks
               </a>
             </li>
-            
+            <!-- /hr/studentfeedbacks -->
+            <li class="nav-item">
+              <a class="nav-link modal-selector" href="{{ route('studentfeedbacks.all') }}" data-toggle="modal" data-target="#addSupervisorModal">
+                  <span data-feather="shopping-cart"></span>
+                  Show Student Feedbacks
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 
