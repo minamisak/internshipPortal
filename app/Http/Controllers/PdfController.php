@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
 use App\Models\Intern;
+use App\Models\StudentSupervisor;
 
 class PdfController extends Controller
 {
@@ -15,7 +16,8 @@ class PdfController extends Controller
            // Load the image
            
             $user = Intern::where('id',$userId)->get();
-            
+    $userCertificateNAme = StudentSupervisor::where('intern_id',$userId)->get();
+    // return $userCertificateNAme[0]->certificate_type;
     $imagePath = public_path('assets/img/IC-3.png');
     $image = Image::make($imagePath);
 
@@ -34,21 +36,23 @@ class PdfController extends Controller
     });
 
     $userRound = $user[0]->round;
-    $image->text($userRound,805,562, function ($font) {
+    $parts = explode('-', $userRound);
+    $result = array_pop($parts);
+    $image->text($result,805,565, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
-        $font->size(22);
+        $font->size(25);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
     });
     $fontFile = public_path('assets/fonts/OpenSans-Bold.ttf');
-    $type = str_pad($user[0]->preferred_industry."\n( ".$user[0]->preferred_training_field." )", 75, " ", STR_PAD_BOTH);
+    $type = str_pad($userCertificateNAme[0]->certificate_type, 75, " ", STR_PAD_BOTH);
     
-    $image->text($type,1365,515, function ($font) {
+    $image->text($type,1360,529, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
-        $font->size(19);
+        $font->size(21);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');

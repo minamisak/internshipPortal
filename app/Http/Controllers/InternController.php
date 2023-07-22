@@ -91,7 +91,7 @@ public function showProfile($id)
     
     $supervisorData = StudentSupervisor::where('intern_id',$id)->get('supervisor_id');
     $superId = $supervisorData[0]->supervisor_id;
-    $super = User::where('id',$superId)->first();
+    $super = User::where('id',$superId)->get();
     
 //     $intern = DB::table('interns')
 //   ->join('student_supervisor', 'interns.id', '=', 'student_supervisor.intern_id')
@@ -101,7 +101,7 @@ public function showProfile($id)
 //   ->first();
   // if null return view without assignment
     $feedback = StudentProgramFeedback::where('intern_id',$id)->get();
-    return view('internevalform', compact('intern','feedback','super'));
+    return view('internevalform', compact('intern','feedback','super','supervisorData'));
   
 
 
@@ -236,7 +236,7 @@ public function secondRegistration()
                                         ->first();
                         $supervisorData = StudentSupervisor::where('intern_id',$internId)->get('supervisor_id');
                         $superId = $supervisorData[0]->supervisor_id;
-                        $super = User::where('id',$superId)->first();
+                        $super = User::where('id',$superId)->get();
                         if($intern->IsAccepted == true && $internAssigned)
                         {
                             $id = $intern->id;

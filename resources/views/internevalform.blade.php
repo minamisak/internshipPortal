@@ -103,12 +103,13 @@
                     </div>
                 
             </div>
+            
         
             <div class="col-md-8">
                 <h1>{{ $intern->full_name }}</h1>
                 
                 <p>Training Field: {{ $intern->preferred_industry }}</p>
-                <p>Supervisor's Full Name: {{ $super->name }}</p>
+                <p>Supervisor's Full Name: {{ $super[0]->name }}</p>
                 
                 @if($intern->feedback == 0)
                   

@@ -21,6 +21,25 @@
                   <option value="Support Functions" {{ old('preferred_industry') == 'Support Functions' ? 'selected' : '' }}>Support Functions</option>
               </select>
               </div>
+
+              <div class="form-group">
+                <label for="certificate_type">{{ __('Certificate Type') }}</label>    
+                <select id="certificate_type" class="form-control " name="certificate_type">
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="(Manufacturing) Sheet Metal Fabrication Industry" {{ old('certificate_type') == '(Manufacturing) Sheet Metal Fabrication Industry' ? 'selected' : '' }}>(Manufacturing) Sheet Metal Fabrication Industry</option>
+                  <option value="(Commercial) Sheet Metal Fabrication Industry" {{ old('certificate_type') == '(Commercial) Sheet Metal Fabrication Industry' ? 'selected' : '' }}>(Commercial) Sheet Metal Fabrication Industry</option>
+                  <option value="(Manufacturing) Lighting Industry" {{ old('certificate_type') == '(Manufacturing) Lighting Industry' ? 'selected' : '' }}>(Manufacturing) Lighting Industry</option>
+                  <option value="(Commercial) Lighting Industry" {{ old('certificate_type') == '(Commercial) Lighting Industry' ? 'selected' : '' }}>(Commercial) Lighting Industry</option>
+                  <option value="(Manufacturing) Panels Industry" {{ old('certificate_type') == '(Manufacturing) Panels Industry' ? 'selected' : '' }}>(Manufacturing) Panels Industry</option>
+                  <option value="(Commercial) Panels Industry" {{ old('certificate_type') == '(Commercial) Panels Industry' ? 'selected' : '' }}>(Commercial) Panels Industry</option>
+                  <option value="(Manufacturing) Steel Industry " {{ old('certificate_type') == '(Manufacturing) Steel Industry' ? 'selected' : '' }}>(Manufacturing) Steel Industry </option>
+                  <option value="(Commercial) Steel Industry " {{ old('certificate_type') == '(Commercial) Steel Industry' ? 'selected' : '' }}>(Commercial) Steel Industry </option>
+                  <option value="(ICT) Information & Communication Technology " {{ old('certificate_type') == '(ICT) Information & Communication Technology' ? 'selected' : '' }}>(ICT) Information & Communication Technology</option>
+                  <option value="(HR) Human Resources" {{ old('certificate_type') == '(HR) Human Resources' ? 'selected' : '' }}>(HR) Human Resources </option>
+                  <option value="Finance" {{ old('certificate_type') == 'Finance' ? 'selected' : '' }}>Finance</option>
+                  <option value="(HSE) Health and safety" {{ old('certificate_type') == '(HSE) Health and safety' ? 'selected' : '' }}>(HSE) Health and safety</option>
+              </select>
+              </div>
               
               <div class="form-group">
                 <label for="training_field">{{ __('Training Field') }}</label>

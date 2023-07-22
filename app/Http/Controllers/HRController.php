@@ -35,15 +35,16 @@ class HRController extends Controller
             // Get the supervisor
             $supervisor = User::where('id', $request->supervisor)
                             ->where('type', 'supervisor')
-                            ->firstOrFail();
+                            ->get();
 
             // Get the intern
-            $intern = Intern::where('id', $request->intern)->firstOrFail();
+            $intern = Intern::where('id', $request->intern)->get();
 
             // Attach the intern to the supervisor
             $studentSupervisor = new StudentSupervisor();
-            $studentSupervisor->supervisor_id = $supervisor->id;
-            $studentSupervisor->intern_id = $intern->id;
+            $studentSupervisor->supervisor_id = $supervisor[0]->id;
+            $studentSupervisor->intern_id = $intern[0]->id;
+            $studentSupervisor->certificate_type = $request->certificate_type;
             $studentSupervisor->save();
 
             // Return a success response
