@@ -68,10 +68,10 @@ class PdfController extends Controller
     // });
     //todays date
     $today = date('d-m-y');
-    $image->text($today,434,757, function ($font) {
+    $image->text($today,522,909, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
-        $font->size(25);
+        $font->size(26.8);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
