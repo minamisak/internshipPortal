@@ -38,10 +38,10 @@ class PdfController extends Controller
     $userRound = $user[0]->round;
     $parts = explode('-', $userRound);
     $result = array_pop($parts);
-    $image->text($result,940,720, function ($font) {
+    $image->text($result,940,716, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
-        $font->size(25);
+        $font->size(26.8);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
