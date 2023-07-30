@@ -49,7 +49,7 @@ class PdfController extends Controller
     $fontFile = public_path('assets/fonts/OpenSans-Bold.ttf');
     $type = str_pad($userCertificateNAme[0]->certificate_type, 75, " ", STR_PAD_BOTH);
     
-    $image->text($type,1360,529, function ($font) {
+    $image->text($type,1015,615, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
         $font->size(21);
