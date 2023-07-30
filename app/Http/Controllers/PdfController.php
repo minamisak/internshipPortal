@@ -26,7 +26,7 @@ class PdfController extends Controller
     
     
     $userName = $user[0]->full_name;
-    $image->text($userName,845,360, function ($font) {
+    $image->text($userName,990,440, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
         $font->size(40);
@@ -38,7 +38,7 @@ class PdfController extends Controller
     $userRound = $user[0]->round;
     $parts = explode('-', $userRound);
     $result = array_pop($parts);
-    $image->text($result,805,565, function ($font) {
+    $image->text($result,940,720, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
         $font->size(25);
@@ -52,7 +52,7 @@ class PdfController extends Controller
     $image->text($type,1015,615, function ($font) {
         // Use the default font
         $font->file(public_path('assets/fonts/OpenSans-Bold.ttf'));
-        $font->size(21);
+        $font->size(26.8);
         $font->color('#000000');
         $font->align('center');
         $font->valign('middle');
