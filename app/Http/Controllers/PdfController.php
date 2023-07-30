@@ -18,7 +18,7 @@ class PdfController extends Controller
             $user = Intern::where('id',$userId)->get();
     $userCertificateNAme = StudentSupervisor::where('intern_id',$userId)->get();
     // return $userCertificateNAme[0]->certificate_type;
-    $imagePath = public_path('assets/img/IC-3.png');
+    $imagePath = public_path('assets/img/IC.jpg');
     $image = Image::make($imagePath);
 
     // Replace the text
