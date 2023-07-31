@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Intern;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationMail;
@@ -61,7 +62,13 @@ class RegistrationController extends Controller
         $inputs = $request->all();
         $email = $inputs['email'];
         
-        $intern = Intern::where('email',$email)->get();
+        if(strpos($request->input('email'), '@elsewedy-ind.com') !== false){
+            $user = User::where('email',$email)->get();
+        }
+        else{
+            $user = Intern::where('email',$email)->get();
+        }
+        
         $name = $intern[0]->name;
         $mail = new PHPMailer();
         $mail->isSMTP();
@@ -72,15 +79,15 @@ class RegistrationController extends Controller
         $mail->Username = env('MAIL_USERNAME'); // your email address
         $mail->Password = env('MAIL_PASSWORD'); // your email password or app password
         $mail->setFrom('internships@elsewedy-ind.com', 'ElSewedy Internship'); // your name and email address
-        $mail->addAddress($intern[0]->email, $intern[0]->name); // recipient's name and email address
+        $mail->addAddress($user[0]->email, $user[0]->name); // recipient's name and email address
         $mail->Subject = 'Forget Password';
-        $mail->Body = 'Your password is :'.$intern[0]->password;
+        $mail->Body = 'Your password is :'.$user[0]->password;
         if ($mail->send()) {
             // Email sent successfully
-            print("succ");
+            return redirect()->back()->with('success', 'Email sent successfully');
         } else {
             // Email not sent
-            print("error");
+            return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
         }
 
 
