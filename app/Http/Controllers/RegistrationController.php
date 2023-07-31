@@ -69,7 +69,7 @@ class RegistrationController extends Controller
             $user = Intern::where('email',$email)->get();
         }
         
-        $name = $intern[0]->name;
+        $name = $user[0]->name;
         $mail = new PHPMailer();
         $mail->isSMTP();
         $mail->SMTPAuth = true;
