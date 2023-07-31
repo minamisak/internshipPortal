@@ -85,7 +85,7 @@
             </div>
             <button type="submit" class="login-btn btn btn-primary" style="background-color:#1f1759;">Login</button>
         </form>
-
+            <a href="{{ route('forgetPasswordPage') }}" style="display: block;width: 35%;margin: 0 auto;">Forget password</a>
       </div>
     </div>
   </div>
