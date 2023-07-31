@@ -27,32 +27,66 @@ class RegistrationController extends Controller
         $mail->Host = 'smtp.office365.com'; // set Gmail's SMTP server host
         $mail->SMTPAuth = true; // enable SMTP authentication
         
-         $mail->Username = env('MAIL_USERNAME'); // your SMTP username
-         $mail->Password = env('MAIL_PASSWORD'); // your SMTP password
+         $mail->Username = 'internships@elsewedy-ind.com'; // your SMTP username
+         $mail->Password = ''; // your SMTP password
         // $mail->Username = 'your-email@gmail.com'; // your Gmail email address
         // $mail->Password = 'your-password'; // your Gmail password
         $mail->SMTPSecure = 'STARTTLS'; // enable encryption, 'ssl' also accepted
         $mail->Port = 587; // set the SMTP port
         
         // configure the message
-        $mail->setFrom('your-email@gmail.com', 'Internships Elsewedy-ind');
-        $mail->addAddress($intern, $name);
+        $mail->setFrom('internships@elsewedy-ind.com', 'Internships Elsewedy-ind');
+        $mail->addAddress($intern[0]->email, $name);
         $mail->Subject = 'Welcome To ElSewedy Internship program';
         $mail->Body = 'We have received your data and will contact you soon for more information';
         
         // send the message
         try {
-            
-             return redirect()->back()->with('success', 'Email sent successfully');
+            print("send");
+             return 'Email sent successfully';
+
             
         } catch (Exception $e) {
             // print("not sent");
             // print($mail->ErrorInfo);
             
-             return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
+             return $mail->ErrorInfo;
         }
     }
-    
+    public function forgetPasswordPage(Request $request){
+        return view('forgetPass');
+    }
+    public function forgetPassword(Request $request){
+
+        $inputs = $request->all();
+        $email = $inputs['email'];
+        
+        $intern = Intern::where('email',$email)->get();
+        $name = $intern[0]->name;
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'STARTTLS'; // or 'ssl'
+        $mail->Host = 'smtp.office365.com'; // your email provider SMTP server
+        $mail->Port = 587; // your email provider SMTP port
+        $mail->Username = env('MAIL_USERNAME'); // your email address
+        $mail->Password = env('MAIL_PASSWORD'); // your email password or app password
+        $mail->setFrom('internships@elsewedy-ind.com', 'ElSewedy Internship'); // your name and email address
+        $mail->addAddress($intern[0]->email, $intern[0]->name); // recipient's name and email address
+        $mail->Subject = 'Forget Password';
+        $mail->Body = 'Your password is :'.$intern[0]->password;
+        if ($mail->send()) {
+            // Email sent successfully
+            print("succ");
+        } else {
+            // Email not sent
+            print("error");
+        }
+
+
+
+
+    }
     public function index()
     {
         $intern = new Intern();

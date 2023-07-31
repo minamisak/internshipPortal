@@ -30,6 +30,9 @@ Route::get('/register', [RegistrationController::class, 'index'])->name('registe
 
 Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
 
+Route::get('/forgetPasswordPage', [RegistrationController::class, 'forgetPasswordPage'])->name('forgetPasswordPage');
+Route::post('/forgetPassword', [RegistrationController::class, 'forgetPassword'])->name('forgetPassword');
+
 
 
 Route::get('/dashboard', [InternController::class, 'dashboard'])->name('dashboard');
@@ -60,6 +63,7 @@ Route::get('/hr/reomve-supervisor/{id}', [HRController::class, 'removeSupervisor
 //remove student from system
 Route::get('/hr/reomve-intern/{id}', [HRController::class, 'removeStudent'])->name('intern.remove');
 Route::get('/hr/saveRound/', [HRController::class, 'saveRound'])->name('saveRound');
+
 
 
 //supervisorsDashboard
