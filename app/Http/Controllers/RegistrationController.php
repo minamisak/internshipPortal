@@ -203,7 +203,7 @@ class RegistrationController extends Controller
             // Mail::to($request->input('email'))->send(new RegistrationMail($intern));
             // Mail::to($intern->email)->send(new RegistrationMail($intern));
             
-        $this->sendEmail($intern->email,$intern->full_name);
+        // $this->sendEmail($intern->email,$intern->full_name);
             
 
              return redirect('/login')->with('success', 'Registration successful. You are now logged in.');
