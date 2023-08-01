@@ -69,27 +69,32 @@ class RegistrationController extends Controller
             $user = Intern::where('email',$email)->get();
         }
         
-        $name = $user[0]->name;
-        $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'STARTTLS'; // or 'ssl'
-        $mail->Host = 'smtp.office365.com'; // your email provider SMTP server
-        $mail->Port = 587; // your email provider SMTP port
-        $mail->Username = env('MAIL_USERNAME'); // your email address
-        $mail->Password = env('MAIL_PASSWORD'); // your email password or app password
-        $mail->setFrom('internships@elsewedy-ind.com', 'ElSewedy Internship'); // your name and email address
-        $mail->addAddress($user[0]->email, $user[0]->name); // recipient's name and email address
-        $mail->Subject = 'Forget Password';
-        $mail->Body = 'Your password is :'.$user[0]->password;
-        if ($mail->send()) {
-            // Email sent successfully
-            return redirect()->back()->with('success', 'Email sent successfully');
-        } else {
-            // Email not sent
-            return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
+        if($user->count() > 0){
+            $name = $user[0]->name;
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'STARTTLS'; // or 'ssl'
+            $mail->Host = 'smtp.office365.com'; // your email provider SMTP server
+            $mail->Port = 587; // your email provider SMTP port
+            $mail->Username = env('MAIL_USERNAME'); // your email address
+            $mail->Password = env('MAIL_PASSWORD'); // your email password or app password
+            $mail->setFrom('internships@elsewedy-ind.com', 'ElSewedy Internship'); // your name and email address
+            $mail->addAddress($user[0]->email, $user[0]->name); // recipient's name and email address
+            $mail->Subject = 'Forget Password';
+            $mail->Body = 'Your password is :'.$user[0]->password;
+            if ($mail->send()) {
+                // Email sent successfully
+                return redirect()->back()->with('success', 'Email sent successfully');
+            } else {
+                // Email not sent
+                return redirect()->back()->with('error', 'Email could not be sent: ' . $mail->ErrorInfo);
+            }
+            
         }
-
+        else{
+            return "Email not exists";
+        }        
 
 
 
