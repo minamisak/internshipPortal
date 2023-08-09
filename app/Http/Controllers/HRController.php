@@ -83,8 +83,11 @@ class HRController extends Controller
             $interns = DB::table('interns')
             ->where('preferred_industry', '=', $industry)
             ->where(function ($query) use ($words) {
-                $query->where('preferred_training_field', 'like', '%' . $words[0] . '%')
-                      ->orWhere('preferred_training_field', 'like', '%' . $words[0] . ' ' . $words[1] . '%');
+                $query->where('preferred_training_field', 'like', '%' . $words[0] . '%');
+                
+                if (isset($words[1])) {
+                    $query->orWhere('preferred_training_field', 'like', '%' . $words[0] . ' ' . $words[1] . '%');
+                }
             })
             ->get();
             // Combine users and interns into a single array
