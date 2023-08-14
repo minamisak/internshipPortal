@@ -88,7 +88,7 @@ class HRController extends Controller
                 if (isset($words[1])) {
                     $query->orWhere('preferred_training_field', 'like', '%' . $words[0] . ' ' . $words[1] . '%');
                 }
-            })
+            })->where('IsAccepted','=',1)
             ->get();
             // Combine users and interns into a single array
             $results = $users->concat($interns);
